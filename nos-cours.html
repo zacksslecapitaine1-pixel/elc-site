@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Nos cours d'anglais — English Language Center. 4 cycles, 14 niveaux, cours spéciaux. Lomé, Togo."/>
+  <title>Nos Cours — English Language Center | ELC Togo</title>
+  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    /* ── PAGE-SPECIFIC STYLES ── */
+    .course-how {
+      background: var(--blue-deep);
+      padding: 80px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .course-how::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(circle at 10% 50%, rgba(201,164,64,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 90% 30%, rgba(255,255,255,0.03) 0%, transparent 50%);
+    }
+    .how-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative; z-index: 2;
+    }
+    .how-content { color: var(--white); }
+    .how-content .section-tag {
+      background: rgba(201,164,64,0.15);
+      color: var(--gold-light);
+      border: 1px solid rgba(201,164,64,0.25);
+    }
+    .how-content .section-tag::before { background: var(--gold-light); }
+    .how-content h2 { color: var(--white); margin: 14px 0 24px; }
+    .how-steps { display: flex; flex-direction: column; gap: 20px; margin-top: 32px; }
+    .how-step {
+      display: flex; gap: 18px; align-items: flex-start;
+      padding: 20px 24px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: var(--radius-md);
+      transition: var(--transition);
+    }
+    .how-step:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(201,164,64,0.25);
+    }
+    .how-step-num {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; font-weight: 900; color: var(--white);
+      flex-shrink: 0;
+    }
+    .how-step h5 { color: var(--white); font-weight: 700; margin-bottom: 4px; font-size: 0.95rem; }
+    .how-step p { color: rgba(255,255,255,0.6); font-size: 0.84rem; line-height: 1.55; }
+
+    .how-image { position: relative; }
+    .how-image img {
+      width: 100%; border-radius: var(--radius-xl);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    }
+    .how-image-badge {
+      position: absolute; bottom: -20px; left: -20px;
+      background: var(--gold); color: var(--white);
+      border-radius: var(--radius-md); padding: 18px 22px;
+      font-family: 'Playfair Display', serif;
+      box-shadow: 0 8px 30px rgba(201,164,64,0.4);
+      border: 4px solid rgba(255,255,255,0.15);
+    }
+    .how-image-badge strong { display: block; font-size: 1.9rem; font-weight: 900; line-height: 1; }
+    .how-image-badge span { font-size: 0.78rem; opacity: 0.85; }
+
+    /* Schedule section */
+    .schedule-sec { background: var(--off-white); }
+    .schedule-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 24px; margin-top: 48px;
+    }
+    .sched-card {
+      background: var(--white); border-radius: var(--radius-lg);
+      padding: 32px; border: 1px solid var(--gray-200);
+      box-shadow: var(--shadow-sm); transition: var(--transition);
+    }
+    .sched-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(27,80,216,0.2);
+    }
+    .sched-card-head {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 20px; padding-bottom: 16px;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .sched-ico {
+      width: 44px; height: 44px; border-radius: var(--radius-sm);
+      background: var(--blue); display: flex; align-items: center; justify-content: center;
+    }
+    .sched-ico svg { width: 20px; height: 20px; color: var(--white); }
+    .sched-card-head h4 { font-size: 1rem; font-weight: 700; color: var(--text); }
+    .sched-card-head span { font-size: 0.78rem; color: var(--gray-400); }
+    .slots-list { display: flex; flex-wrap: wrap; gap: 8px; }
+    .time-slot {
+      padding: 6px 14px; border-radius: 100px;
+      background: var(--blue-light); color: var(--blue);
+      font-size: 0.8rem; font-weight: 600;
+      border: 1px solid rgba(27,80,216,0.12);
+    }
+    .day-badge {
+      padding: 5px 12px; border-radius: 100px;
+      background: var(--gold-pale); color: var(--gold);
+      font-size: 0.78rem; font-weight: 700;
+      border: 1px solid var(--gold-border);
+    }
+    .sched-note {
+      margin-top: 16px; padding: 12px 16px;
+      background: rgba(201,164,64,0.08);
+      border: 1px solid var(--gold-border);
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem; color: var(--gray-600); line-height: 1.55;
+    }
+    .sched-note strong { color: var(--blue); }
+
+    /* Full special courses grid */
+    .full-special-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 22px; margin-top: 40px;
+    }
+    .fspec-card {
+      background: var(--white); border-radius: var(--radius-lg);
+      padding: 30px; border: 1px solid var(--gray-200);
+      box-shadow: var(--shadow-sm); transition: var(--transition);
+      position: relative; overflow: hidden;
+    }
+    .fspec-card::after {
+      content: '';
+      position: absolute; left: 0; top: 0; bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, var(--blue), var(--blue-mid));
+      transform: scaleY(0); transform-origin: bottom;
+      transition: var(--transition);
+    }
+    .fspec-card:hover::after { transform: scaleY(1); }
+    .fspec-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(27,80,216,0.2);
+    }
+    .fspec-ico {
+      width: 48px; height: 48px; border-radius: var(--radius-sm);
+      background: var(--blue-light); display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px; border: 1px solid rgba(27,80,216,0.12);
+      transition: var(--transition);
+    }
+    .fspec-card:hover .fspec-ico { background: var(--blue); }
+    .fspec-ico svg { width: 22px; height: 22px; color: var(--blue); transition: var(--transition); }
+    .fspec-card:hover .fspec-ico svg { color: var(--white); }
+    .fspec-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; color: var(--text); }
+    .fspec-card p { font-size: 0.84rem; color: var(--gray-600); line-height: 1.65; }
+
+    /* Inscription info */
+    .inscription-sec { background: var(--white); }
+    .inscription-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: start; margin-top: 48px;
+    }
+    .inscription-card {
+      background: var(--off-white); border-radius: var(--radius-lg);
+      padding: 36px; border: 1px solid var(--gray-200);
+    }
+    .inscription-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; margin-bottom: 20px;
+      padding-bottom: 16px; border-bottom: 1px solid var(--gray-200);
+      color: var(--blue-deep);
+    }
+    .inscription-card ul { display: flex; flex-direction: column; gap: 12px; }
+    .inscription-card li {
+      display: flex; gap: 12px; align-items: flex-start;
+      font-size: 0.9rem; color: var(--gray-600);
+    }
+    .inscription-card li svg {
+      width: 18px; height: 18px; color: var(--gold);
+      flex-shrink: 0; margin-top: 2px;
+    }
+    .inscription-card li strong { color: var(--text); }
+
+    @media (max-width: 768px) {
+      .how-grid { grid-template-columns: 1fr; }
+      .how-image { display: none; }
+      .schedule-grid { grid-template-columns: 1fr; }
+      .full-special-grid { grid-template-columns: repeat(2,1fr); }
+      .inscription-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .full-special-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ ANNOUNCEMENT BAR ═══ -->
+  <div class="announcement-bar">
+    <div class="container">
+      <span class="fr-text">Inscriptions réouvertes le <span>30 Mars 2026</span> · Cours : <span>13 Avril 2026</span> · <a href="contact.html">Pré-inscrire</a></span>
+      <span class="en-text" style="display:none">Registrations reopen <span>March 30, 2026</span> · Classes: <span>April 13, 2026</span> · <a href="contact.html">Pre-register</a></span>
+    </div>
+  </div>
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="navbar-brand">
+        <img src="assets/images/logo.jpg" alt="ELC Logo"/>
+        <div class="brand-text">
+          <span class="brand-name">English Language Center</span>
+          <span class="brand-tagline">Make the good grade</span>
+        </div>
+      </a>
+      <ul class="navbar-nav">
+        <li><a href="index.html" class="nav-link fr-text">Accueil</a><a href="index.html" class="nav-link en-text" style="display:none">Home</a></li>
+        <li><a href="nos-cours.html" class="nav-link active fr-text">Nos Cours</a><a href="nos-cours.html" class="nav-link active en-text" style="display:none">Our Courses</a></li>
+        <li><a href="ei3months.html" class="nav-link">EI3MONTHS</a></li>
+        <li><a href="qui-sommes-nous.html" class="nav-link fr-text">Qui Sommes-Nous</a><a href="qui-sommes-nous.html" class="nav-link en-text" style="display:none">About Us</a></li>
+        <li><a href="expressions.html" class="nav-link fr-text">Expressions</a><a href="expressions.html" class="nav-link en-text" style="display:none">Expressions</a></li>
+        <li><a href="contact.html" class="nav-link fr-text">Contact</a><a href="contact.html" class="nav-link en-text" style="display:none">Contact</a></li>
+      </ul>
+      <div class="navbar-actions">
+        <div class="lang-toggle">
+          <button class="lang-btn active" id="btn-fr" onclick="setLang('fr')">FR</button>
+          <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+        </div>
+        <a href="contact.html" class="btn btn-primary fr-text">S'inscrire</a>
+        <a href="contact.html" class="btn btn-primary en-text" style="display:none">Register</a>
+        <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══ MOBILE MENU ═══ -->
+  <div class="mobile-nav" id="mobileMenu">
+    <button class="mobile-nav-close" onclick="toggleMenu()">&#x2715;</button>
+    <a href="index.html" onclick="toggleMenu()">Accueil</a>
+    <a href="nos-cours.html" onclick="toggleMenu()">Nos Cours</a>
+    <a href="ei3months.html" onclick="toggleMenu()">EI3MONTHS</a>
+    <a href="qui-sommes-nous.html" onclick="toggleMenu()">Qui Sommes-Nous</a>
+    <a href="expressions.html" onclick="toggleMenu()">Expressions</a>
+    <a href="contact.html" onclick="toggleMenu()">Contact</a>
+    <a href="contact.html" class="btn btn-gold" style="margin-top:16px" onclick="toggleMenu()">S'inscrire</a>
+  </div>
+
+  <!-- ═══ PAGE HERO ═══ -->
+  <section class="page-hero">
+    <div class="page-hero-inner container">
+      <span class="section-tag reveal fr-text">Formation Linguistique</span>
+      <span class="section-tag reveal en-text" style="display:none">Language Training</span>
+      <h1 class="reveal fr-text">Nos Cours d'Anglais</h1>
+      <h1 class="reveal en-text" style="display:none">Our English Courses</h1>
+      <p class="reveal fr-text">14 niveaux répartis en 4 cycles progressifs, plus une gamme complète de cours spéciaux adaptés à chaque besoin.</p>
+      <p class="reveal en-text" style="display:none">14 levels across 4 progressive cycles, plus a full range of special courses tailored to every need.</p>
+      <div class="breadcrumb">
+        <a href="index.html" class="fr-text">Accueil</a>
+        <a href="index.html" class="en-text" style="display:none">Home</a>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        <span class="fr-text">Nos Cours</span>
+        <span class="en-text" style="display:none">Our Courses</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 4 CYCLES ═══ -->
+  <section class="section-pad">
+    <div class="container">
+      <div class="text-center mb-32">
+        <span class="section-tag reveal fr-text">Les 4 Cycles</span>
+        <span class="section-tag reveal en-text" style="display:none">The 4 Cycles</span>
+        <h2 class="reveal" style="margin-top:12px">
+          <span class="fr-text">Trouvez Votre Niveau,<br/>Atteignez Vos Objectifs</span>
+          <span class="en-text" style="display:none">Find Your Level,<br/>Reach Your Goals</span>
+        </h2>
+        <p class="reveal" style="max-width:560px;margin:14px auto 0">
+          <span class="fr-text">Un test de classement à l'inscription vous place dans la classe qui correspond exactement à votre niveau actuel. Les débutants complets sont exemptés du test.</span>
+          <span class="en-text" style="display:none">A placement test at registration places you in the class that exactly matches your current level. Complete beginners are exempt from the test.</span>
+        </p>
+      </div>
+
+      <!-- CYCLE I -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:80px">
+        <div class="reveal">
+          <div style="display:inline-flex;align-items:center;gap:12px;background:var(--blue-light);border-radius:var(--radius-sm);padding:8px 18px;margin-bottom:20px">
+            <span style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--blue);line-height:1">I</span>
+            <div>
+              <span style="display:block;font-size:0.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold)">Cycle I</span>
+              <span style="font-size:0.85rem;color:var(--blue);font-weight:600" class="fr-text">Débutant · 4 Niveaux</span>
+              <span style="font-size:0.85rem;color:var(--blue);font-weight:600;display:none" class="en-text">Beginner · 4 Levels</span>
+            </div>
+          </div>
+          <h2 class="fr-text" style="font-size:2.2rem">Cycle Débutant</h2>
+          <h2 class="en-text" style="display:none;font-size:2.2rem">Beginner Cycle</h2>
+          <p style="margin:16px 0 24px" class="fr-text">Ce cycle s'adresse aux personnes ne possédant que quelques notions de base en anglais ou souhaitant repartir de zéro. La formation est entièrement centrée sur la pratique orale et la compréhension progressive.</p>
+          <p style="margin:16px 0 24px;display:none" class="en-text">This cycle is for people with only a few basic notions of English or wishing to start from scratch. The training is entirely focused on oral practice and progressive comprehension.</p>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--off-white);border-radius:var(--radius-sm);border:1px solid var(--gray-200)">
+              <div style="width:8px;height:8px;border-radius:50%;background:var(--blue);flex-shrink:0"></div>
+              <span style="font-weight:700;color:var(--text);font-size:0.9rem" class="fr-text">Débutant 1</span>
+              <span style="font-weight:700;color:var(--text);font-size:0.9rem;display:none" class="en-text">Beginner 1</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--off-white);border-radius:var(--radius-sm);border:1px solid var(--gray-200)">
+              <div style="width:8px;height:8px;border-radius:50%;background:var(--blue);flex-shrink:0"></div>
+              <span style="font-weight:700;color:var(--text);font-size:0.9rem" class="fr-text">Débutant 2</span>
+              <span style="font-weight:700;color:var(--text);font-size:0.9rem;display:none" class="en-text">Beginner 2</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--off-white);border-radius:var(--radius-sm);border:1px solid var(--gray-200)">
+              <div style="width:8px;height:8px;border-radius:50%;background:var(--blue-mid);flex-shrink:0"></div>
+              <span style="font-weight:700;color:var(--text);font-size:0.9rem" class="fr-text">Débutant-Avancé 1</span>
+              <span style="font-weight:700;color:var(--text);font-size:0.9rem;display:none" class="en-text">Beginner-Advanced 1</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--off-white);border-radius:var(--radius-sm);border:1px solid var(--gray-200)">
+              <div style="width:8px;height:8px;border-radius:50%;background:var(--blue-mid);flex-shrink:0"></div>
+              <span style="font-weight:700;color:var(--text);font-size:0.9rem" class="fr-text">Débutant-Avancé 2</span>
+              <span style="font-weight:700;color:var(--text);font-size:0.9rem;display:none" class="en-text">Beginner-Advanced 2</span>
+            </div>
+          </div>
+        </div>
+        <div class="reveal" style="position:relative">
+          <img src="assets/images/eleves-classe.jpg" alt="Elèves en classe" style="width:100%;height:380px;object-fit:cover;border-radius:var(--radius-xl);box-shadow:var(--shadow-lg)"/>
+          <div style="position:absolute;bottom:-18px;right:-18px;background:var(--blue-deep);color:var(--white);border-radius:var(--radius-md);padding:18px 24px;text-align:center;box-shadow:var(--shadow-lg);border:3px solid var(--white)">
+            <strong style="display:block;font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--gold-light)">4</strong>
+            <span style="font-size:0.75rem;opacity:0.7" class="fr-text">Niveaux</span>
+            <span style="font-size:0.75rem;opacity:0.7;display:none" class="en-text">Levels</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CYCLE II -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:80px">
+        <div class="reveal" style="position:relative">
+          <img src="assets/images/etudiant-1.jpg" alt="Étudiant intermédiaire" style="width:100%;height:380px;object-fit:cover;border-radius:var(--radius-xl);box-shadow:var(--shadow-lg)"/>
+          <div style="position:absolute;bottom:-18px;left:-18px;background:var(--gold);color:var(--white);border-radius:var(--radius-md);padding:18px 24px;text-align:center;box-shadow:0 8px 30px rgba(201,164,64,0.4);border:3px solid var(--white)">
+            <strong style="display:block;font-family:'Playfair Display',serif;font-size:2rem;font-weight:900">4</strong>
+            <span style="font-size:0.75rem;opacity:0.85" class="fr-text">Niveaux</span>
+            <span style="font-size:0.75rem;opacity:0.85;display:none" class="en-text">Levels</span>
+          </div>
+        </div>
+        <div class="reveal">
+          <div style="display:inline-flex;align-items:center;gap:12px;background:var(--blue-light);border-radius:var(--radius-sm);padding:8px 18px;margin-bottom:20px">
+            <span style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--blue);line-height:1">II</span>
+            <div>
+              <span style="display:block;font-size:0.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold)">Cycle II</span>
+              <span style="font-size:0.85rem;color:var(--blue);font-weight:600" class="fr-text">Intermédiaire · 4 Niveaux</span>
+              <span style="font-size:0.85rem;color:var(--blue);font-weight:600;display:none" class="en-text">Intermediate · 4 Levels</span>
+            </div>
+          </div>
+          <h2 class="fr-text" style="font-size:2.2rem">Cycle Intermédiaire</h2>
+          <h2 class="en-text" style="display:none;font-size:2.2rem">Intermediate Cycle</h2>
+          <p style="margin:16px 0 24px" class="fr-text">Ce cycle s'adresse aux personnes maîtrisant déjà les fondamentaux de la langue anglaise. L'accent est mis sur le développement de l'aisance orale, l'enrichissement du vocabulaire et l'amélioration de la compréhension.</p>
+          <p style="margin:16px 0 24px;display:none" class="en-text">This cycle is for people who already master the fundamentals of English. The focus is on developing oral fluency, vocabulary enrichment and improving comprehension.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <span class="level-badge fr-text">Intermédiaire 1</span><span class="level-badge en-text" style="display:none">Intermediate 1</span>
+            <span class="level-badge fr-text">Intermédiaire 2</span><span class="level-badge en-text" style="display:none">Intermediate 2</span>
+            <span class="level-badge fr-text">Intermédiaire 3</span><span class="level-badge en-text" style="display:none">Intermediate 3</span>
+            <span class="level-badge fr-text">Intermédiaire 4</span><span class="level-badge en-text" style="display:none">Intermediate 4</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CYCLE III -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:80px">
+        <div class="reveal">
+          <div style="display:inline-flex;align-items:center;gap:12px;background:var(--blue-light);border-radius:var(--radius-sm);padding:8px 18px;margin-bottom:20px">
+            <span style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--blue);line-height:1">III</span>
+            <div>
+              <span style="display:block;font-size:0.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold)">Cycle III</span>
+              <span style="font-size:0.85rem;color:var(--blue);font-weight:600" class="fr-text">Intermédiaire Avancé · 3 Niveaux</span>
+              <span style="font-size:0.85rem;color:var(--blue);font-weight:600;display:none" class="en-text">Upper Intermediate · 3 Levels</span>
+            </div>
+          </div>
+          <h2 class="fr-text" style="font-size:2.2rem">Cycle Intermédiaire Avancé</h2>
+          <h2 class="en-text" style="display:none;font-size:2.2rem">Upper Intermediate Cycle</h2>
+          <p style="margin:16px 0 24px" class="fr-text">Ce cycle s'adresse aux personnes possédant de solides bases et désireuses de communiquer avec encore plus de fluidité, de précision et de confiance dans des situations professionnelles complexes.</p>
+          <p style="margin:16px 0 24px;display:none" class="en-text">This cycle is for people with a solid foundation who wish to communicate with even greater fluency, precision and confidence in complex professional situations.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <span class="level-badge fr-text">Int.-Avancé 1</span><span class="level-badge en-text" style="display:none">Upper Int. 1</span>
+            <span class="level-badge fr-text">Int.-Avancé 2</span><span class="level-badge en-text" style="display:none">Upper Int. 2</span>
+            <span class="level-badge fr-text">Int.-Avancé 3</span><span class="level-badge en-text" style="display:none">Upper Int. 3</span>
+          </div>
+        </div>
+        <div class="reveal" style="position:relative">
+          <img src="assets/images/etudiante-1.jpg" alt="Étudiante avancée" style="width:100%;height:380px;object-fit:cover;border-radius:var(--radius-xl);box-shadow:var(--shadow-lg)"/>
+          <div style="position:absolute;bottom:-18px;right:-18px;background:var(--blue-deep);color:var(--white);border-radius:var(--radius-md);padding:18px 24px;text-align:center;box-shadow:var(--shadow-lg);border:3px solid var(--white)">
+            <strong style="display:block;font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--gold-light)">3</strong>
+            <span style="font-size:0.75rem;opacity:0.7" class="fr-text">Niveaux</span>
+            <span style="font-size:0.75rem;opacity:0.7;display:none" class="en-text">Levels</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CYCLE IV -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+        <div class="reveal" style="position:relative">
+          <img src="assets/images/etudiante-3.jpg" alt="Niveau avancé" style="width:100%;height:380px;object-fit:cover;border-radius:var(--radius-xl);box-shadow:var(--shadow-lg)"/>
+          <div style="position:absolute;bottom:-18px;left:-18px;background:var(--gold);color:var(--white);border-radius:var(--radius-md);padding:18px 24px;text-align:center;box-shadow:0 8px 30px rgba(201,164,64,0.4);border:3px solid var(--white)">
+            <strong style="display:block;font-family:'Playfair Display',serif;font-size:2rem;font-weight:900">3</strong>
+            <span style="font-size:0.75rem;opacity:0.85" class="fr-text">Niveaux</span>
+            <span style="font-size:0.75rem;opacity:0.85;display:none" class="en-text">Levels</span>
+          </div>
+        </div>
+        <div class="reveal">
+          <div style="display:inline-flex;align-items:center;gap:12px;background:var(--blue-light);border-radius:var(--radius-sm);padding:8px 18px;margin-bottom:20px">
+            <span style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--blue);line-height:1">IV</span>
+            <div>
+              <span style="display:block;font-size:0.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold)">Cycle IV</span>
+              <span style="font-size:0.85rem;color:var(--blue);font-weight:600" class="fr-text">Avancé · 3 Niveaux</span>
+              <span style="font-size:0.85rem;color:var(--blue);font-weight:600;display:none" class="en-text">Advanced · 3 Levels</span>
+            </div>
+          </div>
+          <h2 class="fr-text" style="font-size:2.2rem">Cycle Avancé</h2>
+          <h2 class="en-text" style="display:none;font-size:2.2rem">Advanced Cycle</h2>
+          <p style="margin:16px 0 24px" class="fr-text">Ce cycle s'adresse aux personnes possédant des notions avancées en langue anglaise et visant la maîtrise totale — compréhension fine des nuances, expression parfaite et communication sans frontières.</p>
+          <p style="margin:16px 0 24px;display:none" class="en-text">This cycle is for people with advanced knowledge of English aiming for total mastery — fine understanding of nuances, perfect expression and borderless communication.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <span class="level-badge fr-text">Avancé 1</span><span class="level-badge en-text" style="display:none">Advanced 1</span>
+            <span class="level-badge fr-text">Avancé 2</span><span class="level-badge en-text" style="display:none">Advanced 2</span>
+            <span class="level-badge fr-text">Avancé 3</span><span class="level-badge en-text" style="display:none">Advanced 3</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ HOW IT WORKS ═══ -->
+  <section class="course-how">
+    <div class="container">
+      <div class="how-grid">
+        <div class="how-content">
+          <span class="section-tag reveal fr-text">Comment ça marche ?</span>
+          <span class="section-tag reveal en-text" style="display:none">How does it work?</span>
+          <h2 class="reveal fr-text">Comment se déroulent<br/>nos cours ?</h2>
+          <h2 class="reveal en-text" style="display:none">How do our<br/>courses work?</h2>
+          <p style="color:rgba(255,255,255,0.7);margin-top:14px" class="reveal fr-text">Tous nos cours se déroulent en classe avec des enseignants bilingues, natifs ou ayant vécu dans un pays anglophone. La formation est adaptée aux besoins de chaque apprenant, avec un accent particulier sur le parler.</p>
+          <p style="color:rgba(255,255,255,0.7);margin-top:14px;display:none" class="reveal en-text">All our courses take place in class with bilingual teachers, native or having lived in an English-speaking country. Training is tailored to each learner's needs, with special emphasis on speaking.</p>
+
+          <div class="how-steps">
+            <div class="how-step reveal">
+              <div class="how-step-num">1</div>
+              <div>
+                <h5 class="fr-text">Inscription & Test de Niveau</h5>
+                <h5 class="en-text" style="display:none">Registration & Level Test</h5>
+                <p class="fr-text">À l'exception des débutants complets, un test de classement d'une heure détermine votre classe.</p>
+                <p class="en-text" style="display:none">Except for complete beginners, a one-hour placement test determines your class.</p>
+              </div>
+            </div>
+            <div class="how-step reveal">
+              <div class="how-step-num">2</div>
+              <div>
+                <h5 class="fr-text">Session d'Orientation</h5>
+                <h5 class="en-text" style="display:none">Orientation Session</h5>
+                <p class="fr-text">Une session d'orientation vous présente le programme, les attentes et la méthodologie ELC.</p>
+                <p class="en-text" style="display:none">An orientation session introduces you to the program, expectations and ELC methodology.</p>
+              </div>
+            </div>
+            <div class="how-step reveal">
+              <div class="how-step-num">3</div>
+              <div>
+                <h5 class="fr-text">Cours 2×/Semaine</h5>
+                <h5 class="en-text" style="display:none">Classes 2×/Week</h5>
+                <p class="fr-text">Deux fois par semaine, 2 heures par jour, dans le créneau horaire qui vous convient le mieux.</p>
+                <p class="en-text" style="display:none">Twice a week, 2 hours per day, in the time slot that suits you best.</p>
+              </div>
+            </div>
+            <div class="how-step reveal">
+              <div class="how-step-num">4</div>
+              <div>
+                <h5 class="fr-text">Suivi & Évaluation</h5>
+                <h5 class="en-text" style="display:none">Monitoring & Evaluation</h5>
+                <p class="fr-text">Conseils, soutien et évaluation continue par notre équipe d'enseignants expérimentés.</p>
+                <p class="en-text" style="display:none">Ongoing advice, support and evaluation by our team of experienced teachers.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="how-image reveal">
+          <img src="assets/images/classe-1.jpg" alt="Cours ELC"/>
+          <div class="how-image-badge">
+            <strong>40h</strong>
+            <span class="fr-text">par niveau</span>
+            <span class="en-text" style="display:none">per level</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SPECIAL COURSES ═══ -->
+  <section class="section-pad" style="background:var(--off-white)">
+    <div class="container">
+      <div class="text-center mb-32">
+        <span class="section-tag reveal fr-text">Cours Spéciaux</span>
+        <span class="section-tag reveal en-text" style="display:none">Special Courses</span>
+        <h2 class="reveal" style="margin-top:12px">
+          <span class="fr-text">Programmes Spécialisés</span>
+          <span class="en-text" style="display:none">Specialized Programs</span>
+        </h2>
+        <p class="reveal" style="max-width:520px;margin:14px auto 0">
+          <span class="fr-text">Des formations sur mesure pour des besoins professionnels, techniques ou certifiants précis.</span>
+          <span class="en-text" style="display:none">Tailor-made training for specific professional, technical or certification needs.</span>
+        </p>
+      </div>
+
+      <div class="full-special-grid">
+        <div class="fspec-card reveal">
+          <div class="fspec-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <h4>Intermediate Conversation</h4>
+          <p class="fr-text">Pratique intensive de la conversation anglaise pour gagner en aisance, spontanéité et fluidité naturelle. Idéal pour débloquer l'expression orale.</p>
+          <p class="en-text" style="display:none">Intensive English conversation practice to gain fluency, spontaneity and natural flow. Ideal for unblocking oral expression.</p>
+        </div>
+        <div class="fspec-card reveal reveal-delay-1">
+          <div class="fspec-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg></div>
+          <h4>Advanced Conversation & Movie Class</h4>
+          <p class="fr-text">Immersion avancée à travers films et discussions approfondies pour une compréhension authentique de l'anglais natif.</p>
+          <p class="en-text" style="display:none">Advanced immersion through films and in-depth discussions for authentic comprehension of native English.</p>
+        </div>
+        <div class="fspec-card reveal reveal-delay-2">
+          <div class="fspec-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7V4h16v3"/><path d="M9 20h6M12 4v16"/></svg></div>
+          <h4>Translation Course</h4>
+          <p class="fr-text">Maîtrise des techniques de traduction anglais-français et français-anglais pour usage professionnel et académique.</p>
+          <p class="en-text" style="display:none">Mastery of English-French and French-English translation techniques for professional and academic use.</p>
+        </div>
+        <div class="fspec-card reveal">
+          <div class="fspec-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7H4a2 2 0 0 0-2 2v6c0 1.1.9 2 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+          <h4>Business English</h4>
+          <p class="fr-text">L'anglais des affaires pour négocier, présenter, rédiger et communiquer avec excellence en milieu professionnel international.</p>
+          <p class="en-text" style="display:none">Business English to negotiate, present, write and communicate with excellence in an international professional environment.</p>
+        </div>
+        <div class="fspec-card reveal reveal-delay-1">
+          <div class="fspec-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <h4>Financial English</h4>
+          <p class="fr-text">Vocabulaire financier anglais pour banquiers, investisseurs, économistes et analystes en milieu international.</p>
+          <p class="en-text" style="display:none">English financial vocabulary for bankers, investors, economists and analysts in an international environment.</p>
+        </div>
+        <div class="fspec-card reveal reveal-delay-2">
+          <div class="fspec-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+          <h4>Administrative & Secretarial Course</h4>
+          <p class="fr-text">Rédaction professionnelle, communication d'entreprise et gestion administrative en anglais pour secrétaires et assistants.</p>
+          <p class="en-text" style="display:none">Professional writing, corporate communication and administrative management in English for secretaries and assistants.</p>
+        </div>
+        <div class="fspec-card reveal">
+          <div class="fspec-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h4>TOEFL Preparation iBT</h4>
+          <p class="fr-text">Préparation intensive au test TOEFL iBT avec formateurs experts, 40 heures de cours et support complet jusqu'au jour de l'examen.</p>
+          <p class="en-text" style="display:none">Intensive TOEFL iBT preparation with expert trainers, 40 course hours and full support up to exam day.</p>
+        </div>
+        <div class="fspec-card reveal reveal-delay-1">
+          <div class="fspec-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+          <h4>Youth Program</h4>
+          <p class="fr-text">Programme dynamique adapté aux jeunes pour développer l'anglais avec des méthodes modernes, engageantes et participatives.</p>
+          <p class="en-text" style="display:none">Dynamic program tailored for young people to develop English with modern, engaging and participatory methods.</p>
+        </div>
+        <div class="fspec-card reveal reveal-delay-2">
+          <div class="fspec-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+          <h4>Children's Class</h4>
+          <p class="fr-text">Initiation à l'anglais pour les enfants avec des méthodes ludiques et pédagogiques parfaitement adaptées à leur âge et leur curiosité.</p>
+          <p class="en-text" style="display:none">Introduction to English for children with playful and educational methods perfectly adapted to their age and curiosity.</p>
+        </div>
+        <div class="fspec-card reveal" style="grid-column:1/3">
+          <div class="fspec-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+          <h4>LETSEF</h4>
+          <p class="fr-text">Programme intensif de certification linguistique préparant aux standards internationaux reconnus. Idéal pour les professionnels ayant besoin d'une certification officielle de leur niveau d'anglais.</p>
+          <p class="en-text" style="display:none">Intensive linguistic certification program preparing for recognized international standards. Ideal for professionals needing official certification of their English level.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SCHEDULE ═══ -->
+  <section class="section-pad schedule-sec">
+    <div class="container">
+      <div class="text-center mb-32">
+        <span class="section-tag reveal fr-text">Horaires</span>
+        <span class="section-tag reveal en-text" style="display:none">Schedule</span>
+        <h2 class="reveal" style="margin-top:12px">
+          <span class="fr-text">Planning des Cours</span>
+          <span class="en-text" style="display:none">Class Schedule</span>
+        </h2>
+      </div>
+
+      <div class="schedule-grid">
+        <!-- Trimestriel -->
+        <div class="sched-card reveal">
+          <div class="sched-card-head">
+            <div class="sched-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+            <div>
+              <h4 class="fr-text">Programme Trimestriel</h4>
+              <h4 class="en-text" style="display:none">Quarterly Program</h4>
+              <span class="fr-text">Adultes & Professionnels</span>
+              <span class="en-text" style="display:none">Adults & Professionals</span>
+            </div>
+          </div>
+          <p style="font-size:0.82rem;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px" class="fr-text">Jours disponibles</p>
+          <p style="font-size:0.82rem;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;display:none" class="en-text">Available days</p>
+          <div class="slots-list" style="margin-bottom:20px">
+            <span class="day-badge fr-text">Lundi + Jeudi</span>
+            <span class="day-badge fr-text">Mardi + Vendredi</span>
+            <span class="day-badge en-text" style="display:none">Monday + Thursday</span>
+            <span class="day-badge en-text" style="display:none">Tuesday + Friday</span>
+          </div>
+          <p style="font-size:0.82rem;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px" class="fr-text">Créneaux horaires</p>
+          <p style="font-size:0.82rem;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;display:none" class="en-text">Time slots</p>
+          <div class="slots-list">
+            <span class="time-slot">08h – 10h</span>
+            <span class="time-slot">10h – 12h</span>
+            <span class="time-slot">13h – 15h</span>
+            <span class="time-slot">15h – 17h</span>
+            <span class="time-slot">18h – 20h</span>
+          </div>
+        </div>
+
+        <!-- Continu -->
+        <div class="sched-card reveal reveal-delay-1">
+          <div class="sched-card-head">
+            <div class="sched-ico" style="background:var(--gold)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <div>
+              <h4 class="fr-text">Programme Normal & Continu</h4>
+              <h4 class="en-text" style="display:none">Normal & Continuous Program</h4>
+              <span class="fr-text">4 fois par semaine · 40h par niveau</span>
+              <span class="en-text" style="display:none">4 times a week · 40h per level</span>
+            </div>
+          </div>
+          <p style="font-size:0.82rem;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px" class="fr-text">Jours disponibles</p>
+          <p style="font-size:0.82rem;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;display:none" class="en-text">Available days</p>
+          <div class="slots-list" style="margin-bottom:20px">
+            <span class="day-badge fr-text">Lundi au Jeudi</span>
+            <span class="day-badge en-text" style="display:none">Monday to Thursday</span>
+          </div>
+          <p style="font-size:0.82rem;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px" class="fr-text">Créneaux horaires</p>
+          <p style="font-size:0.82rem;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;display:none" class="en-text">Time slots</p>
+          <div class="slots-list">
+            <span class="time-slot">08h – 10h</span>
+            <span class="time-slot">10h15 – 12h15</span>
+            <span class="time-slot">13h – 15h</span>
+            <span class="time-slot">15h15 – 17h15</span>
+            <span class="time-slot">18h – 20h</span>
+          </div>
+        </div>
+
+        <!-- Enfants -->
+        <div class="sched-card reveal reveal-delay-2">
+          <div class="sched-card-head">
+            <div class="sched-ico" style="background:#10b981"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            <div>
+              <h4 class="fr-text">Children's Class</h4>
+              <h4 class="en-text" style="display:none">Children's Class</h4>
+              <span class="fr-text">Cours dédiés aux enfants</span>
+              <span class="en-text" style="display:none">Dedicated children's courses</span>
+            </div>
+          </div>
+          <p style="font-size:0.82rem;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px" class="fr-text">Jours & Horaires</p>
+          <p style="font-size:0.82rem;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;display:none" class="en-text">Days & Times</p>
+          <div class="slots-list" style="margin-bottom:16px">
+            <span class="day-badge fr-text">Mercredi 15h – 17h</span>
+            <span class="day-badge fr-text">Samedi 10h – 12h</span>
+            <span class="day-badge en-text" style="display:none">Wednesday 3pm – 5pm</span>
+            <span class="day-badge en-text" style="display:none">Saturday 10am – 12pm</span>
+          </div>
+          <div class="sched-note">
+            <span class="fr-text"><strong>Note :</strong> Test de classement obligatoire à l'inscription pour tous sauf les débutants complets. Durée : 1 heure. Le résultat détermine votre classe de départ.</span>
+            <span class="en-text" style="display:none"><strong>Note:</strong> Placement test mandatory at registration for all except complete beginners. Duration: 1 hour. The result determines your starting class.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ INSCRIPTION INFO ═══ -->
+  <section class="section-pad inscription-sec">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-tag reveal fr-text">Comment s'inscrire ?</span>
+        <span class="section-tag reveal en-text" style="display:none">How to register?</span>
+        <h2 class="reveal" style="margin-top:12px">
+          <span class="fr-text">Processus d'Inscription</span>
+          <span class="en-text" style="display:none">Registration Process</span>
+        </h2>
+      </div>
+
+      <div class="inscription-grid">
+        <div class="inscription-card reveal">
+          <h3 class="fr-text">Informations Générales</h3>
+          <h3 class="en-text" style="display:none">General Information</h3>
+          <ul>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span class="fr-text">À l'exception des débutants complets, <strong>un test de classement d'une heure</strong> est obligatoire le jour de l'inscription.</span>
+              <span class="en-text" style="display:none">Except for complete beginners, <strong>a one-hour placement test</strong> is mandatory on registration day.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span class="fr-text">Le test détermine le niveau actuel de l'apprenant et la classe qui lui correspond.</span>
+              <span class="en-text" style="display:none">The test determines the learner's current level and the class that matches them.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span class="fr-text">Le paiement intégral (inscription + scolarité) est requis <strong>le jour de l'inscription</strong>.</span>
+              <span class="en-text" style="display:none">Full payment (registration + tuition) is required <strong>on registration day</strong>.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span class="fr-text">Les paiements par chèque ne sont pas acceptés.</span>
+              <span class="en-text" style="display:none">Check payments are not accepted.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span class="fr-text">La période de cours de l'apprenant dépend de sa classe suite au test de niveau.</span>
+              <span class="en-text" style="display:none">The learner's course period depends on their class following the level test.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="inscription-card reveal reveal-delay-1">
+          <h3 class="fr-text">Tarifs & Paiement</h3>
+          <h3 class="en-text" style="display:none">Fees & Payment</h3>
+          <ul>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              <div>
+                <strong class="fr-text">Ancien Apprenant :</strong>
+                <strong class="en-text" style="display:none">Returning Student:</strong>
+                <span class="fr-text"> 65 000 FCFA (Inscription + Scolarité + Livre)</span>
+                <span class="en-text" style="display:none"> 65,000 FCFA (Registration + Tuition + Book)</span>
+              </div>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              <div>
+                <strong class="fr-text">Nouvel Apprenant :</strong>
+                <strong class="en-text" style="display:none">New Student:</strong>
+                <span class="fr-text"> 70 000 FCFA (Inscription + Scolarité + Livre + Matériel audio)</span>
+                <span class="en-text" style="display:none"> 70,000 FCFA (Registration + Tuition + Book + Audio kit)</span>
+              </div>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              <div>
+                <strong class="fr-text">Enfants :</strong>
+                <strong class="en-text" style="display:none">Children:</strong>
+                <span class="fr-text"> 45 000 FCFA (Programme Enfants)</span>
+                <span class="en-text" style="display:none"> 45,000 FCFA (Children's Program)</span>
+              </div>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span class="fr-text">Prochaines inscriptions : <strong>30 Mars 2026</strong></span>
+              <span class="en-text" style="display:none">Next registrations: <strong>March 30, 2026</strong></span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span class="fr-text">Cours du prochain trimestre : <strong>13 Avril 2026</strong></span>
+              <span class="en-text" style="display:none">Next term classes start: <strong>April 13, 2026</strong></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:48px">
+        <a href="contact.html" class="btn btn-primary reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          <span class="fr-text">S'inscrire Maintenant</span>
+          <span class="en-text" style="display:none">Register Now</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="assets/images/logo.jpg" alt="ELC Logo"/>
+          <div class="footer-brand-name">English Language Center</div>
+          <div class="footer-brand-tag">Make the Good Grade</div>
+          <p class="fr-text">Le centre de référence pour l'apprentissage de l'anglais à Lomé, Togo.</p>
+          <p class="en-text" style="display:none">The reference center for English learning in Lomé, Togo.</p>
+        </div>
+        <div class="footer-col">
+          <h5 class="fr-text">Programmes</h5>
+          <h5 class="en-text" style="display:none">Programs</h5>
+          <ul>
+            <li><a href="nos-cours.html" class="fr-text">Cycle Débutant</a><a href="nos-cours.html" class="en-text" style="display:none">Beginner Cycle</a></li>
+            <li><a href="nos-cours.html" class="fr-text">Cycle Intermédiaire</a><a href="nos-cours.html" class="en-text" style="display:none">Intermediate Cycle</a></li>
+            <li><a href="nos-cours.html" class="fr-text">Cycle Avancé</a><a href="nos-cours.html" class="en-text" style="display:none">Advanced Cycle</a></li>
+            <li><a href="ei3months.html">EI3MONTHS</a></li>
+            <li><a href="nos-cours.html">TOEFL iBT</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5 class="fr-text">Navigation</h5>
+          <h5 class="en-text" style="display:none">Navigation</h5>
+          <ul>
+            <li><a href="index.html" class="fr-text">Accueil</a><a href="index.html" class="en-text" style="display:none">Home</a></li>
+            <li><a href="qui-sommes-nous.html" class="fr-text">Qui Sommes-Nous</a><a href="qui-sommes-nous.html" class="en-text" style="display:none">About Us</a></li>
+            <li><a href="expressions.html" class="fr-text">Expressions Courantes</a><a href="expressions.html" class="en-text" style="display:none">Common Expressions</a></li>
+            <li><a href="contact.html" class="fr-text">Contact</a><a href="contact.html" class="en-text" style="display:none">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 8a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3 0h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 7.91a16 16 0 0 0 6.29 6.29l1.28-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 14.92v2z"/></svg>
+            <span>+228 22 51 21 66<br/>+228 93 44 29 10</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>elctogo@gmail.com</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="fr-text">© 2025 English Language Center · Lomé, Togo</span>
+        <span class="en-text" style="display:none">© 2025 English Language Center · Lomé, Togo</span>
+        <em>Nul n'enseigne l'anglais comme nous !</em>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

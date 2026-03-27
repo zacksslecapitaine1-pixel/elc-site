@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="EI3MONTHS — English In 3 Months. Programme intensif en ligne basé sur la technique de l'imitation. ELC Togo."/>
+  <title>EI3MONTHS — English In 3 Months | ELC Togo</title>
+  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    /* ── EI3M HERO ── */
+    .ei3m-page-hero {
+      background: linear-gradient(135deg, var(--blue-deep) 0%, #0d2480 55%, #1B50D8 100%);
+      min-height: 85vh; display: flex; align-items: center;
+      position: relative; overflow: hidden; padding: 100px 0 80px;
+    }
+    .ei3m-page-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .ei3m-hero-orb {
+      position: absolute; border-radius: 50%; pointer-events: none;
+    }
+    .ei3m-orb1 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(201,164,64,0.14) 0%, transparent 70%);
+      top: -200px; right: -100px;
+    }
+    .ei3m-orb2 {
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+      bottom: -100px; left: -60px;
+    }
+    .ei3m-hero-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 72px; align-items: center;
+      position: relative; z-index: 2; width: 100%;
+    }
+    .ei3m-hero-content { color: var(--white); }
+    .ei3m-hero-content .section-tag {
+      background: rgba(201,164,64,0.15); color: var(--gold-light);
+      border: 1px solid rgba(201,164,64,0.3);
+    }
+    .ei3m-hero-content .section-tag::before { background: var(--gold-light); }
+    .ei3m-hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+      font-weight: 900; line-height: 1.05;
+      color: var(--white); margin: 20px 0 24px;
+    }
+    .ei3m-hero-title em {
+      font-style: italic;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .ei3m-hero-desc {
+      color: rgba(255,255,255,0.75); font-size: 1.05rem;
+      line-height: 1.75; margin-bottom: 36px;
+    }
+    .ei3m-hero-stats {
+      display: flex; gap: 32px; flex-wrap: wrap;
+      padding: 24px 0; border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .ei3m-hero-stat strong {
+      display: block; font-family: 'Playfair Display', serif;
+      font-size: 1.9rem; font-weight: 900; color: var(--gold-light); line-height: 1;
+    }
+    .ei3m-hero-stat span { font-size: 0.78rem; color: rgba(255,255,255,0.55); }
+
+    /* Price card hero version */
+    .hero-price-card {
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-xl); padding: 40px;
+    }
+    .hero-price-card .price-top {
+      text-align: center; padding: 28px 24px;
+      background: linear-gradient(135deg, var(--gold), #e0a820);
+      border-radius: var(--radius-lg); margin-bottom: 28px;
+    }
+    .hero-price-card .price-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: rgba(255,255,255,0.8); margin-bottom: 8px;
+    }
+    .hero-price-card .price-amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.4rem; font-weight: 900; color: var(--white); line-height: 1;
+    }
+    .hero-price-card .price-sub {
+      color: rgba(255,255,255,0.8); font-size: 0.84rem; margin-top: 4px;
+    }
+    .option-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 13px 16px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-sm);
+      margin-bottom: 10px; font-size: 0.875rem;
+      transition: var(--transition);
+    }
+    .option-row:hover { background: rgba(255,255,255,0.1); }
+    .option-row span { color: rgba(255,255,255,0.7); }
+    .option-row strong { color: var(--gold-light); font-weight: 700; }
+    .hero-price-note {
+      text-align: center; margin-top: 18px;
+      font-size: 0.78rem; color: rgba(255,255,255,0.45); line-height: 1.55;
+    }
+    .hero-price-note strong { color: rgba(255,255,255,0.75); }
+
+    /* Method section */
+    .method-sec { background: var(--white); }
+    .method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .method-img { position: relative; }
+    .method-img img {
+      width: 100%; border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-xl);
+    }
+    .method-img-badge {
+      position: absolute; top: -20px; right: -20px;
+      background: var(--gold); color: var(--white);
+      border-radius: var(--radius-lg); padding: 20px 24px;
+      text-align: center; box-shadow: 0 8px 30px rgba(201,164,64,0.4);
+      border: 4px solid var(--white);
+    }
+    .method-img-badge strong {
+      display: block; font-family: 'Playfair Display', serif;
+      font-size: 2.2rem; font-weight: 900; line-height: 1;
+    }
+    .method-img-badge span { font-size: 0.75rem; opacity: 0.85; }
+    .method-steps { display: flex; flex-direction: column; gap: 20px; margin-top: 32px; }
+    .method-step {
+      display: flex; gap: 20px; align-items: flex-start;
+      padding: 20px 24px; background: var(--off-white);
+      border-radius: var(--radius-md); border: 1px solid var(--gray-200);
+      transition: var(--transition);
+    }
+    .method-step:hover { background: var(--blue-light); border-color: rgba(27,80,216,0.2); }
+    .method-step-ico {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--blue); display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .method-step-ico svg { width: 20px; height: 20px; color: var(--white); }
+    .method-step h5 { font-weight: 700; margin-bottom: 4px; color: var(--text); }
+    .method-step p { font-size: 0.85rem; color: var(--gray-600); line-height: 1.55; }
+
+    /* Material section */
+    .material-sec {
+      background: linear-gradient(135deg, var(--blue-deep), #1a3a9a);
+      padding: 80px 0; position: relative; overflow: hidden;
+    }
+    .material-sec::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 80% 50%, rgba(201,164,64,0.1) 0%, transparent 50%);
+    }
+    .material-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center; position: relative; z-index: 2;
+    }
+    .material-content { color: var(--white); }
+    .material-content .section-tag {
+      background: rgba(201,164,64,0.15); color: var(--gold-light);
+    }
+    .material-content .section-tag::before { background: var(--gold-light); }
+    .material-content h2 { color: var(--white); margin: 14px 0 20px; }
+    .material-content p { color: rgba(255,255,255,0.7); margin-bottom: 32px; }
+    .material-items { display: flex; flex-direction: column; gap: 14px; }
+    .material-item {
+      display: flex; gap: 16px; align-items: center;
+      padding: 16px 20px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-md);
+      transition: var(--transition);
+    }
+    .material-item:hover { background: rgba(201,164,64,0.12); border-color: rgba(201,164,64,0.25); }
+    .material-ico {
+      width: 42px; height: 42px; border-radius: var(--radius-sm);
+      background: var(--gold); display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .material-ico svg { width: 20px; height: 20px; color: var(--white); }
+    .material-item h5 { color: var(--white); font-weight: 700; font-size: 0.95rem; margin-bottom: 2px; }
+    .material-item span { color: rgba(255,255,255,0.55); font-size: 0.82rem; }
+
+    .material-visual { position: relative; }
+    .material-visual img {
+      width: 100%; border-radius: var(--radius-xl);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+    }
+    .material-qual-badge {
+      position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%);
+      background: var(--white); border-radius: var(--radius-md);
+      padding: 14px 28px; display: flex; align-items: center; gap: 12px;
+      box-shadow: var(--shadow-xl); white-space: nowrap;
+    }
+    .material-qual-badge .dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: #22c55e; flex-shrink: 0;
+      box-shadow: 0 0 8px rgba(34,197,94,0.6);
+    }
+    .material-qual-badge span { font-size: 0.875rem; font-weight: 700; color: var(--text); }
+
+    /* Program details */
+    .program-detail-sec { background: var(--off-white); }
+    .detail-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 48px; }
+    .detail-card {
+      background: var(--white); border-radius: var(--radius-lg);
+      padding: 32px; border: 1px solid var(--gray-200);
+      box-shadow: var(--shadow-sm); transition: var(--transition);
+      text-align: center;
+    }
+    .detail-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: rgba(27,80,216,0.2); }
+    .detail-ico {
+      width: 60px; height: 60px; border-radius: 50%;
+      background: var(--blue-light); display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 18px; border: 2px solid rgba(27,80,216,0.12);
+    }
+    .detail-ico svg { width: 26px; height: 26px; color: var(--blue); }
+    .detail-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; color: var(--text); }
+    .detail-card p { font-size: 0.85rem; color: var(--gray-600); line-height: 1.6; }
+    .detail-card .detail-val {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; font-weight: 900; color: var(--blue);
+      display: block; margin: 8px 0 4px;
+    }
+
+    /* Testimonials full */
+    .testi-sec { background: var(--white); }
+    .testi-full-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; margin-top: 48px; }
+    .testi-full-card {
+      background: var(--off-white); border-radius: var(--radius-lg);
+      padding: 32px; border: 1px solid var(--gray-200);
+      box-shadow: var(--shadow-sm); transition: var(--transition);
+      position: relative;
+    }
+    .testi-full-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: rgba(27,80,216,0.15); }
+    .testi-full-card::before {
+      content: '\201C';
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem; font-weight: 900;
+      color: var(--blue-light);
+      position: absolute; top: 16px; right: 24px;
+      line-height: 1;
+    }
+    .testi-full-text {
+      font-size: 1rem; color: var(--gray-600);
+      font-style: italic; line-height: 1.7;
+      margin-bottom: 24px; position: relative; z-index: 1;
+    }
+    .testi-full-author {
+      display: flex; align-items: center; gap: 14px;
+      padding-top: 18px; border-top: 1px solid var(--gray-200);
+    }
+    .testi-full-avatar {
+      width: 46px; height: 46px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--blue-mid));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-weight: 900; color: var(--white); font-size: 0.9rem; flex-shrink: 0;
+    }
+    .testi-full-author strong { display: block; font-weight: 700; color: var(--text); }
+    .testi-full-author span { font-size: 0.8rem; color: var(--gray-400); }
+
+    /* Registration info */
+    .ei3m-register-sec { background: var(--off-white); }
+    .register-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 48px; }
+    .register-card {
+      background: var(--white); border-radius: var(--radius-lg);
+      padding: 36px; border: 1px solid var(--gray-200);
+      box-shadow: var(--shadow-sm);
+    }
+    .register-card h3 {
+      font-family: 'Playfair Display', serif; font-size: 1.3rem;
+      margin-bottom: 20px; padding-bottom: 16px;
+      border-bottom: 1px solid var(--gray-200); color: var(--blue-deep);
+    }
+    .register-info-row {
+      display: flex; gap: 12px; align-items: flex-start;
+      margin-bottom: 14px; font-size: 0.9rem; color: var(--gray-600);
+    }
+    .register-info-row svg { width: 18px; height: 18px; color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+    .register-info-row strong { color: var(--text); }
+
+    @media (max-width: 1024px) {
+      .ei3m-hero-inner { grid-template-columns: 1fr; }
+      .method-grid { grid-template-columns: 1fr; }
+      .material-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .detail-grid { grid-template-columns: 1fr 1fr; }
+      .testi-full-grid { grid-template-columns: 1fr; }
+      .register-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .detail-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ ANNOUNCEMENT BAR ═══ -->
+  <div class="announcement-bar">
+    <div class="container">
+      <span class="fr-text">EI3MONTHS · Inscriptions réouvertes le <span>30 Mars 2026</span> · <a href="contact.html">S'inscrire</a></span>
+      <span class="en-text" style="display:none">EI3MONTHS · Registrations reopen <span>March 30, 2026</span> · <a href="contact.html">Register</a></span>
+    </div>
+  </div>
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="navbar-brand">
+        <img src="assets/images/logo.jpg" alt="ELC Logo"/>
+        <div class="brand-text">
+          <span class="brand-name">English Language Center</span>
+          <span class="brand-tagline">Make the good grade</span>
+        </div>
+      </a>
+      <ul class="navbar-nav">
+        <li><a href="index.html" class="nav-link fr-text">Accueil</a><a href="index.html" class="nav-link en-text" style="display:none">Home</a></li>
+        <li><a href="nos-cours.html" class="nav-link fr-text">Nos Cours</a><a href="nos-cours.html" class="nav-link en-text" style="display:none">Our Courses</a></li>
+        <li><a href="ei3months.html" class="nav-link active">EI3MONTHS</a></li>
+        <li><a href="qui-sommes-nous.html" class="nav-link fr-text">Qui Sommes-Nous</a><a href="qui-sommes-nous.html" class="nav-link en-text" style="display:none">About Us</a></li>
+        <li><a href="expressions.html" class="nav-link fr-text">Expressions</a><a href="expressions.html" class="nav-link en-text" style="display:none">Expressions</a></li>
+        <li><a href="contact.html" class="nav-link fr-text">Contact</a><a href="contact.html" class="nav-link en-text" style="display:none">Contact</a></li>
+      </ul>
+      <div class="navbar-actions">
+        <div class="lang-toggle">
+          <button class="lang-btn active" id="btn-fr" onclick="setLang('fr')">FR</button>
+          <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+        </div>
+        <a href="contact.html" class="btn btn-primary fr-text">S'inscrire</a>
+        <a href="contact.html" class="btn btn-primary en-text" style="display:none">Register</a>
+        <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══ MOBILE MENU ═══ -->
+  <div class="mobile-nav" id="mobileMenu">
+    <button class="mobile-nav-close" onclick="toggleMenu()">&#x2715;</button>
+    <a href="index.html" onclick="toggleMenu()">Accueil</a>
+    <a href="nos-cours.html" onclick="toggleMenu()">Nos Cours</a>
+    <a href="ei3months.html" onclick="toggleMenu()">EI3MONTHS</a>
+    <a href="qui-sommes-nous.html" onclick="toggleMenu()">Qui Sommes-Nous</a>
+    <a href="expressions.html" onclick="toggleMenu()">Expressions</a>
+    <a href="contact.html" onclick="toggleMenu()">Contact</a>
+    <a href="contact.html" class="btn btn-gold" style="margin-top:16px" onclick="toggleMenu()">S'inscrire</a>
+  </div>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="ei3m-page-hero">
+    <div class="ei3m-hero-orb ei3m-orb1"></div>
+    <div class="ei3m-hero-orb ei3m-orb2"></div>
+    <div class="container">
+      <div class="ei3m-hero-inner">
+        <div class="ei3m-hero-content">
+          <span class="section-tag reveal fr-text">Programme Phare ELC</span>
+          <span class="section-tag reveal en-text" style="display:none">ELC Flagship Program</span>
+
+          <h1 class="ei3m-hero-title reveal">
+            <em>English In</em><br/>3 Months
+          </h1>
+
+          <p class="ei3m-hero-desc reveal fr-text">Le programme révolutionnaire qui va vous permettre de parler l'anglais couramment en trois mois. Une seule condition : trouver le temps de faire les 40 heures prescrites avec un engagement ferme.</p>
+          <p class="ei3m-hero-desc reveal en-text" style="display:none">The revolutionary program that will allow you to speak English fluently in three months. One condition: find the time to complete the prescribed 40 hours with a firm commitment.</p>
+
+          <div style="display:flex;gap:16px;flex-wrap:wrap" class="reveal">
+            <a href="contact.html" class="btn btn-gold fr-text">S'inscrire au Programme</a>
+            <a href="contact.html" class="btn btn-gold en-text" style="display:none">Register Now</a>
+            <a href="#method" class="btn btn-outline-white fr-text">Découvrir la Méthode</a>
+            <a href="#method" class="btn btn-outline-white en-text" style="display:none">Discover the Method</a>
+          </div>
+
+          <div class="ei3m-hero-stats reveal">
+            <div class="ei3m-hero-stat">
+              <strong>40h</strong>
+              <span class="fr-text">de cours intensifs</span>
+              <span class="en-text" style="display:none">intensive courses</span>
+            </div>
+            <div class="ei3m-hero-stat">
+              <strong>3</strong>
+              <span class="fr-text">mois de programme</span>
+              <span class="en-text" style="display:none">months program</span>
+            </div>
+            <div class="ei3m-hero-stat">
+              <strong>100%</strong>
+              <span class="fr-text">en ligne</span>
+              <span class="en-text" style="display:none">online</span>
+            </div>
+            <div class="ei3m-hero-stat">
+              <strong>BAC+2</strong>
+              <span class="fr-text">niveau requis</span>
+              <span class="en-text" style="display:none">level required</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Price card -->
+        <div class="hero-price-card reveal">
+          <div class="price-top">
+            <div class="price-label fr-text">Coût total du programme</div>
+            <div class="price-label en-text" style="display:none">Total program cost</div>
+            <div class="price-amount">120 000<br/><span style="font-size:1.4rem;font-weight:400">FCFA</span></div>
+            <div class="price-sub fr-text">Matériel audio inclus · 40h de cours</div>
+            <div class="price-sub en-text" style="display:none">Audio kit included · 40 course hours</div>
+          </div>
+
+          <div style="margin-bottom:16px">
+            <p style="font-size:0.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:12px" class="fr-text">Options de paiement</p>
+            <p style="font-size:0.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:12px;display:none" class="en-text">Payment options</p>
+            <div class="option-row">
+              <span class="fr-text">Option 1 — 1 tranche unique</span>
+              <span class="en-text" style="display:none">Option 1 — Single payment</span>
+              <strong>120 000 F</strong>
+            </div>
+            <div class="option-row">
+              <span class="fr-text">Option 2 — 2 tranches</span>
+              <span class="en-text" style="display:none">Option 2 — 2 installments</span>
+              <strong>60 000 F × 2</strong>
+            </div>
+            <div class="option-row">
+              <span class="fr-text">Option 3 — 3 tranches</span>
+              <span class="en-text" style="display:none">Option 3 — 3 installments</span>
+              <strong>40 000 F × 3</strong>
+            </div>
+          </div>
+
+          <a href="contact.html" class="btn btn-gold" style="width:100%;justify-content:center;font-size:0.95rem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            <span class="fr-text">S'inscrire Maintenant</span>
+            <span class="en-text" style="display:none">Register Now</span>
+          </a>
+
+          <p class="hero-price-note">
+            <span class="fr-text">Prochaine session · Inscriptions le <strong>30 Mars 2026</strong><br/>Qualification requise : Niveau BAC + 2</span>
+            <span class="en-text" style="display:none">Next session · Registrations <strong>March 30, 2026</strong><br/>Required level: BAC + 2</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PROGRAM DETAILS ═══ -->
+  <section class="section-pad program-detail-sec">
+    <div class="container">
+      <div class="text-center mb-32">
+        <span class="section-tag reveal fr-text">Détails du Programme</span>
+        <span class="section-tag reveal en-text" style="display:none">Program Details</span>
+        <h2 class="reveal" style="margin-top:12px">
+          <span class="fr-text">Tout ce que comprend EI3MONTHS</span>
+          <span class="en-text" style="display:none">Everything EI3MONTHS includes</span>
+        </h2>
+      </div>
+
+      <div class="detail-grid">
+        <div class="detail-card reveal">
+          <div class="detail-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <h4 class="fr-text">Durée totale</h4>
+          <h4 class="en-text" style="display:none">Total duration</h4>
+          <span class="detail-val">3 mois</span>
+          <p class="fr-text">Un programme de 3 mois pour parler anglais couramment.</p>
+          <p class="en-text" style="display:none">A 3-month program to speak English fluently.</p>
+        </div>
+        <div class="detail-card reveal reveal-delay-1">
+          <div class="detail-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg></div>
+          <h4 class="fr-text">Cours en ligne</h4>
+          <h4 class="en-text" style="display:none">Online classes</h4>
+          <span class="detail-val">20h</span>
+          <p class="fr-text">Les mercredis de 20h00 à 22h00 en ligne.</p>
+          <p class="en-text" style="display:none">Wednesdays from 8pm to 10pm online.</p>
+        </div>
+        <div class="detail-card reveal reveal-delay-2">
+          <div class="detail-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+          <h4 class="fr-text">Cours en présentiel</h4>
+          <h4 class="en-text" style="display:none">In-person classes</h4>
+          <span class="detail-val">20h</span>
+          <p class="fr-text">Les samedis de 16h00 à 18h00 en présentiel.</p>
+          <p class="en-text" style="display:none">Saturdays from 4pm to 6pm in person.</p>
+        </div>
+        <div class="detail-card reveal">
+          <div class="detail-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19V6l12-3v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="15" r="3"/></svg></div>
+          <h4 class="fr-text">Technique d'imitation</h4>
+          <h4 class="en-text" style="display:none">Imitation technique</h4>
+          <span class="detail-val">100%</span>
+          <p class="fr-text">Méthodologie basée sur l'imitation pour un résultat immédiat.</p>
+          <p class="en-text" style="display:none">Imitation-based methodology for immediate results.</p>
+        </div>
+        <div class="detail-card reveal reveal-delay-1">
+          <div class="detail-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7H4a2 2 0 0 0-2 2v6c0 1.1.9 2 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/></svg></div>
+          <h4 class="fr-text">Matériel fourni</h4>
+          <h4 class="en-text" style="display:none">Provided material</h4>
+          <span class="detail-val">Inclus</span>
+          <p class="fr-text">Lecteur + Clé USB + Batterie + Manuel — intégrés au coût.</p>
+          <p class="en-text" style="display:none">Player + USB key + Battery + Manual — integrated into cost.</p>
+        </div>
+        <div class="detail-card reveal reveal-delay-2">
+          <div class="detail-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+          <h4 class="fr-text">Qualification</h4>
+          <h4 class="en-text" style="display:none">Qualification</h4>
+          <span class="detail-val">BAC+2</span>
+          <p class="fr-text">Niveau d'étude minimum requis pour accéder au programme.</p>
+          <p class="en-text" style="display:none">Minimum study level required to access the program.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ METHOD ═══ -->
+  <section class="section-pad method-sec" id="method">
+    <div class="container">
+      <div class="method-grid">
+        <div class="method-img reveal">
+          <img src="assets/images/etudiant-illustration.jpg" alt="Méthode d'imitation EI3M"/>
+          <div class="method-img-badge">
+            <strong>EI3M</strong>
+            <span class="fr-text">Méthode unique</span>
+            <span class="en-text" style="display:none">Unique method</span>
+          </div>
+        </div>
+
+        <div>
+          <span class="section-tag reveal fr-text">La Méthode</span>
+          <span class="section-tag reveal en-text" style="display:none">The Method</span>
+          <h2 class="reveal" style="margin-top:12px">
+            <span class="fr-text">La Technique<br/>de l'Imitation</span>
+            <span class="en-text" style="display:none">The Imitation<br/>Technique</span>
+          </h2>
+          <p class="reveal" style="margin-top:16px" class="fr-text">S'inscrire à EI3MONTHS, c'est se donner l'opportunité d'apprendre l'anglais comme si on était dans un pays anglophone. La technique de l'imitation est une approche révolutionnaire qui permet d'acquérir la fluidité naturelle et l'accent authentique d'un locuteur natif.</p>
+
+          <div class="method-steps">
+            <div class="method-step reveal">
+              <div class="method-step-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19V6l12-3v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="15" r="3"/></svg></div>
+              <div>
+                <h5 class="fr-text">Écoute Active</h5>
+                <h5 class="en-text" style="display:none">Active Listening</h5>
+                <p class="fr-text">Vous écoutez des dialogues et textes natifs de manière intensive et répétée pour intégrer naturellement les sons et rythmes de l'anglais.</p>
+                <p class="en-text" style="display:none">You listen intensively and repeatedly to native dialogues and texts to naturally integrate the sounds and rhythms of English.</p>
+              </div>
+            </div>
+            <div class="method-step reveal">
+              <div class="method-step-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div>
+              <div>
+                <h5 class="fr-text">Imitation & Répétition</h5>
+                <h5 class="en-text" style="display:none">Imitation & Repetition</h5>
+                <p class="fr-text">Vous reproduisez exactement ce que vous entendez — accent, rythme, intonation — jusqu'à ce que la prononciation devienne automatique et naturelle.</p>
+                <p class="en-text" style="display:none">You exactly reproduce what you hear — accent, rhythm, intonation — until pronunciation becomes automatic and natural.</p>
+              </div>
+            </div>
+            <div class="method-step reveal">
+              <div class="method-step-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+              <div>
+                <h5 class="fr-text">Progression Mesurée</h5>
+                <h5 class="en-text" style="display:none">Measured Progression</h5>
+                <p class="fr-text">4 heures de pratique par semaine, avec des devoirs de classe et de maison pour consolider les acquis et accélérer la progression.</p>
+                <p class="en-text" style="display:none">4 hours of practice per week, with class and home assignments to consolidate learning and accelerate progress.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ MATERIAL ═══ -->
+  <section class="material-sec">
+    <div class="container">
+      <div class="material-grid">
+        <div class="material-content">
+          <span class="section-tag reveal fr-text">Matériel Audio</span>
+          <span class="section-tag reveal en-text" style="display:none">Audio Material</span>
+          <h2 class="reveal fr-text" style="margin-top:14px">Votre Kit Audio<br/>Livré avec l'Inscription</h2>
+          <h2 class="reveal en-text" style="display:none;margin-top:14px">Your Audio Kit<br/>Delivered with Registration</h2>
+          <p class="reveal fr-text">Chaque apprenant inscrit reçoit un matériel audio complet, intégré dans le coût global du programme. Ce matériel vous permet de pratiquer où que vous soyez, à tout moment.</p>
+          <p class="reveal en-text" style="display:none">Each registered learner receives a complete audio kit, integrated into the overall program cost. This material allows you to practice wherever you are, at any time.</p>
+
+          <div class="material-items reveal">
+            <div class="material-item">
+              <div class="material-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
+              <div>
+                <h5 class="fr-text">Lecteur Audio</h5>
+                <h5 class="en-text" style="display:none">Audio Player</h5>
+                <span class="fr-text">Lecteur dédié pour écouter les leçons audio EI3M</span>
+                <span class="en-text" style="display:none">Dedicated player to listen to EI3M audio lessons</span>
+              </div>
+            </div>
+            <div class="material-item">
+              <div class="material-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></div>
+              <div>
+                <h5 class="fr-text">Clé USB avec Leçons Audio</h5>
+                <h5 class="en-text" style="display:none">USB Key with Audio Lessons</h5>
+                <span class="fr-text">Toutes les leçons audio du programme sur clé USB</span>
+                <span class="en-text" style="display:none">All program audio lessons on USB key</span>
+              </div>
+            </div>
+            <div class="material-item">
+              <div class="material-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 18H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3.19M15 6h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-3.19M23 13v-2M11 6v12m-4-6h8"/></svg></div>
+              <div>
+                <h5 class="fr-text">Batterie Rechargeable</h5>
+                <h5 class="en-text" style="display:none">Rechargeable Battery</h5>
+                <span class="fr-text">Batterie rechargeable + câble de chargement inclus</span>
+                <span class="en-text" style="display:none">Rechargeable battery + charging cable included</span>
+              </div>
+            </div>
+            <div class="material-item">
+              <div class="material-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+              <div>
+                <h5 class="fr-text">Recueil de Transcriptions</h5>
+                <h5 class="en-text" style="display:none">Transcription Booklet</h5>
+                <span class="fr-text">Manuel complet avec toutes les transcriptions des leçons</span>
+                <span class="en-text" style="display:none">Complete manual with all lesson transcriptions</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="material-visual reveal">
+          <img src="assets/images/etudiant-3.jpg" alt="Étudiant avec matériel audio"/>
+          <div class="material-qual-badge">
+            <div class="dot"></div>
+            <span class="fr-text">Matériel inclus dans le coût total</span>
+            <span class="en-text" style="display:none">Material included in total cost</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TESTIMONIALS ═══ -->
+  <section class="section-pad testi-sec">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-tag reveal fr-text">Ils en Témoignent</span>
+        <span class="section-tag reveal en-text" style="display:none">They Testify</span>
+        <h2 class="reveal" style="margin-top:12px">
+          <span class="fr-text">Ce que disent nos apprenants</span>
+          <span class="en-text" style="display:none">What our learners say</span>
+        </h2>
+      </div>
+
+      <div class="testi-full-grid">
+        <div class="testi-full-card reveal">
+          <p class="testi-full-text">Ce programme me permet de suivre des cours sans quitter mon bureau. C'est exactement ce dont j'avais besoin pour progresser en anglais tout en restant productive dans mon travail.</p>
+          <div class="testi-full-author">
+            <div class="testi-full-avatar">ME</div>
+            <div>
+              <strong>Mlle Elise</strong>
+              <span>Gestionnaire de compte</span>
+            </div>
+          </div>
+        </div>
+        <div class="testi-full-card reveal reveal-delay-1">
+          <p class="testi-full-text">Même en vacances, je m'exerce avec le matériel audio fourni. La technique d'imitation est vraiment efficace — j'ai gagné en fluidité bien plus rapidement que je ne l'aurais cru possible.</p>
+          <div class="testi-full-author">
+            <div class="testi-full-avatar">LT</div>
+            <div>
+              <strong>M. Léo</strong>
+              <span>Technicien de laboratoire pharmaceutique</span>
+            </div>
+          </div>
+        </div>
+        <div class="testi-full-card reveal">
+          <p class="testi-full-text">Au cours de mes déplacements à l'étranger, je suis les cours comme si j'étais au centre. La flexibilité du programme est incomparable — je le recommande à tous mes collègues.</p>
+          <div class="testi-full-author">
+            <div class="testi-full-avatar">MA</div>
+            <div>
+              <strong>Mme Alice</strong>
+              <span>Coordinatrice de programme</span>
+            </div>
+          </div>
+        </div>
+        <div class="testi-full-card reveal reveal-delay-1">
+          <p class="testi-full-text">C'est un programme taillé sur mesure pour nous qui n'avons pas le temps d'aller en classe. En 3 mois, j'ai atteint un niveau qui m'a permis de négocier directement avec des partenaires anglophones.</p>
+          <div class="testi-full-author">
+            <div class="testi-full-avatar">ED</div>
+            <div>
+              <strong>M. Eddy</strong>
+              <span>Directeur de Société</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ REGISTRATION INFO ═══ -->
+  <section class="section-pad ei3m-register-sec">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-tag reveal fr-text">Informations d'Inscription</span>
+        <span class="section-tag reveal en-text" style="display:none">Registration Information</span>
+        <h2 class="reveal" style="margin-top:12px">
+          <span class="fr-text">Comment s'inscrire à EI3MONTHS ?</span>
+          <span class="en-text" style="display:none">How to register for EI3MONTHS?</span>
+        </h2>
+      </div>
+
+      <div class="register-grid">
+        <div class="register-card reveal">
+          <h3 class="fr-text">Horaires d'Inscription</h3>
+          <h3 class="en-text" style="display:none">Registration Hours</h3>
+          <div class="register-info-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span class="fr-text"><strong>Du Lundi au Vendredi</strong> (jours ouvrables)</span>
+            <span class="en-text" style="display:none"><strong>Monday to Friday</strong> (working days)</span>
+          </div>
+          <div class="register-info-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span class="fr-text">Matin : <strong>9h00 – 12h00</strong></span>
+            <span class="en-text" style="display:none">Morning: <strong>9:00am – 12:00pm</strong></span>
+          </div>
+          <div class="register-info-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span class="fr-text">Après-midi : <strong>14h30 – 16h00</strong></span>
+            <span class="en-text" style="display:none">Afternoon: <strong>2:30pm – 4:00pm</strong></span>
+          </div>
+          <div class="register-info-row" style="margin-top:8px;padding-top:12px;border-top:1px solid var(--gray-200)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 8a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3 0h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 7.91a16 16 0 0 0 6.29 6.29l1.28-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 14.92v2z"/></svg>
+            <span>+228 22 51 21 66 / 93 44 29 10 / 90 96 75 54</span>
+          </div>
+          <div class="register-info-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>elctogo@gmail.com</span>
+          </div>
+        </div>
+
+        <div class="register-card reveal reveal-delay-1">
+          <h3 class="fr-text">Conditions d'Accès</h3>
+          <h3 class="en-text" style="display:none">Access Requirements</h3>
+          <div class="register-info-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="fr-text"><strong>Niveau minimum :</strong> BAC + 2 (niveau d'étude)</span>
+            <span class="en-text" style="display:none"><strong>Minimum level:</strong> BAC + 2 (education level)</span>
+          </div>
+          <div class="register-info-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="fr-text"><strong>Engagement ferme :</strong> 4 heures de pratique par semaine</span>
+            <span class="en-text" style="display:none"><strong>Firm commitment:</strong> 4 hours of practice per week</span>
+          </div>
+          <div class="register-info-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="fr-text">Participation active, devoirs de classe et de maison obligatoires</span>
+            <span class="en-text" style="display:none">Active participation, compulsory class and home assignments</span>
+          </div>
+          <div class="register-info-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="fr-text">Coût : <strong>120 000 FCFA</strong> — payable en 1, 2 ou 3 tranches</span>
+            <span class="en-text" style="display:none">Cost: <strong>120,000 FCFA</strong> — payable in 1, 2 or 3 installments</span>
+          </div>
+          <div class="register-info-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="fr-text">Prochaine session : Inscriptions le <strong>30 Mars 2026</strong></span>
+            <span class="en-text" style="display:none">Next session: Registrations <strong>March 30, 2026</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:48px">
+        <a href="contact.html" class="btn btn-primary reveal" style="margin-right:12px">
+          <span class="fr-text">S'inscrire au Programme EI3M</span>
+          <span class="en-text" style="display:none">Register for EI3M Program</span>
+        </a>
+        <a href="nos-cours.html" class="btn btn-outline reveal">
+          <span class="fr-text">Voir tous les cours</span>
+          <span class="en-text" style="display:none">See all courses</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="assets/images/logo.jpg" alt="ELC Logo"/>
+          <div class="footer-brand-name">English Language Center</div>
+          <div class="footer-brand-tag">Make the Good Grade</div>
+          <p class="fr-text">Le centre de référence pour l'apprentissage de l'anglais à Lomé, Togo.</p>
+          <p class="en-text" style="display:none">The reference center for English learning in Lomé, Togo.</p>
+        </div>
+        <div class="footer-col">
+          <h5 class="fr-text">Programmes</h5>
+          <h5 class="en-text" style="display:none">Programs</h5>
+          <ul>
+            <li><a href="nos-cours.html" class="fr-text">Cycle Débutant</a><a href="nos-cours.html" class="en-text" style="display:none">Beginner Cycle</a></li>
+            <li><a href="nos-cours.html" class="fr-text">Cycle Intermédiaire</a><a href="nos-cours.html" class="en-text" style="display:none">Intermediate Cycle</a></li>
+            <li><a href="nos-cours.html" class="fr-text">Cycle Avancé</a><a href="nos-cours.html" class="en-text" style="display:none">Advanced Cycle</a></li>
+            <li><a href="ei3months.html">EI3MONTHS</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5 class="fr-text">Navigation</h5>
+          <h5 class="en-text" style="display:none">Navigation</h5>
+          <ul>
+            <li><a href="index.html" class="fr-text">Accueil</a><a href="index.html" class="en-text" style="display:none">Home</a></li>
+            <li><a href="qui-sommes-nous.html" class="fr-text">Qui Sommes-Nous</a><a href="qui-sommes-nous.html" class="en-text" style="display:none">About Us</a></li>
+            <li><a href="expressions.html" class="fr-text">Expressions</a><a href="expressions.html" class="en-text" style="display:none">Expressions</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 8a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3 0h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 7.91a16 16 0 0 0 6.29 6.29l1.28-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 14.92v2z"/></svg>
+            <span>+228 22 51 21 66<br/>+228 90 96 75 54 (WhatsApp)</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>elctogo@gmail.com</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 English Language Center · Lomé, Togo</span>
+        <em>Nul n'enseigne l'anglais comme nous !</em>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

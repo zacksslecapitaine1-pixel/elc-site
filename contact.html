@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Contact & Inscription — English Language Center Lomé, Togo. +228 22 51 21 66 | elctogo@gmail.com | Djidjolé."/>
+  <title>Contact & Inscription — English Language Center | ELC Togo</title>
+  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    /* ── CONTACT PAGE ── */
+    .contact-layout {
+      display: grid; grid-template-columns: 1fr 1.1fr;
+      gap: 64px; align-items: start; padding: 80px 0;
+    }
+
+    /* Info column */
+    .contact-info-col {}
+    .contact-info-col h2 { margin-bottom: 16px; }
+    .contact-info-col > p { margin-bottom: 36px; }
+
+    .contact-cards { display: flex; flex-direction: column; gap: 16px; }
+    .contact-card {
+      display: flex; gap: 18px; align-items: flex-start;
+      padding: 22px 24px; background: var(--off-white);
+      border-radius: var(--radius-lg); border: 1px solid var(--gray-200);
+      box-shadow: var(--shadow-sm); transition: var(--transition);
+      text-decoration: none; color: inherit;
+    }
+    .contact-card:hover {
+      transform: translateX(6px);
+      border-color: rgba(27,80,216,0.2);
+      box-shadow: var(--shadow-md);
+      background: var(--blue-light);
+    }
+    .contact-card-ico {
+      width: 48px; height: 48px; border-radius: var(--radius-md);
+      background: var(--blue); display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: var(--transition);
+    }
+    .contact-card:hover .contact-card-ico { background: var(--blue-dark); transform: scale(1.05); }
+    .contact-card-ico svg { width: 22px; height: 22px; color: var(--white); }
+    .contact-card-txt label {
+      display: block; font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--gray-400); margin-bottom: 6px;
+    }
+    .contact-card-txt strong {
+      display: block; font-size: 1rem; font-weight: 700;
+      color: var(--text); margin-bottom: 2px;
+    }
+    .contact-card-txt span { font-size: 0.82rem; color: var(--gray-600); }
+
+    /* WhatsApp card special */
+    .contact-card.whatsapp { border-color: rgba(37,211,102,0.25); }
+    .contact-card.whatsapp .contact-card-ico { background: #25D366; }
+    .contact-card.whatsapp:hover { background: rgba(37,211,102,0.06); border-color: rgba(37,211,102,0.4); }
+
+    /* Gold card */
+    .contact-card.gold-card { border-color: var(--gold-border); background: var(--gold-pale); }
+    .contact-card.gold-card .contact-card-ico { background: var(--gold); }
+    .contact-card.gold-card:hover { background: rgba(201,164,64,0.12); }
+
+    /* Hours */
+    .hours-card {
+      background: var(--blue-deep); border-radius: var(--radius-xl);
+      padding: 32px; margin-top: 24px; border: 1px solid rgba(255,255,255,0.06);
+    }
+    .hours-card h4 {
+      color: var(--white); font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; margin-bottom: 20px; padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .hours-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .hours-row:last-child { border-bottom: none; }
+    .hours-row span { font-size: 0.875rem; color: rgba(255,255,255,0.65); }
+    .hours-row strong { font-size: 0.875rem; color: var(--gold-light); font-weight: 700; }
+    .hours-note {
+      margin-top: 14px; padding: 10px 14px;
+      background: rgba(201,164,64,0.1); border: 1px solid rgba(201,164,64,0.2);
+      border-radius: var(--radius-sm); font-size: 0.78rem;
+      color: rgba(255,255,255,0.55); line-height: 1.5;
+    }
+
+    /* Form column */
+    .contact-form-col {}
+    .form-card {
+      background: var(--white); border-radius: var(--radius-xl);
+      border: 1px solid var(--gray-200); box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+    .form-card-top {
+      background: linear-gradient(135deg, var(--blue-deep), var(--blue));
+      padding: 32px 40px;
+    }
+    .form-card-top h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem; color: var(--white); margin-bottom: 8px;
+    }
+    .form-card-top p { color: rgba(255,255,255,0.7); font-size: 0.875rem; }
+    .form-card-body { padding: 36px 40px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { margin-bottom: 18px; }
+    .form-group label {
+      display: block; font-size: 0.82rem; font-weight: 700;
+      color: var(--gray-600); margin-bottom: 7px; letter-spacing: 0.3px;
+    }
+    .form-group label span { color: var(--blue); }
+    .form-input, .form-select, .form-textarea {
+      width: 100%; padding: 12px 16px;
+      background: var(--off-white); border: 2px solid var(--gray-200);
+      border-radius: var(--radius-sm); color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.9rem;
+      transition: var(--transition); outline: none;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--blue); background: var(--white);
+      box-shadow: 0 0 0 4px rgba(27,80,216,0.08);
+    }
+    .form-textarea { resize: vertical; min-height: 120px; }
+    .form-select { cursor: pointer; }
+    .form-select option { background: var(--white); }
+
+    .form-submit {
+      width: 100%; padding: 16px; border-radius: var(--radius-md);
+      background: var(--blue); color: var(--white);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1rem; font-weight: 700; letter-spacing: 0.5px;
+      border: none; cursor: pointer; transition: var(--transition);
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+    }
+    .form-submit:hover {
+      background: var(--blue-dark); transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(27,80,216,0.35);
+    }
+    .form-submit svg { width: 20px; height: 20px; }
+    .form-submit:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+
+    .form-success {
+      display: none; text-align: center; padding: 32px;
+    }
+    .form-success .success-ico {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: rgba(34,197,94,0.12); border: 2px solid rgba(34,197,94,0.3);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .form-success .success-ico svg { width: 32px; height: 32px; color: #22c55e; }
+    .form-success h4 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 8px; }
+    .form-success p { font-size: 0.9rem; color: var(--gray-600); }
+    .form-note {
+      text-align: center; margin-top: 16px; font-size: 0.78rem;
+      color: var(--gray-400); line-height: 1.55;
+    }
+    .form-note a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+
+    /* Map section */
+    .map-sec { background: var(--off-white); padding: 80px 0; }
+    .map-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 48px; align-items: start; margin-top: 48px; }
+    .map-info { display: flex; flex-direction: column; gap: 16px; }
+    .map-info-item {
+      display: flex; gap: 14px; align-items: flex-start;
+      padding: 18px 20px; background: var(--white);
+      border: 1px solid var(--gray-200); border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+    }
+    .map-info-item svg { width: 20px; height: 20px; color: var(--blue); flex-shrink: 0; margin-top: 2px; }
+    .map-info-item h5 { font-weight: 700; font-size: 0.9rem; margin-bottom: 4px; }
+    .map-info-item p { font-size: 0.83rem; color: var(--gray-600); line-height: 1.55; }
+    .map-embed {
+      background: var(--blue-light); border-radius: var(--radius-xl);
+      overflow: hidden; box-shadow: var(--shadow-lg);
+      border: 1px solid var(--gray-200); min-height: 380px;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .map-placeholder {
+      text-align: center; padding: 48px 32px;
+    }
+    .map-pin {
+      width: 72px; height: 72px; background: var(--blue);
+      border-radius: 50% 50% 50% 0; transform: rotate(-45deg);
+      margin: 0 auto 24px; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 24px rgba(27,80,216,0.3);
+    }
+    .map-pin svg { transform: rotate(45deg); width: 32px; height: 32px; color: var(--white); }
+    .map-placeholder h4 { font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 8px; color: var(--blue-deep); }
+    .map-placeholder p { font-size: 0.875rem; color: var(--gray-600); line-height: 1.6; max-width: 300px; margin: 0 auto 20px; }
+
+    @media (max-width: 1024px) {
+      .contact-layout { grid-template-columns: 1fr; gap: 40px; }
+      .map-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .form-row { grid-template-columns: 1fr; }
+      .form-card-top, .form-card-body { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ ANNOUNCEMENT BAR ═══ -->
+  <div class="announcement-bar">
+    <div class="container">
+      <span class="fr-text">Inscriptions réouvertes le <span>30 Mars 2026</span> · Cours démarrent le <span>13 Avril 2026</span></span>
+      <span class="en-text" style="display:none">Registrations reopen <span>March 30, 2026</span> · Classes start <span>April 13, 2026</span></span>
+    </div>
+  </div>
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="navbar-brand">
+        <img src="assets/images/logo.jpg" alt="ELC Logo"/>
+        <div class="brand-text">
+          <span class="brand-name">English Language Center</span>
+          <span class="brand-tagline">Make the good grade</span>
+        </div>
+      </a>
+      <ul class="navbar-nav">
+        <li><a href="index.html" class="nav-link fr-text">Accueil</a><a href="index.html" class="nav-link en-text" style="display:none">Home</a></li>
+        <li><a href="nos-cours.html" class="nav-link fr-text">Nos Cours</a><a href="nos-cours.html" class="nav-link en-text" style="display:none">Our Courses</a></li>
+        <li><a href="ei3months.html" class="nav-link">EI3MONTHS</a></li>
+        <li><a href="qui-sommes-nous.html" class="nav-link fr-text">Qui Sommes-Nous</a><a href="qui-sommes-nous.html" class="nav-link en-text" style="display:none">About Us</a></li>
+        <li><a href="expressions.html" class="nav-link fr-text">Expressions</a><a href="expressions.html" class="nav-link en-text" style="display:none">Expressions</a></li>
+        <li><a href="contact.html" class="nav-link active fr-text">Contact</a><a href="contact.html" class="nav-link active en-text" style="display:none">Contact</a></li>
+      </ul>
+      <div class="navbar-actions">
+        <div class="lang-toggle">
+          <button class="lang-btn active" id="btn-fr" onclick="setLang('fr')">FR</button>
+          <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+        </div>
+        <a href="contact.html" class="btn btn-primary fr-text">S'inscrire</a>
+        <a href="contact.html" class="btn btn-primary en-text" style="display:none">Register</a>
+        <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-nav" id="mobileMenu">
+    <button class="mobile-nav-close" onclick="toggleMenu()">&#x2715;</button>
+    <a href="index.html" onclick="toggleMenu()">Accueil</a>
+    <a href="nos-cours.html" onclick="toggleMenu()">Nos Cours</a>
+    <a href="ei3months.html" onclick="toggleMenu()">EI3MONTHS</a>
+    <a href="qui-sommes-nous.html" onclick="toggleMenu()">Qui Sommes-Nous</a>
+    <a href="expressions.html" onclick="toggleMenu()">Expressions</a>
+    <a href="contact.html" onclick="toggleMenu()">Contact</a>
+    <a href="contact.html" class="btn btn-gold" style="margin-top:16px" onclick="toggleMenu()">S'inscrire</a>
+  </div>
+
+  <!-- ═══ PAGE HERO ═══ -->
+  <section class="page-hero">
+    <div class="page-hero-inner container">
+      <span class="section-tag reveal fr-text">Nous Rejoindre</span>
+      <span class="section-tag reveal en-text" style="display:none">Join Us</span>
+      <h1 class="reveal fr-text">Contact & Inscription</h1>
+      <h1 class="reveal en-text" style="display:none">Contact & Registration</h1>
+      <p class="reveal fr-text">Prêt à commencer votre parcours vers la maîtrise de l'anglais ? Contactez-nous ou remplissez le formulaire d'inscription.</p>
+      <p class="reveal en-text" style="display:none">Ready to start your journey to English mastery? Contact us or fill out the registration form.</p>
+      <div class="breadcrumb">
+        <a href="index.html" class="fr-text">Accueil</a>
+        <a href="index.html" class="en-text" style="display:none">Home</a>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        <span class="fr-text">Contact</span>
+        <span class="en-text" style="display:none">Contact</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CONTACT LAYOUT ═══ -->
+  <div class="container">
+    <div class="contact-layout">
+
+      <!-- INFO COLUMN -->
+      <div class="contact-info-col">
+        <span class="section-tag reveal fr-text">Nos Coordonnées</span>
+        <span class="section-tag reveal en-text" style="display:none">Our Contact Info</span>
+        <h2 class="reveal fr-text" style="margin-top:12px">Trouvez-nous<br/>& Contactez-nous</h2>
+        <h2 class="reveal en-text" style="display:none;margin-top:12px">Find Us<br/>& Contact Us</h2>
+        <p class="reveal fr-text">Pour plus d'informations, n'hésitez pas à nous contacter par téléphone, WhatsApp ou email. Nous répondons dans les plus brefs délais.</p>
+        <p class="reveal en-text" style="display:none">For more information, do not hesitate to contact us by phone, WhatsApp or email. We respond as quickly as possible.</p>
+
+        <div class="contact-cards">
+          <!-- Address -->
+          <div class="contact-card reveal">
+            <div class="contact-card-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="contact-card-txt">
+              <label class="fr-text">Adresse</label>
+              <label class="en-text" style="display:none">Address</label>
+              <strong class="fr-text">Angle Rue 161, Rue 18 AFG Aflao Gakli</strong>
+              <strong class="en-text" style="display:none">Corner Rue 161, Rue 18 AFG Aflao Gakli</strong>
+              <span class="fr-text">Djidjolé, près du Commissariat du 6ème Arrondissement · 01 B.P. 2297 Lomé – Togo</span>
+              <span class="en-text" style="display:none">Djidjolé, near the 6th District Police Station · 01 B.P. 2297 Lomé – Togo</span>
+            </div>
+          </div>
+
+          <!-- Phone 1 -->
+          <a href="tel:+22822512166" class="contact-card reveal">
+            <div class="contact-card-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 8a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3 0h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 7.91a16 16 0 0 0 6.29 6.29l1.28-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 14.92v2z"/></svg>
+            </div>
+            <div class="contact-card-txt">
+              <label class="fr-text">Nous Appeler</label>
+              <label class="en-text" style="display:none">Call Us</label>
+              <strong>+228 22 51 21 66</strong>
+              <span>+228 93 44 29 10</span>
+            </div>
+          </a>
+
+          <!-- WhatsApp -->
+          <a href="https://wa.me/22890967554" target="_blank" class="contact-card whatsapp reveal">
+            <div class="contact-card-ico">
+              <svg viewBox="0 0 24 24" fill="currentColor" color="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </div>
+            <div class="contact-card-txt">
+              <label>WhatsApp</label>
+              <strong>+228 90 96 75 54</strong>
+              <span class="fr-text">Disponible · Cliquez pour envoyer un message</span>
+              <span class="en-text" style="display:none">Available · Click to send a message</span>
+            </div>
+          </a>
+
+          <!-- Email -->
+          <a href="mailto:elctogo@gmail.com" class="contact-card gold-card reveal">
+            <div class="contact-card-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="contact-card-txt">
+              <label class="fr-text">Nous Écrire</label>
+              <label class="en-text" style="display:none">Email Us</label>
+              <strong>elctogo@gmail.com</strong>
+              <span class="fr-text">Réponse sous 24-48 heures</span>
+              <span class="en-text" style="display:none">Response within 24-48 hours</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Hours -->
+        <div class="hours-card reveal">
+          <h4 class="fr-text">Horaires d'Ouverture</h4>
+          <h4 class="en-text" style="display:none">Opening Hours</h4>
+          <div class="hours-row">
+            <span class="fr-text">Lundi – Samedi (Matin)</span>
+            <span class="en-text" style="display:none">Monday – Saturday (Morning)</span>
+            <strong>07h30 – 12h30</strong>
+          </div>
+          <div class="hours-row">
+            <span class="fr-text">Lundi – Samedi (Après-midi)</span>
+            <span class="en-text" style="display:none">Monday – Saturday (Afternoon)</span>
+            <strong>14h30 – 17h30</strong>
+          </div>
+          <div class="hours-row">
+            <span class="fr-text">Dimanche</span>
+            <span class="en-text" style="display:none">Sunday</span>
+            <strong style="color:rgba(255,255,255,0.4)" class="fr-text">Fermé</strong>
+            <strong style="color:rgba(255,255,255,0.4)" class="en-text">Closed</strong>
+          </div>
+          <p class="hours-note fr-text">Une permanence est assurée à l'heure de repos de midi (12h30 – 14h30).</p>
+          <p class="hours-note en-text" style="display:none">A duty service is available during the midday break (12:30pm – 2:30pm).</p>
+        </div>
+      </div>
+
+      <!-- FORM COLUMN -->
+      <div class="contact-form-col">
+        <div class="form-card reveal">
+          <div class="form-card-top">
+            <h3 class="fr-text">Formulaire d'Inscription</h3>
+            <h3 class="en-text" style="display:none">Registration Form</h3>
+            <p class="fr-text">Remplissez ce formulaire et notre équipe vous contactera pour finaliser votre inscription.</p>
+            <p class="en-text" style="display:none">Fill out this form and our team will contact you to finalize your registration.</p>
+          </div>
+
+          <div class="form-card-body" id="formBody">
+            <form id="contactForm" onsubmit="submitForm(event)">
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="fr-text">Nom <span>*</span></label>
+                  <label class="en-text" style="display:none">Last Name <span>*</span></label>
+                  <input type="text" class="form-input" placeholder="Votre nom" required/>
+                </div>
+                <div class="form-group">
+                  <label class="fr-text">Prénom <span>*</span></label>
+                  <label class="en-text" style="display:none">First Name <span>*</span></label>
+                  <input type="text" class="form-input" placeholder="Votre prénom" required/>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="fr-text">Email <span>*</span></label>
+                <label class="en-text" style="display:none">Email <span>*</span></label>
+                <input type="email" class="form-input" placeholder="votre.email@exemple.com" required/>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="fr-text">Téléphone <span>*</span></label>
+                  <label class="en-text" style="display:none">Phone <span>*</span></label>
+                  <input type="tel" class="form-input" placeholder="+228 XX XX XX XX" required/>
+                </div>
+                <div class="form-group">
+                  <label>WhatsApp</label>
+                  <input type="tel" class="form-input" placeholder="+228 XX XX XX XX"/>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="fr-text">Programme souhaité <span>*</span></label>
+                <label class="en-text" style="display:none">Desired program <span>*</span></label>
+                <select class="form-select" required>
+                  <option value="" class="fr-text">Choisir un programme…</option>
+                  <option value="" class="en-text">Choose a program…</option>
+                  <option class="fr-text">Programme Trimestriel — Nouveau (70 000 FCFA)</option>
+                  <option class="en-text">Quarterly Program — New Student (70,000 FCFA)</option>
+                  <option class="fr-text">Programme Trimestriel — Ancien (65 000 FCFA)</option>
+                  <option class="en-text">Quarterly Program — Returning (65,000 FCFA)</option>
+                  <option class="fr-text">EI3MONTHS — English In 3 Months (120 000 FCFA)</option>
+                  <option class="en-text">EI3MONTHS — English In 3 Months (120,000 FCFA)</option>
+                  <option class="fr-text">TOEFL iBT Preparation (110 000 FCFA)</option>
+                  <option class="en-text">TOEFL iBT Preparation (110,000 FCFA)</option>
+                  <option>Children's Class (45 000 FCFA)</option>
+                  <option>Business English</option>
+                  <option>Financial English</option>
+                  <option>Translation Course</option>
+                  <option>Administrative &amp; Secretarial Course</option>
+                  <option>Youth Program</option>
+                  <option>LETSEF</option>
+                  <option class="fr-text">Autre / Renseignements</option>
+                  <option class="en-text">Other / Information</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="fr-text">Niveau d'anglais actuel</label>
+                <label class="en-text" style="display:none">Current English level</label>
+                <select class="form-select">
+                  <option class="fr-text">Débutant complet (aucune base)</option>
+                  <option class="en-text">Complete beginner (no base)</option>
+                  <option class="fr-text">Débutant (quelques bases)</option>
+                  <option class="en-text">Beginner (some basics)</option>
+                  <option class="fr-text">Intermédiaire</option>
+                  <option class="en-text">Intermediate</option>
+                  <option class="fr-text">Intermédiaire Avancé</option>
+                  <option class="en-text">Upper Intermediate</option>
+                  <option class="fr-text">Avancé</option>
+                  <option class="en-text">Advanced</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="fr-text">Message ou questions</label>
+                <label class="en-text" style="display:none">Message or questions</label>
+                <textarea class="form-textarea" placeholder="Vos questions, disponibilités, informations complémentaires…"></textarea>
+              </div>
+
+              <button type="submit" class="form-submit" id="submitBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                <span class="fr-text">Envoyer ma Demande d'Inscription</span>
+                <span class="en-text" style="display:none">Send My Registration Request</span>
+              </button>
+
+              <p class="form-note fr-text">En envoyant ce formulaire, vous acceptez d'être contacté par l'ELC pour votre inscription. Paiement intégral requis le jour de l'inscription. <a href="tel:+22822512166">+228 22 51 21 66</a></p>
+              <p class="form-note en-text" style="display:none">By sending this form, you agree to be contacted by ELC for your registration. Full payment required on registration day. <a href="tel:+22822512166">+228 22 51 21 66</a></p>
+            </form>
+
+            <!-- Success Message -->
+            <div class="form-success" id="formSuccess">
+              <div class="success-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <h4 class="fr-text">Demande Envoyée avec Succès !</h4>
+              <h4 class="en-text" style="display:none">Request Sent Successfully!</h4>
+              <p class="fr-text">Notre équipe vous contactera très prochainement pour finaliser votre inscription. En attendant, n'hésitez pas à nous appeler au <strong>+228 22 51 21 66</strong>.</p>
+              <p class="en-text" style="display:none">Our team will contact you very soon to finalize your registration. In the meantime, feel free to call us at <strong>+228 22 51 21 66</strong>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ MAP ═══ -->
+  <section class="map-sec">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-tag reveal fr-text">Comment nous Trouver</span>
+        <span class="section-tag reveal en-text" style="display:none">How to Find Us</span>
+        <h2 class="reveal" style="margin-top:12px">
+          <span class="fr-text">Notre Localisation</span>
+          <span class="en-text" style="display:none">Our Location</span>
+        </h2>
+      </div>
+
+      <div class="map-grid">
+        <div class="map-info">
+          <div class="map-info-item reveal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div>
+              <h5 class="fr-text">Adresse Exacte</h5>
+              <h5 class="en-text" style="display:none">Exact Address</h5>
+              <p>Angle Rue 161, Rue 18 AFG Aflao Gakli<br/>Djidjolé, Lomé, Togo<br/>01 B.P. 2297 Lomé – Togo</p>
+            </div>
+          </div>
+          <div class="map-info-item reveal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <div>
+              <h5 class="fr-text">Point de Repère</h5>
+              <h5 class="en-text" style="display:none">Landmark</h5>
+              <p class="fr-text">Non loin du Commissariat du 6ème Arrondissement de Djidjolé, Lomé.</p>
+              <p class="en-text" style="display:none">Not far from the 6th District Police Station in Djidjolé, Lomé.</p>
+            </div>
+          </div>
+          <div class="map-info-item reveal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <div>
+              <h5 class="fr-text">Horaires</h5>
+              <h5 class="en-text" style="display:none">Hours</h5>
+              <p class="fr-text">Lun–Sam : 07h30–12h30 & 14h30–17h30<br/>Permanence assurée à midi</p>
+              <p class="en-text" style="display:none">Mon–Sat: 7:30am–12:30pm & 2:30pm–5:30pm<br/>Midday duty service available</p>
+            </div>
+          </div>
+          <div class="map-info-item reveal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            <div>
+              <h5 class="fr-text">Stationnement</h5>
+              <h5 class="en-text" style="display:none">Parking</h5>
+              <p class="fr-text">Parking gratuit disponible pour voitures et motos. Accès pour personnes à mobilité réduite.</p>
+              <p class="en-text" style="display:none">Free parking available for cars and motorbikes. Access for people with reduced mobility.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="map-embed reveal">
+          <div class="map-placeholder">
+            <div class="map-pin">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <h4>English Language Center</h4>
+            <p class="fr-text">Angle Rue 161, Rue 18 AFG Aflao Gakli, Djidjolé, Lomé, Togo</p>
+            <p class="en-text" style="display:none">Corner Rue 161, Rue 18 AFG Aflao Gakli, Djidjolé, Lomé, Togo</p>
+            <a href="https://www.google.com/maps/search/English+Language+Center+Lome+Togo" target="_blank" class="btn btn-primary" style="display:inline-flex;margin-top:8px">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span class="fr-text">Voir sur Google Maps</span>
+              <span class="en-text" style="display:none">View on Google Maps</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PARTNERS STRIP ═══ -->
+  <section class="section-pad-sm partners-sec">
+    <div class="container">
+      <span class="section-tag reveal fr-text">Ils nous font confiance</span>
+      <span class="section-tag reveal en-text" style="display:none">They trust us</span>
+      <h2 class="reveal" style="margin-top:12px;margin-bottom:0">
+        <span class="fr-text">Nos Partenaires Institutionnels</span>
+        <span class="en-text" style="display:none">Our Institutional Partners</span>
+      </h2>
+    </div>
+    <div class="marquee-wrap" style="margin-top:36px">
+      <div class="marquee-track">
+        <span class="partner-name">Ecobank</span><span class="partner-name">Air France</span><span class="partner-name">Shell</span><span class="partner-name">PNUD</span><span class="partner-name">ONU</span><span class="partner-name">HCR</span><span class="partner-name">GIZ</span><span class="partner-name">ASECNA</span><span class="partner-name">ASKY Airlines</span><span class="partner-name">BOAD</span><span class="partner-name">BCAO</span><span class="partner-name">ContourGlobal</span><span class="partner-name">CIM Togo</span><span class="partner-name">ENI</span><span class="partner-name">Peace Corps</span><span class="partner-name">ANAC</span><span class="partner-name">Plan Togo</span><span class="partner-name">ANPE</span><span class="partner-name">BTCI</span><span class="partner-name">Moov Africa</span><span class="partner-name">Sarakawa</span><span class="partner-name">Vlisco</span>
+        <span class="partner-name">Ecobank</span><span class="partner-name">Air France</span><span class="partner-name">Shell</span><span class="partner-name">PNUD</span><span class="partner-name">ONU</span><span class="partner-name">HCR</span><span class="partner-name">GIZ</span><span class="partner-name">ASECNA</span><span class="partner-name">ASKY Airlines</span><span class="partner-name">BOAD</span><span class="partner-name">BCAO</span><span class="partner-name">ContourGlobal</span><span class="partner-name">CIM Togo</span><span class="partner-name">ENI</span><span class="partner-name">Peace Corps</span><span class="partner-name">ANAC</span><span class="partner-name">Plan Togo</span><span class="partner-name">ANPE</span><span class="partner-name">BTCI</span><span class="partner-name">Moov Africa</span><span class="partner-name">Sarakawa</span><span class="partner-name">Vlisco</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="assets/images/logo.jpg" alt="ELC Logo"/>
+          <div class="footer-brand-name">English Language Center</div>
+          <div class="footer-brand-tag">Make the Good Grade</div>
+          <p class="fr-text">Nul n'enseigne l'anglais comme nous. Lomé, Togo, depuis 2003.</p>
+          <p class="en-text" style="display:none">No one teaches English like us. Lomé, Togo, since 2003.</p>
+        </div>
+        <div class="footer-col">
+          <h5 class="fr-text">Programmes</h5><h5 class="en-text" style="display:none">Programs</h5>
+          <ul>
+            <li><a href="nos-cours.html" class="fr-text">Nos Cours</a><a href="nos-cours.html" class="en-text" style="display:none">Our Courses</a></li>
+            <li><a href="ei3months.html">EI3MONTHS</a></li>
+            <li><a href="nos-cours.html">TOEFL iBT</a></li>
+            <li><a href="nos-cours.html">Business English</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5 class="fr-text">Navigation</h5><h5 class="en-text" style="display:none">Navigation</h5>
+          <ul>
+            <li><a href="index.html" class="fr-text">Accueil</a><a href="index.html" class="en-text" style="display:none">Home</a></li>
+            <li><a href="qui-sommes-nous.html" class="fr-text">Qui Sommes-Nous</a><a href="qui-sommes-nous.html" class="en-text" style="display:none">About Us</a></li>
+            <li><a href="expressions.html" class="fr-text">Expressions</a><a href="expressions.html" class="en-text" style="display:none">Expressions</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Djidjolé, Lomé, Togo</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 8a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3 0h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 7.91a16 16 0 0 0 6.29 6.29l1.28-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 14.92v2z"/></svg>
+            <span>+228 22 51 21 66<br/>+228 90 96 75 54</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>elctogo@gmail.com</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 English Language Center · Lomé, Togo · Tous droits réservés</span>
+        <em>Nul n'enseigne l'anglais comme nous !</em>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    function submitForm(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      btn.disabled = true;
+      const frText = btn.querySelector('.fr-text');
+      const enText = btn.querySelector('.en-text');
+      if(frText) frText.textContent = 'Envoi en cours…';
+      if(enText) enText.textContent = 'Sending…';
+      setTimeout(() => {
+        document.getElementById('contactForm').style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+        // Re-apply lang
+        const lang = localStorage.getItem('elc-lang') || 'fr';
+        setLang(lang);
+      }, 1500);
+    }
+  </script>
+</body>
+</html>

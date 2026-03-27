@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Qui Sommes-Nous — English Language Center. Histoire, équipe, locaux et valeurs du centre de référence en anglais à Lomé, Togo."/>
+  <title>Qui Sommes-Nous — English Language Center | ELC Togo</title>
+  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    /* ── ABOUT PAGE SPECIFIC ── */
+    .history-sec { background: var(--white); }
+    .history-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .history-img { position: relative; }
+    .history-img img {
+      width: 100%; height: 460px; object-fit: cover;
+      border-radius: var(--radius-xl); box-shadow: var(--shadow-xl);
+    }
+    .history-badge {
+      position: absolute; top: -20px; left: -20px;
+      background: var(--blue-deep); color: var(--white);
+      border-radius: var(--radius-lg); padding: 22px 26px;
+      text-align: center; box-shadow: var(--shadow-lg);
+      border: 4px solid var(--white);
+    }
+    .history-badge strong {
+      display: block; font-family: 'Playfair Display', serif;
+      font-size: 2.4rem; font-weight: 900; color: var(--gold-light); line-height: 1;
+    }
+    .history-badge span { font-size: 0.78rem; opacity: 0.7; }
+    .history-img-2 {
+      position: absolute; bottom: -24px; right: -24px;
+      width: 180px; height: 140px; object-fit: cover;
+      border-radius: var(--radius-lg);
+      border: 4px solid var(--white);
+      box-shadow: var(--shadow-lg);
+    }
+    .history-content .section-tag { margin-bottom: 16px; }
+    .history-content h2 { margin-bottom: 20px; }
+    .history-content p { margin-bottom: 16px; }
+    .history-timeline { display: flex; flex-direction: column; gap: 0; margin-top: 32px; }
+    .timeline-item {
+      display: flex; gap: 20px; align-items: flex-start;
+      padding-bottom: 24px; position: relative;
+    }
+    .timeline-item:not(:last-child)::after {
+      content: '';
+      position: absolute; left: 19px; top: 40px; bottom: 0;
+      width: 2px; background: var(--gray-200);
+    }
+    .timeline-dot {
+      width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
+      background: var(--blue); display: flex; align-items: center; justify-content: center;
+      border: 3px solid var(--white); box-shadow: var(--shadow-sm);
+      position: relative; z-index: 1;
+    }
+    .timeline-dot svg { width: 18px; height: 18px; color: var(--white); }
+    .timeline-content h5 { font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .timeline-content p { font-size: 0.85rem; color: var(--gray-600); line-height: 1.55; }
+    .timeline-year {
+      font-size: 0.72rem; font-weight: 800; letter-spacing: 1.5px;
+      color: var(--gold); text-transform: uppercase; margin-bottom: 4px;
+    }
+
+    /* Facilities */
+    .facilities-sec {
+      background: linear-gradient(135deg, var(--blue-deep), #0f2a8a);
+      padding: 80px 0; position: relative; overflow: hidden;
+    }
+    .facilities-sec::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(circle at 85% 30%, rgba(201,164,64,0.1) 0%, transparent 50%),
+        radial-gradient(circle at 10% 70%, rgba(255,255,255,0.04) 0%, transparent 40%);
+    }
+    .facilities-inner { position: relative; z-index: 2; }
+    .facilities-inner .section-tag {
+      background: rgba(201,164,64,0.15); color: var(--gold-light);
+      border: 1px solid rgba(201,164,64,0.3);
+    }
+    .facilities-inner .section-tag::before { background: var(--gold-light); }
+    .facilities-inner h2 { color: var(--white); margin: 14px 0 16px; }
+    .facilities-inner > p { color: rgba(255,255,255,0.7); max-width: 600px; margin-bottom: 48px; }
+    .facilities-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-bottom: 48px; }
+    .facility-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-lg); padding: 28px;
+      transition: var(--transition);
+    }
+    .facility-card:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(201,164,64,0.3);
+      transform: translateY(-4px);
+    }
+    .facility-ico {
+      width: 48px; height: 48px; border-radius: var(--radius-sm);
+      background: var(--gold); display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px;
+    }
+    .facility-ico svg { width: 22px; height: 22px; color: var(--white); }
+    .facility-card h4 { color: var(--white); font-weight: 700; margin-bottom: 8px; font-size: 0.98rem; }
+    .facility-card p { color: rgba(255,255,255,0.6); font-size: 0.84rem; line-height: 1.6; }
+    .amenities-row {
+      display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px;
+    }
+    .amenity-badge {
+      display: flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 100px; padding: 8px 16px;
+      font-size: 0.82rem; color: rgba(255,255,255,0.8); font-weight: 500;
+      transition: var(--transition);
+    }
+    .amenity-badge:hover { background: rgba(201,164,64,0.15); border-color: rgba(201,164,64,0.3); }
+    .amenity-badge svg { width: 14px; height: 14px; color: var(--gold-light); }
+
+    /* Team */
+    .team-sec { background: var(--off-white); }
+    .team-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 64px; }
+    .team-mission { display: flex; flex-direction: column; gap: 16px; margin-top: 28px; }
+    .mission-item {
+      display: flex; gap: 14px; align-items: flex-start;
+      padding: 16px 20px; background: var(--white);
+      border-radius: var(--radius-md); border: 1px solid var(--gray-200);
+      box-shadow: var(--shadow-sm); transition: var(--transition);
+    }
+    .mission-item:hover { border-color: rgba(27,80,216,0.2); box-shadow: var(--shadow-md); }
+    .mission-ico {
+      width: 38px; height: 38px; border-radius: var(--radius-sm);
+      background: var(--blue); display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .mission-ico svg { width: 18px; height: 18px; color: var(--white); }
+    .mission-item h5 { font-weight: 700; font-size: 0.92rem; margin-bottom: 3px; color: var(--text); }
+    .mission-item p { font-size: 0.82rem; color: var(--gray-600); line-height: 1.5; }
+
+    .team-card {
+      background: var(--white); border-radius: var(--radius-xl);
+      padding: 36px; border: 1px solid var(--gray-200);
+      box-shadow: var(--shadow-md); text-align: center;
+    }
+    .team-avatar-wrap {
+      width: 100px; height: 100px; margin: 0 auto 20px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue-deep), var(--blue-mid));
+      display: flex; align-items: center; justify-content: center;
+      border: 4px solid var(--gold-border);
+      box-shadow: 0 8px 30px rgba(27,80,216,0.2);
+    }
+    .team-avatar-wrap span {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem; font-weight: 900; color: var(--white);
+    }
+    .team-card h3 { font-size: 1.4rem; margin-bottom: 4px; color: var(--blue-deep); }
+    .team-card .role { color: var(--gold); font-weight: 700; font-size: 0.82rem; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 16px; }
+    .team-card .bio { font-size: 0.88rem; color: var(--gray-600); line-height: 1.65; margin-bottom: 20px; }
+    .team-contact-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--blue); font-weight: 700; font-size: 0.875rem;
+      transition: var(--transition);
+    }
+    .team-contact-link:hover { color: var(--blue-dark); gap: 12px; }
+    .team-contact-link svg { width: 16px; height: 16px; }
+
+    /* Values */
+    .values-sec { background: var(--white); }
+    .values-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 48px; }
+    .value-card {
+      padding: 36px; border-radius: var(--radius-lg);
+      border: 1px solid var(--gray-200); background: var(--off-white);
+      transition: var(--transition); text-align: center;
+    }
+    .value-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); background: var(--blue-light); border-color: rgba(27,80,216,0.2); }
+    .value-ico {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: var(--blue); display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+      box-shadow: 0 8px 24px rgba(27,80,216,0.25);
+      transition: var(--transition);
+    }
+    .value-card:hover .value-ico { transform: scale(1.1); background: var(--blue-dark); }
+    .value-ico svg { width: 28px; height: 28px; color: var(--white); }
+    .value-card h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; color: var(--text); }
+    .value-card p { font-size: 0.85rem; color: var(--gray-600); line-height: 1.65; }
+
+    @media (max-width: 1024px) {
+      .history-grid { grid-template-columns: 1fr; }
+      .history-img-2 { display: none; }
+      .team-intro { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .facilities-grid { grid-template-columns: 1fr 1fr; }
+      .values-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .facilities-grid { grid-template-columns: 1fr; }
+      .values-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ ANNOUNCEMENT BAR ═══ -->
+  <div class="announcement-bar">
+    <div class="container">
+      <span class="fr-text">Inscriptions réouvertes le <span>30 Mars 2026</span> · Cours : <span>13 Avril 2026</span> · <a href="contact.html">S'inscrire</a></span>
+      <span class="en-text" style="display:none">Registrations reopen <span>March 30, 2026</span> · Classes: <span>April 13, 2026</span> · <a href="contact.html">Register</a></span>
+    </div>
+  </div>
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="navbar-brand">
+        <img src="assets/images/logo.jpg" alt="ELC Logo"/>
+        <div class="brand-text">
+          <span class="brand-name">English Language Center</span>
+          <span class="brand-tagline">Make the good grade</span>
+        </div>
+      </a>
+      <ul class="navbar-nav">
+        <li><a href="index.html" class="nav-link fr-text">Accueil</a><a href="index.html" class="nav-link en-text" style="display:none">Home</a></li>
+        <li><a href="nos-cours.html" class="nav-link fr-text">Nos Cours</a><a href="nos-cours.html" class="nav-link en-text" style="display:none">Our Courses</a></li>
+        <li><a href="ei3months.html" class="nav-link">EI3MONTHS</a></li>
+        <li><a href="qui-sommes-nous.html" class="nav-link active fr-text">Qui Sommes-Nous</a><a href="qui-sommes-nous.html" class="nav-link active en-text" style="display:none">About Us</a></li>
+        <li><a href="expressions.html" class="nav-link fr-text">Expressions</a><a href="expressions.html" class="nav-link en-text" style="display:none">Expressions</a></li>
+        <li><a href="contact.html" class="nav-link fr-text">Contact</a><a href="contact.html" class="nav-link en-text" style="display:none">Contact</a></li>
+      </ul>
+      <div class="navbar-actions">
+        <div class="lang-toggle">
+          <button class="lang-btn active" id="btn-fr" onclick="setLang('fr')">FR</button>
+          <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+        </div>
+        <a href="contact.html" class="btn btn-primary fr-text">S'inscrire</a>
+        <a href="contact.html" class="btn btn-primary en-text" style="display:none">Register</a>
+        <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══ MOBILE MENU ═══ -->
+  <div class="mobile-nav" id="mobileMenu">
+    <button class="mobile-nav-close" onclick="toggleMenu()">&#x2715;</button>
+    <a href="index.html" onclick="toggleMenu()">Accueil</a>
+    <a href="nos-cours.html" onclick="toggleMenu()">Nos Cours</a>
+    <a href="ei3months.html" onclick="toggleMenu()">EI3MONTHS</a>
+    <a href="qui-sommes-nous.html" onclick="toggleMenu()">Qui Sommes-Nous</a>
+    <a href="expressions.html" onclick="toggleMenu()">Expressions</a>
+    <a href="contact.html" onclick="toggleMenu()">Contact</a>
+    <a href="contact.html" class="btn btn-gold" style="margin-top:16px" onclick="toggleMenu()">S'inscrire</a>
+  </div>
+
+  <!-- ═══ PAGE HERO ═══ -->
+  <section class="page-hero">
+    <div class="page-hero-inner container">
+      <span class="section-tag reveal fr-text">Notre Centre</span>
+      <span class="section-tag reveal en-text" style="display:none">Our Center</span>
+      <h1 class="reveal fr-text">Qui Sommes-Nous ?</h1>
+      <h1 class="reveal en-text" style="display:none">Who Are We?</h1>
+      <p class="reveal fr-text">Un centre d'excellence en formation linguistique, né des programmes du Centre Culturel Américain, au service de Lomé depuis 2003.</p>
+      <p class="reveal en-text" style="display:none">A center of excellence in language training, born from American Cultural Center programs, serving Lomé since 2003.</p>
+      <div class="breadcrumb">
+        <a href="index.html" class="fr-text">Accueil</a>
+        <a href="index.html" class="en-text" style="display:none">Home</a>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        <span class="fr-text">Qui Sommes-Nous</span>
+        <span class="en-text" style="display:none">About Us</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ HISTORY ═══ -->
+  <section class="section-pad history-sec">
+    <div class="container">
+      <div class="history-grid">
+        <div class="history-img reveal">
+          <div class="history-badge">
+            <strong>2003</strong>
+            <span class="fr-text">Fondé en</span>
+            <span class="en-text" style="display:none">Founded in</span>
+          </div>
+          <img src="assets/images/classe-1.jpg" alt="Salle de cours ELC"/>
+          <img src="assets/images/eleves-classe.jpg" alt="Élèves ELC" class="history-img-2"/>
+        </div>
+
+        <div class="history-content">
+          <span class="section-tag reveal fr-text">Notre Histoire</span>
+          <span class="section-tag reveal en-text" style="display:none">Our History</span>
+          <h2 class="reveal fr-text">Nés du Centre<br/>Culturel Américain</h2>
+          <h2 class="reveal en-text" style="display:none">Born from the<br/>American Cultural Center</h2>
+
+          <p class="reveal fr-text">L'English Language Center est issu des programmes de l'ancien Centre Culturel Américain (CCA). Le CCA n'existant plus, ses programmes de cours d'anglais continuent dans la nouvelle structure dénommée English Language Center (ELC).</p>
+          <p class="reveal fr-text">Initié par l'association des professeurs qui ont enseigné l'anglais au CCA, l'ELC a lancé ses activités en tant qu'institut privé en mai 2003. Depuis lors, le centre s'est imposé comme la référence en matière de formation linguistique au Togo.</p>
+          <p class="reveal en-text" style="display:none">The English Language Center grew out of the programs of the former American Cultural Center (CCA). With the CCA no longer in existence, its English courses continue in the new structure called the English Language Center (ELC).</p>
+          <p class="reveal en-text" style="display:none">Initiated by the association of teachers who taught English at the CCA, ELC launched its activities as a private institute in May 2003. Since then, the center has established itself as the reference for language training in Togo.</p>
+
+          <div class="history-timeline reveal">
+            <div class="timeline-item">
+              <div class="timeline-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+              <div class="timeline-content">
+                <div class="timeline-year fr-text">Avant 2003</div>
+                <div class="timeline-year en-text" style="display:none">Before 2003</div>
+                <h5 class="fr-text">Centre Culturel Américain (CCA)</h5>
+                <h5 class="en-text" style="display:none">American Cultural Center (CCA)</h5>
+                <p class="fr-text">Programmes de cours d'anglais reconnus, dispensés par une équipe de professeurs bilingues expérimentés.</p>
+                <p class="en-text" style="display:none">Recognized English courses taught by a team of experienced bilingual teachers.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot" style="background:var(--gold)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+              <div class="timeline-content">
+                <div class="timeline-year">Mai 2003</div>
+                <h5 class="fr-text">Fondation de l'ELC</h5>
+                <h5 class="en-text" style="display:none">ELC Foundation</h5>
+                <p class="fr-text">Lancement officiel de l'English Language Center en tant qu'institut privé indépendant à Lomé, Togo.</p>
+                <p class="en-text" style="display:none">Official launch of the English Language Center as an independent private institute in Lomé, Togo.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></div>
+              <div class="timeline-content">
+                <div class="timeline-year fr-text">Aujourd'hui</div>
+                <div class="timeline-year en-text" style="display:none">Today</div>
+                <h5 class="fr-text">Centre de Référence au Togo</h5>
+                <h5 class="en-text" style="display:none">Togo's Reference Center</h5>
+                <p class="fr-text">Plus de 40 partenaires institutionnels, 5 000+ apprenants formés, 14 niveaux de formation et des programmes innovants comme EI3MONTHS.</p>
+                <p class="en-text" style="display:none">Over 40 institutional partners, 5,000+ trained learners, 14 training levels and innovative programs like EI3MONTHS.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FACILITIES ═══ -->
+  <section class="facilities-sec">
+    <div class="container facilities-inner">
+      <span class="section-tag reveal fr-text">Nos Locaux</span>
+      <span class="section-tag reveal en-text" style="display:none">Our Facilities</span>
+      <h2 class="reveal fr-text">Un Cadre d'Excellence<br/>pour Apprendre</h2>
+      <h2 class="reveal en-text" style="display:none">An Excellent Setting<br/>for Learning</h2>
+      <p class="reveal fr-text">D'une superficie de 10a 44ca, notre centre est situé non loin du Commissariat du 6ème arrondissement de Djidjolé, à l'angle rue 161, 18 AFG Aflao Gakli. Un espace moderne, bien équipé et confortable.</p>
+      <p class="reveal en-text" style="display:none">With an area of 10a 44ca, our center is located near the 6th district police station in Djidjolé, at the corner of rue 161, 18 AFG Aflao Gakli. A modern, well-equipped and comfortable space.</p>
+
+      <div class="facilities-grid">
+        <div class="facility-card reveal">
+          <div class="facility-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+          <h4 class="fr-text">5 Grandes Salles de Classe</h4>
+          <h4 class="en-text" style="display:none">5 Large Classrooms</h4>
+          <p class="fr-text">Cinq salles spacieuses, bien aérées, chacune pouvant accueillir jusqu'à 25 personnes dans des conditions optimales d'apprentissage.</p>
+          <p class="en-text" style="display:none">Five spacious, well-ventilated rooms, each accommodating up to 25 people in optimal learning conditions.</p>
+        </div>
+        <div class="facility-card reveal reveal-delay-1">
+          <div class="facility-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg></div>
+          <h4 class="fr-text">Salle Informatisée</h4>
+          <h4 class="en-text" style="display:none">Computer Room</h4>
+          <p class="fr-text">Une salle informatisée dédiée aux cours et examens en ligne, équipée de matériel moderne pour les formations numériques.</p>
+          <p class="en-text" style="display:none">A computer room dedicated to online courses and exams, equipped with modern equipment for digital training.</p>
+        </div>
+        <div class="facility-card reveal reveal-delay-2">
+          <div class="facility-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h4 class="fr-text">Salle d'Attente & de Repos</h4>
+          <h4 class="en-text" style="display:none">Waiting & Rest Room</h4>
+          <p class="fr-text">Un espace de détente confortable pour les apprenants, avec une véranda aménagée pour un accueil chaleureux.</p>
+          <p class="en-text" style="display:none">A comfortable relaxation space for learners, with a fitted veranda for a warm welcome.</p>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <h4 style="color:var(--white);font-size:1rem;font-weight:700;margin-bottom:16px" class="fr-text">Services & Équipements Offerts</h4>
+        <h4 style="color:var(--white);font-size:1rem;font-weight:700;margin-bottom:16px;display:none" class="en-text">Services & Equipment Offered</h4>
+        <div class="amenities-row">
+          <div class="amenity-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+            <span class="fr-text">WiFi Gratuit & Illimité</span>
+            <span class="en-text" style="display:none">Free & Unlimited WiFi</span>
+          </div>
+          <div class="amenity-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            <span class="fr-text">Parking Gratuit (Voitures & Motos)</span>
+            <span class="en-text" style="display:none">Free Parking (Cars & Motorbikes)</span>
+          </div>
+          <div class="amenity-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            <span class="fr-text">Accès PMR (Mobilité Réduite)</span>
+            <span class="en-text" style="display:none">Disability Access (Reduced Mobility)</span>
+          </div>
+          <div class="amenity-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span class="fr-text">Environnement Sécurisé</span>
+            <span class="en-text" style="display:none">Secure Environment</span>
+          </div>
+          <div class="amenity-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span class="fr-text">Permanence à l'Heure de Midi</span>
+            <span class="en-text" style="display:none">Midday Duty Service</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TEAM ═══ -->
+  <section class="section-pad team-sec">
+    <div class="container">
+      <div class="team-intro">
+        <div>
+          <span class="section-tag reveal fr-text">Notre Équipe</span>
+          <span class="section-tag reveal en-text" style="display:none">Our Team</span>
+          <h2 class="reveal fr-text" style="margin-top:12px">Des Enseignants<br/>d'Exception</h2>
+          <h2 class="reveal en-text" style="display:none;margin-top:12px">Exceptional<br/>Teachers</h2>
+          <p class="reveal fr-text" style="margin-top:16px">Tous nos professeurs sont des enseignants compétents et expérimentés qui mettent l'accent sur l'anglais parlé. Ils sont bilingues, natifs ou ayant vécu dans un pays anglophone.</p>
+          <p class="reveal en-text" style="display:none;margin-top:16px">All our teachers are competent and experienced educators who emphasize spoken English. They are bilingual, native or having lived in an English-speaking country.</p>
+
+          <div class="team-mission reveal">
+            <div class="mission-item">
+              <div class="mission-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></div>
+              <div>
+                <h5 class="fr-text">Conseils & Orientation</h5>
+                <h5 class="en-text" style="display:none">Advice & Guidance</h5>
+                <p class="fr-text">Accompagnement personnalisé de chaque apprenant dans son parcours d'apprentissage de l'anglais.</p>
+                <p class="en-text" style="display:none">Personalized support for each learner throughout their English learning journey.</p>
+              </div>
+            </div>
+            <div class="mission-item">
+              <div class="mission-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+              <div>
+                <h5 class="fr-text">Soutien des Apprenants</h5>
+                <h5 class="en-text" style="display:none">Learner Support</h5>
+                <p class="fr-text">Un suivi actif pour s'assurer que chaque apprenant progresse et surmonte ses difficultés.</p>
+                <p class="en-text" style="display:none">Active monitoring to ensure each learner progresses and overcomes their difficulties.</p>
+              </div>
+            </div>
+            <div class="mission-item">
+              <div class="mission-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+              <div>
+                <h5 class="fr-text">Suivi & Évaluation</h5>
+                <h5 class="en-text" style="display:none">Monitoring & Evaluation</h5>
+                <p class="fr-text">Évaluation continue pour mesurer la progression et adapter la pédagogie aux besoins de chacun.</p>
+                <p class="en-text" style="display:none">Continuous evaluation to measure progress and adapt teaching to individual needs.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Director card -->
+        <div class="team-card reveal">
+          <div class="team-avatar-wrap"><span>KA</span></div>
+          <h3>Dr. Koffi K. Awute</h3>
+          <div class="role">Ph.D. · Directeur Général</div>
+          <p class="bio fr-text">Fondateur et directeur de l'English Language Center, Dr. Awute est un expert reconnu en formation linguistique au Togo. Issu des programmes du Centre Culturel Américain, il a bâti l'ELC sur les valeurs d'excellence, de rigueur et d'innovation pédagogique.</p>
+          <p class="bio en-text" style="display:none">Founder and director of the English Language Center, Dr. Awute is a recognized expert in language training in Togo. Coming from the American Cultural Center programs, he built ELC on values of excellence, rigor and pedagogical innovation.</p>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
+            <a href="tel:+22890019867" class="team-contact-link" style="justify-content:center">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 8a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3 0h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 7.91a16 16 0 0 0 6.29 6.29l1.28-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 14.92v2z"/></svg>
+              +228 90 01 98 67
+            </a>
+            <a href="contact.html" class="team-contact-link" style="justify-content:center">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span class="fr-text">Envoyer un message</span>
+              <span class="en-text" style="display:none">Send a message</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ VALUES ═══ -->
+  <section class="section-pad values-sec">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-tag reveal fr-text">Nos Valeurs</span>
+        <span class="section-tag reveal en-text" style="display:none">Our Values</span>
+        <h2 class="reveal" style="margin-top:12px">
+          <span class="fr-text">Ce qui nous Définit</span>
+          <span class="en-text" style="display:none">What Defines Us</span>
+        </h2>
+        <p class="reveal" style="max-width:500px;margin:14px auto 0">
+          <span class="fr-text">L'ELC est un centre d'expérience disposant de programmes de qualité fondés sur l'écoute, le parler, la lecture et l'écriture.</span>
+          <span class="en-text" style="display:none">ELC is an experienced center with quality programs based on listening, speaking, reading and writing.</span>
+        </p>
+      </div>
+
+      <div class="values-grid">
+        <div class="value-card reveal">
+          <div class="value-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></div>
+          <h4 class="fr-text">Excellence</h4>
+          <h4 class="en-text" style="display:none">Excellence</h4>
+          <p class="fr-text">Nous visons l'excellence dans chaque aspect de notre enseignement, de la qualité des cours à l'accompagnement personnalisé de chaque apprenant.</p>
+          <p class="en-text" style="display:none">We aim for excellence in every aspect of our teaching, from course quality to personalized support for each learner.</p>
+        </div>
+        <div class="value-card reveal reveal-delay-1">
+          <div class="value-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg></div>
+          <h4 class="fr-text">Accent sur le Parler</h4>
+          <h4 class="en-text" style="display:none">Speaking Focus</h4>
+          <p class="fr-text">Notre approche pédagogique place la pratique orale au cœur de l'apprentissage — parce que l'anglais s'apprend en le parlant.</p>
+          <p class="en-text" style="display:none">Our pedagogical approach places oral practice at the heart of learning — because English is learned by speaking it.</p>
+        </div>
+        <div class="value-card reveal reveal-delay-2">
+          <div class="value-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h4 class="fr-text">Ouverture à Tous</h4>
+          <h4 class="en-text" style="display:none">Open to All</h4>
+          <p class="fr-text">Professionnels, diplomates, étudiants, enfants — nos portes sont ouvertes à tous ceux qui souhaitent maîtriser la langue anglaise.</p>
+          <p class="en-text" style="display:none">Professionals, diplomats, students, children — our doors are open to all who wish to master the English language.</p>
+        </div>
+        <div class="value-card reveal">
+          <div class="value-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19V6l12-3v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="15" r="3"/></svg></div>
+          <h4 class="fr-text">Innovation Pédagogique</h4>
+          <h4 class="en-text" style="display:none">Pedagogical Innovation</h4>
+          <p class="fr-text">Des programmes innovants comme EI3MONTHS témoignent de notre volonté constante de trouver de meilleures façons d'enseigner l'anglais.</p>
+          <p class="en-text" style="display:none">Innovative programs like EI3MONTHS demonstrate our constant drive to find better ways to teach English.</p>
+        </div>
+        <div class="value-card reveal reveal-delay-1">
+          <div class="value-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h4 class="fr-text">Confiance & Crédibilité</h4>
+          <h4 class="en-text" style="display:none">Trust & Credibility</h4>
+          <p class="fr-text">Plus de 40 partenaires institutionnels — dont Shell, Air France, PNUD et l'ONU — nous font confiance pour former leurs équipes.</p>
+          <p class="en-text" style="display:none">Over 40 institutional partners — including Shell, Air France, UNDP and the UN — trust us to train their teams.</p>
+        </div>
+        <div class="value-card reveal reveal-delay-2">
+          <div class="value-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <h4 class="fr-text">Résultats Mesurables</h4>
+          <h4 class="en-text" style="display:none">Measurable Results</h4>
+          <p class="fr-text">Nos méthodes d'évaluation continue garantissent une progression réelle et mesurable pour chaque apprenant, à chaque niveau.</p>
+          <p class="en-text" style="display:none">Our continuous assessment methods guarantee real, measurable progress for every learner at every level.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA ═══ -->
+  <section class="cta-sec section-pad">
+    <div class="container">
+      <div class="cta-inner">
+        <h2 class="reveal fr-text">Rejoignez la Famille ELC</h2>
+        <h2 class="reveal en-text" style="display:none">Join the ELC Family</h2>
+        <p class="reveal fr-text">Inscriptions rouvertes le 30 Mars 2026. Rejoignez des milliers d'apprenants qui ont transformé leur maîtrise de l'anglais grâce à l'ELC.</p>
+        <p class="reveal en-text" style="display:none">Registrations reopen March 30, 2026. Join thousands of learners who have transformed their English mastery through ELC.</p>
+        <div class="cta-btns reveal">
+          <a href="contact.html" class="btn btn-gold fr-text">S'inscrire Maintenant</a>
+          <a href="contact.html" class="btn btn-gold en-text" style="display:none">Register Now</a>
+          <a href="nos-cours.html" class="btn btn-outline-white fr-text">Voir les Cours</a>
+          <a href="nos-cours.html" class="btn btn-outline-white en-text" style="display:none">Browse Courses</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="assets/images/logo.jpg" alt="ELC Logo"/>
+          <div class="footer-brand-name">English Language Center</div>
+          <div class="footer-brand-tag">Make the Good Grade</div>
+          <p class="fr-text">Le centre de référence pour l'apprentissage de l'anglais à Lomé, Togo. Fondé en 2003.</p>
+          <p class="en-text" style="display:none">The reference center for English learning in Lomé, Togo. Founded in 2003.</p>
+        </div>
+        <div class="footer-col">
+          <h5 class="fr-text">Programmes</h5><h5 class="en-text" style="display:none">Programs</h5>
+          <ul>
+            <li><a href="nos-cours.html" class="fr-text">Nos Cours</a><a href="nos-cours.html" class="en-text" style="display:none">Our Courses</a></li>
+            <li><a href="ei3months.html">EI3MONTHS</a></li>
+            <li><a href="nos-cours.html">TOEFL iBT</a></li>
+            <li><a href="nos-cours.html">Business English</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5 class="fr-text">Navigation</h5><h5 class="en-text" style="display:none">Navigation</h5>
+          <ul>
+            <li><a href="index.html" class="fr-text">Accueil</a><a href="index.html" class="en-text" style="display:none">Home</a></li>
+            <li><a href="qui-sommes-nous.html" class="fr-text">Qui Sommes-Nous</a><a href="qui-sommes-nous.html" class="en-text" style="display:none">About Us</a></li>
+            <li><a href="expressions.html" class="fr-text">Expressions</a><a href="expressions.html" class="en-text" style="display:none">Expressions</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Angle Rue 161, 18 AFG Aflao Gakli,<br/>Djidjolé, Lomé, Togo</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 8a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3 0h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 7.91a16 16 0 0 0 6.29 6.29l1.28-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 14.92v2z"/></svg>
+            <span>+228 22 51 21 66<br/>+228 90 96 75 54 (WhatsApp)</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 English Language Center · Lomé, Togo</span>
+        <em>Nul n'enseigne l'anglais comme nous !</em>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

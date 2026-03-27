@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="English Language Center (ELC) — Centre de référence en formation linguistique à Lomé, Togo. Cours d'anglais pour tous niveaux, programme EI3MONTHS, préparation TOEFL iBT."/>
+  <title>ELC — English Language Center | Lomé, Togo</title>
+  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+  <!-- ═══ ANNOUNCEMENT BAR ═══ -->
+  <div class="announcement-bar" id="announcement">
+    <div class="container">
+      <span class="fr-text">Inscriptions clôturées pour ce trimestre · Réouverture le <span>30 Mars 2026</span> · Cours reprennent le <span>13 Avril 2026</span> · <a href="contact.html">Pré-inscrire</a></span>
+      <span class="en-text" style="display:none">Registrations closed for this term · Reopening <span>March 30, 2026</span> · Classes resume <span>April 13, 2026</span> · <a href="contact.html">Pre-register</a></span>
+    </div>
+  </div>
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <!-- Brand -->
+      <a href="index.html" class="navbar-brand">
+        <img src="assets/images/logo.jpg" alt="ELC Logo"/>
+        <div class="brand-text">
+          <span class="brand-name">English Language Center</span>
+          <span class="brand-tagline">Make the good grade</span>
+        </div>
+      </a>
+
+      <!-- Nav links -->
+      <ul class="navbar-nav">
+        <li><a href="index.html" class="nav-link active fr-text">Accueil</a><a href="index.html" class="nav-link active en-text" style="display:none">Home</a></li>
+        <li><a href="nos-cours.html" class="nav-link fr-text">Nos Cours</a><a href="nos-cours.html" class="nav-link en-text" style="display:none">Our Courses</a></li>
+        <li><a href="ei3months.html" class="nav-link">EI3MONTHS</a></li>
+        <li><a href="qui-sommes-nous.html" class="nav-link fr-text">Qui Sommes-Nous</a><a href="qui-sommes-nous.html" class="nav-link en-text" style="display:none">About Us</a></li>
+        <li><a href="expressions.html" class="nav-link fr-text">Expressions</a><a href="expressions.html" class="nav-link en-text" style="display:none">Expressions</a></li>
+        <li><a href="contact.html" class="nav-link fr-text">Contact</a><a href="contact.html" class="nav-link en-text" style="display:none">Contact</a></li>
+      </ul>
+
+      <!-- Actions -->
+      <div class="navbar-actions">
+        <!-- Language toggle -->
+        <div class="lang-toggle">
+          <button class="lang-btn active" id="btn-fr" onclick="setLang('fr')">FR</button>
+          <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+        </div>
+        <a href="contact.html" class="btn btn-primary fr-text">S'inscrire</a>
+        <a href="contact.html" class="btn btn-primary en-text" style="display:none">Register</a>
+        <!-- Hamburger -->
+        <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══ MOBILE MENU ═══ -->
+  <div class="mobile-nav" id="mobileMenu">
+    <button class="mobile-nav-close" onclick="toggleMenu()">&#x2715;</button>
+    <a href="index.html" onclick="toggleMenu()">Accueil</a>
+    <a href="nos-cours.html" onclick="toggleMenu()">Nos Cours</a>
+    <a href="ei3months.html" onclick="toggleMenu()">EI3MONTHS</a>
+    <a href="qui-sommes-nous.html" onclick="toggleMenu()">Qui Sommes-Nous</a>
+    <a href="expressions.html" onclick="toggleMenu()">Expressions</a>
+    <a href="contact.html" onclick="toggleMenu()">Contact</a>
+    <a href="contact.html" class="btn btn-gold" style="margin-top:16px" onclick="toggleMenu()">S'inscrire Maintenant</a>
+  </div>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero">
+    <div class="hero-bg-shapes">
+      <div class="hero-circle-1"></div>
+      <div class="hero-circle-2"></div>
+      <div class="hero-grid"></div>
+    </div>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <div class="hero-badge-dot"></div>
+          <span class="fr-text">Lomé, Togo · Centre de Référence</span>
+          <span class="en-text" style="display:none">Lomé, Togo · Reference Center</span>
+        </div>
+
+        <h1 class="fr-text">Nul n'enseigne<br/><em>l'Anglais</em><br/>comme nous.</h1>
+        <h1 class="en-text" style="display:none">No one teaches<br/><em>English</em><br/>like us.</h1>
+
+        <p class="hero-subtitle fr-text">Centre de formation linguistique de référence au Togo depuis 2003. Des méthodes éprouvées, des enseignants bilingues experts, pour vous propulser vers la maîtrise totale de l'anglais.</p>
+        <p class="hero-subtitle en-text" style="display:none">Togo's premier language training center since 2003. Proven methods and expert bilingual teachers to propel you toward total mastery of English.</p>
+
+        <div class="hero-cta">
+          <a href="nos-cours.html" class="btn btn-gold fr-text">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            Nos Cours
+          </a>
+          <a href="nos-cours.html" class="btn btn-gold en-text" style="display:none">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            Our Courses
+          </a>
+          <a href="contact.html" class="btn btn-outline-white fr-text">S'inscrire Maintenant</a>
+          <a href="contact.html" class="btn btn-outline-white en-text" style="display:none">Register Now</a>
+        </div>
+
+        <div class="hero-info">
+          <div class="hero-info-item">
+            <strong>2003</strong>
+            <span class="fr-text">Fondé en</span>
+            <span class="en-text" style="display:none">Founded in</span>
+          </div>
+          <div class="hero-info-item">
+            <strong>5 000+</strong>
+            <span class="fr-text">Apprenants formés</span>
+            <span class="en-text" style="display:none">Students trained</span>
+          </div>
+          <div class="hero-info-item">
+            <strong>40+</strong>
+            <span class="fr-text">Partenaires</span>
+            <span class="en-text" style="display:none">Partners</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero image with floating cards -->
+      <div class="hero-visual reveal">
+        <div class="hero-img-wrap">
+          <img src="assets/images/etudiante-2.jpg" alt="Étudiante ELC"/>
+          <div class="hero-img-overlay"></div>
+        </div>
+        <!-- Floating card 1 -->
+        <div class="hero-card-float hero-card-1">
+          <div class="hero-card-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="var(--blue)"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+          </div>
+          <div class="hero-card-txt">
+            <strong class="fr-text">Certifications TOEFL</strong>
+            <strong class="en-text" style="display:none">TOEFL Certifications</strong>
+            <span class="fr-text">Preparation iBT</span>
+            <span class="en-text" style="display:none">iBT Preparation</span>
+          </div>
+        </div>
+        <!-- Floating card 2 -->
+        <div class="hero-card-float hero-card-2">
+          <div class="hero-card-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="var(--blue)"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="hero-card-txt">
+            <strong>14 Niveaux</strong>
+            <span class="fr-text">Tous profils acceptés</span>
+            <span class="en-text" style="display:none">All profiles welcome</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ STATS ═══ -->
+  <section class="stats-bar">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <span class="stat-number" data-target="20">0</span>
+        <div class="stat-label fr-text">Années d'Excellence</div>
+        <div class="stat-label en-text" style="display:none">Years of Excellence</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-1">
+        <span class="stat-number" data-target="5000">0</span>
+        <div class="stat-label fr-text">Apprenants Formés</div>
+        <div class="stat-label en-text" style="display:none">Students Trained</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-2">
+        <span class="stat-number" data-target="14">0</span>
+        <div class="stat-label fr-text">Niveaux de Formation</div>
+        <div class="stat-label en-text" style="display:none">Training Levels</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-3">
+        <span class="stat-number" data-target="40">0</span>
+        <div class="stat-label fr-text">Partenaires Institutionnels</div>
+        <div class="stat-label en-text" style="display:none">Institutional Partners</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ABOUT ═══ -->
+  <section class="section-pad">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-imgs reveal">
+          <div class="about-gold-dot"></div>
+          <img src="assets/images/classe-1.jpg" alt="Salle de cours ELC" class="about-img-main"/>
+          <div class="about-img-badge">
+            <strong>2003</strong>
+            <span>Fondé depuis</span>
+          </div>
+        </div>
+
+        <div>
+          <span class="section-tag reveal">
+            <span class="fr-text">À propos de l'ELC</span>
+            <span class="en-text" style="display:none">About ELC</span>
+          </span>
+          <h2 class="reveal fr-text">Un Centre de Référence<br/>en <em style="font-style:italic;color:var(--blue)">Formation Linguistique</em></h2>
+          <h2 class="reveal en-text" style="display:none">A Reference Center<br/>in <em style="font-style:italic;color:var(--blue)">Language Training</em></h2>
+
+          <div class="about-list reveal">
+            <div class="about-list-item">
+              <div class="about-list-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+              </div>
+              <div>
+                <h5 class="fr-text">Issus du Centre Culturel Américain</h5>
+                <h5 class="en-text" style="display:none">Born from the American Cultural Center</h5>
+                <p class="fr-text">Les programmes du CCA continuent aujourd'hui dans la structure ELC, lancée en mai 2003 par l'association de ses professeurs.</p>
+                <p class="en-text" style="display:none">CCA's programs continue today in the ELC structure, launched in May 2003 by its association of teachers.</p>
+              </div>
+            </div>
+            <div class="about-list-item">
+              <div class="about-list-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+              </div>
+              <div>
+                <h5 class="fr-text">Cours dispensés par des experts</h5>
+                <h5 class="en-text" style="display:none">Courses taught by experts</h5>
+                <p class="fr-text">Tous nos professeurs sont bilingues, natifs ou ayant vécu dans un pays anglophone, avec un accent particulier sur le parler.</p>
+                <p class="en-text" style="display:none">All our teachers are bilingual, native or having lived in an English-speaking country, with special emphasis on speaking.</p>
+              </div>
+            </div>
+            <div class="about-list-item">
+              <div class="about-list-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <div>
+                <h5 class="fr-text">Ouvert à tous</h5>
+                <h5 class="en-text" style="display:none">Open to everyone</h5>
+                <p class="fr-text">Professionnels, hommes et femmes d'affaires, techniciens, académiques, diplomates, élèves et étudiants — tout le monde est bienvenu.</p>
+                <p class="en-text" style="display:none">Professionals, business people, technicians, academics, diplomats, pupils and students — everyone is welcome.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Director card -->
+          <div class="director-card reveal">
+            <div class="director-avatar">KA</div>
+            <div class="director-info">
+              <strong>Dr. Koffi K. Awute, Ph.D.</strong>
+              <span class="fr-text">Directeur · English Language Center</span>
+              <span class="en-text" style="display:none">Director · English Language Center</span>
+              <br/><a href="tel:+22890019867">+228 90 01 98 67</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PROGRAMS OVERVIEW ═══ -->
+  <section class="section-pad programs-sec">
+    <div class="container">
+      <div class="programs-header">
+        <div>
+          <span class="section-tag reveal fr-text">Nos Programmes</span>
+          <span class="section-tag reveal en-text" style="display:none">Our Programs</span>
+          <h2 class="reveal fr-text">4 Cycles de Formation<br/>pour Tous les Niveaux</h2>
+          <h2 class="reveal en-text" style="display:none">4 Training Cycles<br/>for All Levels</h2>
+        </div>
+        <a href="nos-cours.html" class="btn btn-outline reveal fr-text">Voir tous les cours →</a>
+        <a href="nos-cours.html" class="btn btn-outline reveal en-text" style="display:none">See all courses →</a>
+      </div>
+
+      <div class="cycles-grid">
+        <!-- Cycle I -->
+        <div class="cycle-card reveal">
+          <div class="cycle-num">I</div>
+          <span class="cycle-tag">Cycle I</span>
+          <h3 class="fr-text">Débutant</h3>
+          <h3 class="en-text" style="display:none">Beginner</h3>
+          <p class="fr-text">Pour les personnes ayant peu ou pas de bases en anglais. Construisez une fondation solide avec une méthodologie éprouvée centrée sur l'oral.</p>
+          <p class="en-text" style="display:none">For those with little or no foundation in English. Build a solid base with a proven oral-focused methodology.</p>
+          <div class="cycle-levels">
+            <span class="level-badge">Débutant 1</span>
+            <span class="level-badge">Débutant 2</span>
+            <span class="level-badge">Déb.-Avancé 1</span>
+            <span class="level-badge">Déb.-Avancé 2</span>
+          </div>
+          <div class="cycle-footer">
+            <span class="fr-text">4 niveaux</span>
+            <span class="en-text" style="display:none">4 levels</span>
+            <a href="nos-cours.html" class="fr-text">En savoir plus →</a>
+            <a href="nos-cours.html" class="en-text" style="display:none">Learn more →</a>
+          </div>
+        </div>
+
+        <!-- Cycle II -->
+        <div class="cycle-card reveal reveal-delay-1">
+          <div class="cycle-num">II</div>
+          <span class="cycle-tag">Cycle II</span>
+          <h3 class="fr-text">Intermédiaire</h3>
+          <h3 class="en-text" style="display:none">Intermediate</h3>
+          <p class="fr-text">Pour ceux qui maîtrisent les fondamentaux et souhaitent développer leur aisance à l'oral, enrichir leur vocabulaire et leur compréhension.</p>
+          <p class="en-text" style="display:none">For those who master the fundamentals and wish to develop oral fluency, enrich vocabulary and comprehension.</p>
+          <div class="cycle-levels">
+            <span class="level-badge">Interm. 1</span>
+            <span class="level-badge">Interm. 2</span>
+            <span class="level-badge">Interm. 3</span>
+            <span class="level-badge">Interm. 4</span>
+          </div>
+          <div class="cycle-footer">
+            <span class="fr-text">4 niveaux</span>
+            <span class="en-text" style="display:none">4 levels</span>
+            <a href="nos-cours.html" class="fr-text">En savoir plus →</a>
+            <a href="nos-cours.html" class="en-text" style="display:none">Learn more →</a>
+          </div>
+        </div>
+
+        <!-- Cycle III -->
+        <div class="cycle-card reveal reveal-delay-2">
+          <div class="cycle-num">III</div>
+          <span class="cycle-tag">Cycle III</span>
+          <h3 class="fr-text">Intermédiaire Avancé</h3>
+          <h3 class="en-text" style="display:none">Upper Intermediate</h3>
+          <p class="fr-text">Pour les apprenants ayant de solides bases et visant une communication professionnelle fluide, nuancée et confiante.</p>
+          <p class="en-text" style="display:none">For learners with a solid base aiming for fluent, nuanced and confident professional communication.</p>
+          <div class="cycle-levels">
+            <span class="level-badge">Int. Avancé 1</span>
+            <span class="level-badge">Int. Avancé 2</span>
+            <span class="level-badge">Int. Avancé 3</span>
+          </div>
+          <div class="cycle-footer">
+            <span class="fr-text">3 niveaux</span>
+            <span class="en-text" style="display:none">3 levels</span>
+            <a href="nos-cours.html" class="fr-text">En savoir plus →</a>
+            <a href="nos-cours.html" class="en-text" style="display:none">Learn more →</a>
+          </div>
+        </div>
+
+        <!-- Cycle IV -->
+        <div class="cycle-card reveal reveal-delay-3">
+          <div class="cycle-num">IV</div>
+          <span class="cycle-tag">Cycle IV</span>
+          <h3 class="fr-text">Avancé</h3>
+          <h3 class="en-text" style="display:none">Advanced</h3>
+          <p class="fr-text">Pour les locuteurs avancés visant l'excellence — maîtrise complète, compréhension fine et expression sans frontières.</p>
+          <p class="en-text" style="display:none">For advanced speakers aiming for excellence — complete mastery, deep comprehension and boundless expression.</p>
+          <div class="cycle-levels">
+            <span class="level-badge">Avancé 1</span>
+            <span class="level-badge">Avancé 2</span>
+            <span class="level-badge">Avancé 3</span>
+          </div>
+          <div class="cycle-footer">
+            <span class="fr-text">3 niveaux</span>
+            <span class="en-text" style="display:none">3 levels</span>
+            <a href="nos-cours.html" class="fr-text">En savoir plus →</a>
+            <a href="nos-cours.html" class="en-text" style="display:none">Learn more →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Special courses preview -->
+      <div class="special-header reveal">
+        <span class="section-tag fr-text">Cours Spéciaux</span>
+        <span class="section-tag en-text" style="display:none">Special Courses</span>
+        <h2 class="fr-text" style="margin-top:12px">Programmes Spécialisés</h2>
+        <h2 class="en-text" style="display:none;margin-top:12px">Specialized Programs</h2>
+      </div>
+      <div class="special-grid">
+        <div class="special-card reveal">
+          <div class="special-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <h4>Intermediate Conversation</h4>
+          <p class="fr-text">Pratique intensive de la conversation pour gagner en spontanéité et fluidité naturelle.</p>
+          <p class="en-text" style="display:none">Intensive conversational practice for natural spontaneity and fluency.</p>
+        </div>
+        <div class="special-card reveal reveal-delay-1">
+          <div class="special-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg></div>
+          <h4>Advanced Conversation & Movie Class</h4>
+          <p class="fr-text">Immersion avancée à travers films et discussions pour une compréhension authentique.</p>
+          <p class="en-text" style="display:none">Advanced immersion through films and discussions for authentic comprehension.</p>
+        </div>
+        <div class="special-card reveal reveal-delay-2">
+          <div class="special-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7V4h16v3"/><path d="M9 20h6M12 4v16"/></svg></div>
+          <h4>Translation Course</h4>
+          <p class="fr-text">Maîtrise des techniques de traduction anglais-français pour usage professionnel.</p>
+          <p class="en-text" style="display:none">Mastery of English-French translation techniques for professional use.</p>
+        </div>
+        <div class="special-card reveal">
+          <div class="special-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7H4a2 2 0 0 0-2 2v6c0 1.1.9 2 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+          <h4>Business English</h4>
+          <p class="fr-text">L'anglais des affaires pour négocier, présenter et communiquer avec excellence.</p>
+          <p class="en-text" style="display:none">Business English for negotiating, presenting and communicating with excellence.</p>
+        </div>
+        <div class="special-card reveal reveal-delay-1">
+          <div class="special-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <h4>Financial English</h4>
+          <p class="fr-text">Vocabulaire financier pour banquiers, investisseurs et analystes en milieu international.</p>
+          <p class="en-text" style="display:none">Financial vocabulary for bankers, investors and analysts in an international environment.</p>
+        </div>
+        <div class="special-card reveal reveal-delay-2">
+          <div class="special-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+          <h4>TOEFL iBT Preparation</h4>
+          <p class="fr-text">Préparation intensive au test TOEFL iBT avec formateurs experts et matériel dédié.</p>
+          <p class="en-text" style="display:none">Intensive TOEFL iBT preparation with expert trainers and dedicated materials.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ EI3M HIGHLIGHT ═══ -->
+  <section class="section-pad ei3m-sec">
+    <div class="ei3m-bg"></div>
+    <div class="container">
+      <div class="ei3m-grid">
+        <div class="ei3m-content">
+          <span class="section-tag reveal fr-text">Programme Phare</span>
+          <span class="section-tag reveal en-text" style="display:none">Flagship Program</span>
+          <h2 class="ei3m-title reveal fr-text"><em>English In</em><br/>3 Months —<br/>EI3MONTHS</h2>
+          <h2 class="ei3m-title reveal en-text" style="display:none"><em>English In</em><br/>3 Months —<br/>EI3MONTHS</h2>
+          <p class="ei3m-desc reveal fr-text">Le programme révolutionnaire 100% en ligne pour parler l'anglais couramment en 3 mois. Basé sur la technique de l'imitation — 40 heures de cours intensifs avec matériel audio intégré.</p>
+          <p class="ei3m-desc reveal en-text" style="display:none">The revolutionary 100% online program to speak English fluently in 3 months. Based on the imitation technique — 40 hours of intensive courses with integrated audio material.</p>
+
+          <div class="ei3m-features">
+            <div class="ei3m-feat reveal">
+              <div class="ei3m-feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19V6l12-3v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="15" r="3"/></svg></div>
+              <div class="ei3m-feat-txt">
+                <h5 class="fr-text">Technique de l'Imitation</h5>
+                <h5 class="en-text" style="display:none">Imitation Technique</h5>
+                <p class="fr-text">Méthode éprouvée pour acquérir l'accent et la fluidité naturelle d'un locuteur natif.</p>
+                <p class="en-text" style="display:none">Proven method to acquire the natural accent and fluency of a native speaker.</p>
+              </div>
+            </div>
+            <div class="ei3m-feat reveal">
+              <div class="ei3m-feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg></div>
+              <div class="ei3m-feat-txt">
+                <h5 class="fr-text">100% en Ligne</h5>
+                <h5 class="en-text" style="display:none">100% Online</h5>
+                <p class="fr-text">Suivez les cours depuis chez vous, où que vous soyez, avec matériel audio livré à domicile.</p>
+                <p class="en-text" style="display:none">Follow the courses from home, wherever you are, with audio material delivered to you.</p>
+              </div>
+            </div>
+            <div class="ei3m-feat reveal">
+              <div class="ei3m-feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7H4a2 2 0 0 0-2 2v6c0 1.1.9 2 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/></svg></div>
+              <div class="ei3m-feat-txt">
+                <h5 class="fr-text">Matériel Audio Complet Inclus</h5>
+                <h5 class="en-text" style="display:none">Full Audio Kit Included</h5>
+                <p class="fr-text">Lecteur audio + Clé USB + Batterie rechargeable + Recueil de transcriptions.</p>
+                <p class="en-text" style="display:none">Audio player + USB key + Rechargeable battery + Transcription booklet.</p>
+              </div>
+            </div>
+          </div>
+
+          <a href="ei3months.html" class="btn btn-gold reveal fr-text" style="margin-top:8px">Découvrir EI3MONTHS →</a>
+          <a href="ei3months.html" class="btn btn-gold reveal en-text" style="display:none;margin-top:8px">Discover EI3MONTHS →</a>
+        </div>
+
+        <div class="ei3m-visual reveal">
+          <!-- Price card -->
+          <div class="ei3m-card">
+            <div class="ei3m-card-top">
+              <span class="label fr-text">Coût total du programme</span>
+              <span class="label en-text" style="display:none">Total program cost</span>
+              <div class="ei3m-price">120 000 <sub>FCFA</sub></div>
+              <div style="color:rgba(255,255,255,0.85);font-size:0.82rem;margin-top:6px">40h de cours · 3 mois · Matériel inclus</div>
+            </div>
+            <div class="ei3m-card-body">
+              <div class="ei3m-options">
+                <div class="ei3m-option">
+                  <span class="fr-text">Option 1 — 1 tranche unique</span>
+                  <span class="en-text" style="display:none">Option 1 — Single payment</span>
+                  <strong>120 000 F</strong>
+                </div>
+                <div class="ei3m-option">
+                  <span class="fr-text">Option 2 — 2 tranches</span>
+                  <span class="en-text" style="display:none">Option 2 — 2 installments</span>
+                  <strong>60 000 F × 2</strong>
+                </div>
+                <div class="ei3m-option">
+                  <span class="fr-text">Option 3 — 3 tranches</span>
+                  <span class="en-text" style="display:none">Option 3 — 3 installments</span>
+                  <strong>40 000 F × 3</strong>
+                </div>
+              </div>
+              <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center">
+                <span class="fr-text">S'inscrire au Programme</span>
+                <span class="en-text" style="display:none">Register for the Program</span>
+              </a>
+              <p class="ei3m-note">
+                <span class="fr-text">Prochaine session · Inscriptions réouvertes le <strong>30 Mars 2026</strong></span>
+                <span class="en-text" style="display:none">Next session · Registrations reopen <strong>March 30, 2026</strong></span>
+              </p>
+            </div>
+          </div>
+
+          <!-- Testimonials -->
+          <div class="testimonials-mini" style="margin-top:24px">
+            <div class="testi-card">
+              <p class="testi-text">Ce programme me permet de suivre des cours sans quitter mon bureau.</p>
+              <div class="testi-author">
+                <div class="testi-avatar">ME</div>
+                <div class="testi-name">
+                  <strong>Mlle Elise</strong>
+                  <span>Gestionnaire de compte</span>
+                </div>
+              </div>
+            </div>
+            <div class="testi-card">
+              <p class="testi-text">C'est un programme taillé sur mesure pour nous qui n'avons pas le temps d'aller en classe.</p>
+              <div class="testi-author">
+                <div class="testi-avatar">ED</div>
+                <div class="testi-name">
+                  <strong>M. Eddy</strong>
+                  <span>Directeur de Société</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TOEFL ═══ -->
+  <section class="section-pad toefl-sec">
+    <div class="container">
+      <div class="toefl-grid">
+        <div>
+          <span class="section-tag reveal fr-text">Certification Internationale</span>
+          <span class="section-tag reveal en-text" style="display:none">International Certification</span>
+          <h2 class="reveal fr-text" style="margin-top:12px">Préparation<br/>TOEFL iBT</h2>
+          <h2 class="reveal en-text" style="display:none;margin-top:12px">TOEFL iBT<br/>Preparation</h2>
+          <p class="reveal fr-text" style="margin-top:16px">Préparez-vous au test TOEFL iBT avec nos formateurs experts. Sessions disponibles à Lomé et Cotonou, avec accompagnement intensif tout au long du programme.</p>
+          <p class="reveal en-text" style="display:none;margin-top:16px">Prepare for the TOEFL iBT test with our expert trainers. Sessions available in Lomé and Cotonou, with intensive support throughout the program.</p>
+
+          <div class="toefl-stats">
+            <div class="toefl-stat reveal">
+              <div class="lbl fr-text">Frais de cours</div>
+              <div class="lbl en-text" style="display:none">Course fees</div>
+              <div class="val">110 000</div>
+              <div class="sub">FCFA</div>
+            </div>
+            <div class="toefl-stat reveal reveal-delay-1">
+              <div class="lbl">Michigan Test</div>
+              <div class="val">10 000</div>
+              <div class="sub">FCFA · Score min. 65%</div>
+            </div>
+            <div class="toefl-stat reveal reveal-delay-2">
+              <div class="lbl fr-text">Volume horaire</div>
+              <div class="lbl en-text" style="display:none">Course hours</div>
+              <div class="val">40h</div>
+              <div class="sub fr-text">Lun · Mer · Sam</div>
+              <div class="sub en-text" style="display:none">Mon · Wed · Sat</div>
+            </div>
+            <div class="toefl-stat reveal reveal-delay-3">
+              <div class="lbl fr-text">Examen</div>
+              <div class="lbl en-text" style="display:none">Exam fee</div>
+              <div class="val">~255$</div>
+              <div class="sub fr-text">Carte bancaire prépayée</div>
+              <div class="sub en-text" style="display:none">Prepaid bank card</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="reveal" style="font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:20px;color:var(--blue-deep)">
+            <span class="fr-text">Calendrier des Tests 2026 — Lomé & Cotonou</span>
+            <span class="en-text" style="display:none">Test Schedule 2026 — Lomé & Cotonou</span>
+          </h4>
+          <div class="toefl-dates">
+            <div class="toefl-date reveal">
+              <div class="toefl-date-month">Jan<br/>2026</div>
+              <div class="toefl-date-info">
+                <strong class="fr-text">17 Janvier 2026</strong>
+                <strong class="en-text" style="display:none">January 17, 2026</strong>
+                <span class="fr-text">Préparation : 5 Janv → 31 Janv 2026</span>
+                <span class="en-text" style="display:none">Preparation: Jan 5 → Jan 31, 2026</span>
+              </div>
+            </div>
+            <div class="toefl-date reveal">
+              <div class="toefl-date-month">Fév<br/>2026</div>
+              <div class="toefl-date-info">
+                <strong class="fr-text">7 & 28 Février 2026</strong>
+                <strong class="en-text" style="display:none">February 7 & 28, 2026</strong>
+                <span class="fr-text">Préparation : 2 Fév → 28 Fév 2026</span>
+                <span class="en-text" style="display:none">Preparation: Feb 2 → Feb 28, 2026</span>
+              </div>
+            </div>
+            <div class="toefl-date reveal">
+              <div class="toefl-date-month">Mar<br/>2026</div>
+              <div class="toefl-date-info">
+                <strong class="fr-text">7 & 28 Mars 2026</strong>
+                <strong class="en-text" style="display:none">March 7 & 28, 2026</strong>
+                <span class="fr-text">Préparation : 9 Mar → 4 Avr 2026</span>
+                <span class="en-text" style="display:none">Preparation: Mar 9 → Apr 4, 2026</span>
+              </div>
+            </div>
+            <div class="toefl-date reveal">
+              <div class="toefl-date-month">Avr<br/>2026</div>
+              <div class="toefl-date-info">
+                <strong class="fr-text">11 & 25 Avril 2026</strong>
+                <strong class="en-text" style="display:none">April 11 & 25, 2026</strong>
+                <span class="fr-text">Préparation : 9 Mar → 4 Avr 2026</span>
+                <span class="en-text" style="display:none">Preparation: Mar 9 → Apr 4, 2026</span>
+              </div>
+            </div>
+            <div class="toefl-date reveal">
+              <div class="toefl-date-month">Mai<br/>2026</div>
+              <div class="toefl-date-info">
+                <strong class="fr-text">9 & 23 Mai 2026</strong>
+                <strong class="en-text" style="display:none">May 9 & 23, 2026</strong>
+                <span class="fr-text">Préparation : 4 Avr → 2 Mai 2026</span>
+                <span class="en-text" style="display:none">Preparation: Apr 4 → May 2, 2026</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PRICING ═══ -->
+  <section class="section-pad pricing-sec">
+    <div class="container" style="text-align:center">
+      <span class="section-tag reveal fr-text">Tarifs</span>
+      <span class="section-tag reveal en-text" style="display:none">Pricing</span>
+      <h2 class="reveal fr-text" style="margin-top:12px">Investissez dans Votre Avenir</h2>
+      <h2 class="reveal en-text" style="display:none;margin-top:12px">Invest in Your Future</h2>
+      <p class="reveal" style="max-width:520px;margin:16px auto 0">
+        <span class="fr-text">Tous frais inclus — inscription, scolarité, livres et matériel pédagogique. Paiement intégral le jour de l'inscription.</span>
+        <span class="en-text" style="display:none">All fees included — registration, tuition, books and teaching materials. Full payment on registration day.</span>
+      </p>
+
+      <div class="pricing-grid">
+        <!-- Card 1 -->
+        <div class="pricing-card reveal">
+          <div class="pricing-type fr-text">Programme Trimestriel</div>
+          <div class="pricing-type en-text" style="display:none">Quarterly Program</div>
+          <h3 class="fr-text">Ancien Apprenant</h3>
+          <h3 class="en-text" style="display:none">Returning Student</h3>
+          <div class="pricing-amount">
+            <span class="price">65 000</span>
+            <span class="currency">FCFA</span>
+          </div>
+          <div class="pricing-divider"></div>
+          <ul class="pricing-features">
+            <li class="pricing-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span class="fr-text">2 jours de cours / semaine</span><span class="en-text" style="display:none">2 class days / week</span></li>
+            <li class="pricing-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span class="fr-text">4 heures de cours / semaine</span><span class="en-text" style="display:none">4 class hours / week</span></li>
+            <li class="pricing-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span class="fr-text">Lun–Jeu ou Mar–Ven</span><span class="en-text" style="display:none">Mon–Thu or Tue–Fri</span></li>
+            <li class="pricing-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span class="fr-text">5 créneaux horaires au choix</span><span class="en-text" style="display:none">5 time slots available</span></li>
+            <li class="pricing-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span class="fr-text">Inscription + Scolarité + Livre</span><span class="en-text" style="display:none">Registration + Tuition + Book</span></li>
+          </ul>
+          <a href="contact.html" class="btn btn-outline" style="width:100%;justify-content:center">
+            <span class="fr-text">S'inscrire</span>
+            <span class="en-text" style="display:none">Register</span>
+          </a>
+        </div>
+
+        <!-- Card 2 — Featured -->
+        <div class="pricing-card featured reveal reveal-delay-1">
+          <div class="pricing-badge fr-text">Plus Populaire</div>
+          <div class="pricing-badge en-text" style="display:none">Most Popular</div>
+          <div class="pricing-type fr-text">Programme Trimestriel</div>
+          <div class="pricing-type en-text" style="display:none">Quarterly Program</div>
+          <h3 class="fr-text">Nouvel Apprenant</h3>
+          <h3 class="en-text" style="display:none">New Student</h3>
+          <div class="pricing-amount">
+            <span class="price">70 000</span>
+            <span class="currency">FCFA</span>
+          </div>
+          <div class="pricing-divider"></div>
+          <ul class="pricing-features">
+            <li class="pricing-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span class="fr-text">2 jours de cours / semaine</span><span class="en-text" style="display:none">2 class days / week</span></li>
+            <li class="pricing-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span class="fr-text">4 heures de cours / semaine</span><span class="en-text" style="display:none">4 class hours / week</span></li>
+            <li class="pricing-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span class="fr-text">Test de niveau inclus</span><span class="en-text" style="display:none">Level test included</span></li>
+            <li class="pricing-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span class="fr-text">Inscription + Scolarité + Livre</span><span class="en-text" style="display:none">Registration + Tuition + Book</span></li>
+            <li class="pricing-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span style="color:var(--gold-light);font-weight:700" class="fr-text">+ Matériel Audio Offert</span><span style="color:var(--gold-light);font-weight:700" class="en-text" style="display:none">+ Free Audio Kit</span></li>
+          </ul>
+          <a href="contact.html" class="btn btn-gold" style="width:100%;justify-content:center">
+            <span class="fr-text">S'inscrire</span>
+            <span class="en-text" style="display:none">Register</span>
+          </a>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="pricing-card reveal reveal-delay-2">
+          <div class="pricing-type fr-text">Programme Enfants</div>
+          <div class="pricing-type en-text" style="display:none">Children's Program</div>
+          <h3 class="fr-text">Children's Class</h3>
+          <h3 class="en-text" style="display:none">Children's Class</h3>
+          <div class="pricing-amount">
+            <span class="price">45 000</span>
+            <span class="currency">FCFA</span>
+          </div>
+          <div class="pricing-divider"></div>
+          <ul class="pricing-features">
+            <li class="pricing-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span class="fr-text">Mercredi 15h – 17h</span><span class="en-text" style="display:none">Wednesday 3pm – 5pm</span></li>
+            <li class="pricing-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span class="fr-text">Samedi 10h – 12h</span><span class="en-text" style="display:none">Saturday 10am – 12pm</span></li>
+            <li class="pricing-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span class="fr-text">Méthodes pédagogiques adaptées</span><span class="en-text" style="display:none">Age-appropriate teaching</span></li>
+            <li class="pricing-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span class="fr-text">Enseignants expérimentés</span><span class="en-text" style="display:none">Experienced teachers</span></li>
+            <li class="pricing-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span class="fr-text">Suivi personnalisé</span><span class="en-text" style="display:none">Personalized monitoring</span></li>
+          </ul>
+          <a href="contact.html" class="btn btn-outline" style="width:100%;justify-content:center">
+            <span class="fr-text">S'inscrire</span>
+            <span class="en-text" style="display:none">Register</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PARTNERS ═══ -->
+  <section class="section-pad-sm partners-sec">
+    <div class="container">
+      <span class="section-tag reveal fr-text">Ils nous font confiance</span>
+      <span class="section-tag reveal en-text" style="display:none">They trust us</span>
+      <h2 class="reveal" style="margin-top:12px">
+        <span class="fr-text">Partenaires Institutionnels</span>
+        <span class="en-text" style="display:none">Institutional Partners</span>
+      </h2>
+      <p class="reveal" style="max-width:540px;margin:12px auto 0">
+        <span class="fr-text">Plus de 40 organisations nationales et internationales nous ont accordé leur confiance pour la formation linguistique de leurs équipes.</span>
+        <span class="en-text" style="display:none">Over 40 national and international organizations have trusted us with their teams' language training.</span>
+      </p>
+    </div>
+    <div class="marquee-wrap">
+      <div class="marquee-track">
+        <span class="partner-name">Ecobank</span>
+        <span class="partner-name">Air France</span>
+        <span class="partner-name">Shell</span>
+        <span class="partner-name">PNUD</span>
+        <span class="partner-name">ONU</span>
+        <span class="partner-name">HCR</span>
+        <span class="partner-name">GIZ</span>
+        <span class="partner-name">ASECNA</span>
+        <span class="partner-name">ASKY Airlines</span>
+        <span class="partner-name">BOAD</span>
+        <span class="partner-name">BCAO</span>
+        <span class="partner-name">ContourGlobal</span>
+        <span class="partner-name">CIM Togo</span>
+        <span class="partner-name">ENI</span>
+        <span class="partner-name">Peace Corps</span>
+        <span class="partner-name">ANAC</span>
+        <span class="partner-name">Plan Togo</span>
+        <span class="partner-name">ANPE Togo</span>
+        <span class="partner-name">BTCI</span>
+        <span class="partner-name">Moov Africa</span>
+        <span class="partner-name">Sarakawa</span>
+        <span class="partner-name">Vlisco</span>
+        <!-- Duplicate for infinite loop -->
+        <span class="partner-name">Ecobank</span>
+        <span class="partner-name">Air France</span>
+        <span class="partner-name">Shell</span>
+        <span class="partner-name">PNUD</span>
+        <span class="partner-name">ONU</span>
+        <span class="partner-name">HCR</span>
+        <span class="partner-name">GIZ</span>
+        <span class="partner-name">ASECNA</span>
+        <span class="partner-name">ASKY Airlines</span>
+        <span class="partner-name">BOAD</span>
+        <span class="partner-name">BCAO</span>
+        <span class="partner-name">ContourGlobal</span>
+        <span class="partner-name">CIM Togo</span>
+        <span class="partner-name">ENI</span>
+        <span class="partner-name">Peace Corps</span>
+        <span class="partner-name">ANAC</span>
+        <span class="partner-name">Plan Togo</span>
+        <span class="partner-name">ANPE Togo</span>
+        <span class="partner-name">BTCI</span>
+        <span class="partner-name">Moov Africa</span>
+        <span class="partner-name">Sarakawa</span>
+        <span class="partner-name">Vlisco</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA BANNER ═══ -->
+  <section class="cta-sec section-pad">
+    <div class="container">
+      <div class="cta-inner">
+        <span class="section-tag reveal" style="background:rgba(201,164,64,0.15);color:var(--gold-light);margin-bottom:20px">
+          <span class="fr-text">Rejoignez-nous</span>
+          <span class="en-text" style="display:none">Join us</span>
+        </span>
+        <h2 class="reveal">
+          <span class="fr-text">Prêt à Maîtriser l'Anglais ?</span>
+          <span class="en-text" style="display:none">Ready to Master English?</span>
+        </h2>
+        <p class="reveal">
+          <span class="fr-text">Rejoignez des milliers d'apprenants qui ont transformé leur carrière grâce à l'ELC. Inscriptions rouvertes le 30 Mars 2026.</span>
+          <span class="en-text" style="display:none">Join thousands of learners who have transformed their careers through ELC. Registrations reopen March 30, 2026.</span>
+        </p>
+        <div class="cta-btns reveal">
+          <a href="contact.html" class="btn btn-gold fr-text">S'inscrire Maintenant</a>
+          <a href="contact.html" class="btn btn-gold en-text" style="display:none">Register Now</a>
+          <a href="nos-cours.html" class="btn btn-outline-white fr-text">Voir les Cours</a>
+          <a href="nos-cours.html" class="btn btn-outline-white en-text" style="display:none">Browse Courses</a>
+        </div>
+        <p class="cta-info">
+          <span class="fr-text">Des questions ? Appelez le <a href="tel:+22822512166">+228 22 51 21 66</a> ou écrivez à <a href="mailto:elctogo@gmail.com">elctogo@gmail.com</a></span>
+          <span class="en-text" style="display:none">Questions? Call <a href="tel:+22822512166">+228 22 51 21 66</a> or email <a href="mailto:elctogo@gmail.com">elctogo@gmail.com</a></span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="assets/images/logo.jpg" alt="ELC Logo"/>
+          <div class="footer-brand-name">English Language Center</div>
+          <div class="footer-brand-tag">Make the Good Grade</div>
+          <p class="fr-text">Le centre de référence pour l'apprentissage de l'anglais à Lomé, Togo. Nul n'enseigne l'anglais comme nous.</p>
+          <p class="en-text" style="display:none">The reference center for English learning in Lomé, Togo. No one teaches English like us.</p>
+        </div>
+
+        <div class="footer-col">
+          <h5 class="fr-text">Programmes</h5>
+          <h5 class="en-text" style="display:none">Programs</h5>
+          <ul>
+            <li><a href="nos-cours.html" class="fr-text">Cycle Débutant</a><a href="nos-cours.html" class="en-text" style="display:none">Beginner Cycle</a></li>
+            <li><a href="nos-cours.html" class="fr-text">Cycle Intermédiaire</a><a href="nos-cours.html" class="en-text" style="display:none">Intermediate Cycle</a></li>
+            <li><a href="nos-cours.html" class="fr-text">Cycle Avancé</a><a href="nos-cours.html" class="en-text" style="display:none">Advanced Cycle</a></li>
+            <li><a href="ei3months.html">EI3MONTHS</a></li>
+            <li><a href="nos-cours.html">TOEFL iBT</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5 class="fr-text">Cours Spéciaux</h5>
+          <h5 class="en-text" style="display:none">Special Courses</h5>
+          <ul>
+            <li><a href="nos-cours.html">Business English</a></li>
+            <li><a href="nos-cours.html">Financial English</a></li>
+            <li><a href="nos-cours.html">Translation Course</a></li>
+            <li><a href="nos-cours.html">Children's Class</a></li>
+            <li><a href="nos-cours.html">Youth Program</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Angle Rue 161, 18 AFG Aflao Gakli, Djidjolé, Lomé, Togo</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 8a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3 0h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 7.91a16 16 0 0 0 6.29 6.29l1.28-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 14.92v2z"/></svg>
+            <span>+228 22 51 21 66<br/>+228 93 44 29 10<br/>WhatsApp: +228 90 96 75 54</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>elctogo@gmail.com</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span class="fr-text">© 2025 English Language Center · Lomé, Togo · Tous droits réservés</span>
+        <span class="en-text" style="display:none">© 2025 English Language Center · Lomé, Togo · All rights reserved</span>
+        <em>Nul n'enseigne l'anglais comme nous !</em>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══ JAVASCRIPT ═══ -->
+  <script src="js/main.js"></script>
+</body>
+</html>

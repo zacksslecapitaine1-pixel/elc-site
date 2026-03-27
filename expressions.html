@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Expressions Courantes en Anglais — Citations de persévérance et proverbes bilingues. English Language Center, Lomé Togo."/>
+  <title>Expressions Courantes — English Language Center | ELC Togo</title>
+  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    /* ── EXPRESSIONS PAGE ── */
+    .quotes-intro {
+      background: var(--white);
+      padding: 80px 0;
+    }
+    .intro-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+    .intro-img { position: relative; }
+    .intro-img img {
+      width: 100%; height: 440px; object-fit: cover;
+      border-radius: var(--radius-xl); box-shadow: var(--shadow-xl);
+    }
+    .intro-img-quote {
+      position: absolute; bottom: 28px; left: 28px; right: 28px;
+      background: rgba(10,30,110,0.92);
+      backdrop-filter: blur(12px);
+      border-radius: var(--radius-md); padding: 20px 24px;
+      border: 1px solid rgba(201,164,64,0.3);
+    }
+    .intro-img-quote p {
+      color: var(--white); font-family: 'Playfair Display', serif;
+      font-style: italic; font-size: 0.92rem; line-height: 1.55;
+      margin-bottom: 8px;
+    }
+    .intro-img-quote span { color: var(--gold-light); font-size: 0.75rem; font-weight: 600; }
+
+    /* Quote cards grid */
+    .quotes-grid-sec { background: var(--off-white); padding: 80px 0; }
+    .quotes-grid {
+      display: grid; grid-template-columns: repeat(2,1fr);
+      gap: 24px; margin-top: 48px;
+    }
+    .quote-card {
+      background: var(--white); border-radius: var(--radius-lg);
+      padding: 36px; border: 1px solid var(--gray-200);
+      box-shadow: var(--shadow-sm); transition: var(--transition);
+      position: relative; overflow: hidden;
+    }
+    .quote-card::before {
+      content: '\201C';
+      font-family: 'Playfair Display', serif;
+      font-size: 6rem; font-weight: 900;
+      color: var(--blue-light);
+      position: absolute; top: 10px; right: 20px;
+      line-height: 1; pointer-events: none;
+    }
+    .quote-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(27,80,216,0.18);
+    }
+    .quote-card:nth-child(even):hover { border-color: rgba(201,164,64,0.35); }
+    .quote-card:nth-child(even)::before { color: rgba(201,164,64,0.08); }
+    .quote-num {
+      font-size: 0.68rem; font-weight: 800; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 16px; display: block;
+    }
+    .quote-en {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; font-weight: 600; color: var(--blue-deep);
+      line-height: 1.55; margin-bottom: 16px; font-style: italic;
+      position: relative; z-index: 1;
+    }
+    .quote-divider {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+    }
+    .quote-divider::before, .quote-divider::after {
+      content: ''; flex: 1; height: 1px; background: var(--gray-200);
+    }
+    .quote-divider span {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--gray-400);
+    }
+    .quote-fr {
+      font-size: 0.9rem; color: var(--gray-600);
+      line-height: 1.65; font-style: italic;
+    }
+
+    /* Featured quote */
+    .featured-quote-sec {
+      background: linear-gradient(135deg, var(--blue-deep), var(--blue));
+      padding: 80px 0; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .featured-quote-sec::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .featured-q-inner { position: relative; z-index: 2; max-width: 780px; margin: 0 auto; }
+    .big-quote-mark {
+      font-family: 'Playfair Display', serif;
+      font-size: 8rem; color: rgba(201,164,64,0.3);
+      line-height: 0.6; display: block; margin-bottom: 20px;
+    }
+    .featured-q-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem,2.8vw,2.2rem);
+      font-weight: 600; color: var(--white);
+      line-height: 1.5; font-style: italic; margin-bottom: 24px;
+    }
+    .featured-q-fr {
+      font-size: 1.05rem; color: rgba(255,255,255,0.65);
+      line-height: 1.65; margin-bottom: 32px; font-style: italic;
+    }
+    .featured-q-tag {
+      display: inline-block; background: rgba(201,164,64,0.15);
+      border: 1px solid rgba(201,164,64,0.3);
+      color: var(--gold-light); padding: 6px 20px;
+      border-radius: 100px; font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+    }
+
+    /* Proverb of the week */
+    .proverb-sec { background: var(--white); padding: 80px 0; }
+    .proverb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 48px; }
+    .proverb-card {
+      border-radius: var(--radius-xl); padding: 48px;
+      position: relative; overflow: hidden;
+    }
+    .proverb-card.en-card {
+      background: var(--blue-deep);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .proverb-card.fr-card {
+      background: var(--gold-pale);
+      border: 1px solid var(--gold-border);
+    }
+    .proverb-lang-tag {
+      font-size: 0.68rem; font-weight: 800; letter-spacing: 3px;
+      text-transform: uppercase; margin-bottom: 16px; display: block;
+    }
+    .en-card .proverb-lang-tag { color: var(--gold-light); }
+    .fr-card .proverb-lang-tag { color: var(--gold); }
+    .proverb-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem,3vw,2.4rem);
+      font-weight: 700; line-height: 1.25; margin-bottom: 16px;
+    }
+    .en-card .proverb-text { color: var(--white); font-style: italic; }
+    .fr-card .proverb-text { color: var(--blue-deep); font-style: italic; }
+    .proverb-sub { font-size: 0.85rem; line-height: 1.6; }
+    .en-card .proverb-sub { color: rgba(255,255,255,0.6); }
+    .fr-card .proverb-sub { color: var(--gray-600); }
+    .proverb-deco {
+      position: absolute; bottom: -20px; right: -20px;
+      font-family: 'Playfair Display', serif;
+      font-size: 10rem; font-weight: 900; line-height: 1;
+      opacity: 0.04; pointer-events: none;
+    }
+    .en-card .proverb-deco { color: var(--white); }
+    .fr-card .proverb-deco { color: var(--blue-deep); }
+
+    /* Tips section */
+    .tips-sec { background: var(--off-white); padding: 80px 0; }
+    .tips-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 48px; }
+    .tip-card {
+      background: var(--white); border-radius: var(--radius-lg);
+      padding: 32px; border: 1px solid var(--gray-200);
+      box-shadow: var(--shadow-sm); transition: var(--transition);
+    }
+    .tip-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: rgba(27,80,216,0.2); }
+    .tip-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem; font-weight: 900;
+      color: var(--blue-light); line-height: 1; margin-bottom: 12px;
+      transition: var(--transition);
+    }
+    .tip-card:hover .tip-num { color: rgba(27,80,216,0.2); }
+    .tip-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; color: var(--blue-deep); }
+    .tip-card p { font-size: 0.85rem; color: var(--gray-600); line-height: 1.65; }
+
+    @media (max-width: 1024px) {
+      .intro-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .quotes-grid { grid-template-columns: 1fr; }
+      .proverb-grid { grid-template-columns: 1fr; }
+      .tips-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .tips-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ ANNOUNCEMENT BAR ═══ -->
+  <div class="announcement-bar">
+    <div class="container">
+      <span class="fr-text">Inscriptions réouvertes le <span>30 Mars 2026</span> · <a href="contact.html">S'inscrire</a></span>
+      <span class="en-text" style="display:none">Registrations reopen <span>March 30, 2026</span> · <a href="contact.html">Register</a></span>
+    </div>
+  </div>
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="navbar-brand">
+        <img src="assets/images/logo.jpg" alt="ELC Logo"/>
+        <div class="brand-text">
+          <span class="brand-name">English Language Center</span>
+          <span class="brand-tagline">Make the good grade</span>
+        </div>
+      </a>
+      <ul class="navbar-nav">
+        <li><a href="index.html" class="nav-link fr-text">Accueil</a><a href="index.html" class="nav-link en-text" style="display:none">Home</a></li>
+        <li><a href="nos-cours.html" class="nav-link fr-text">Nos Cours</a><a href="nos-cours.html" class="nav-link en-text" style="display:none">Our Courses</a></li>
+        <li><a href="ei3months.html" class="nav-link">EI3MONTHS</a></li>
+        <li><a href="qui-sommes-nous.html" class="nav-link fr-text">Qui Sommes-Nous</a><a href="qui-sommes-nous.html" class="nav-link en-text" style="display:none">About Us</a></li>
+        <li><a href="expressions.html" class="nav-link active fr-text">Expressions</a><a href="expressions.html" class="nav-link active en-text" style="display:none">Expressions</a></li>
+        <li><a href="contact.html" class="nav-link fr-text">Contact</a><a href="contact.html" class="nav-link en-text" style="display:none">Contact</a></li>
+      </ul>
+      <div class="navbar-actions">
+        <div class="lang-toggle">
+          <button class="lang-btn active" id="btn-fr" onclick="setLang('fr')">FR</button>
+          <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+        </div>
+        <a href="contact.html" class="btn btn-primary fr-text">S'inscrire</a>
+        <a href="contact.html" class="btn btn-primary en-text" style="display:none">Register</a>
+        <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-nav" id="mobileMenu">
+    <button class="mobile-nav-close" onclick="toggleMenu()">&#x2715;</button>
+    <a href="index.html" onclick="toggleMenu()">Accueil</a>
+    <a href="nos-cours.html" onclick="toggleMenu()">Nos Cours</a>
+    <a href="ei3months.html" onclick="toggleMenu()">EI3MONTHS</a>
+    <a href="qui-sommes-nous.html" onclick="toggleMenu()">Qui Sommes-Nous</a>
+    <a href="expressions.html" onclick="toggleMenu()">Expressions</a>
+    <a href="contact.html" onclick="toggleMenu()">Contact</a>
+    <a href="contact.html" class="btn btn-gold" style="margin-top:16px" onclick="toggleMenu()">S'inscrire</a>
+  </div>
+
+  <!-- ═══ PAGE HERO ═══ -->
+  <section class="page-hero">
+    <div class="page-hero-inner container">
+      <span class="section-tag reveal fr-text">Sagesse & Motivation</span>
+      <span class="section-tag reveal en-text" style="display:none">Wisdom & Motivation</span>
+      <h1 class="reveal fr-text">Expressions Courantes</h1>
+      <h1 class="reveal en-text" style="display:none">Common Expressions</h1>
+      <p class="reveal fr-text">Citations de persévérance et proverbes bilingues sélectionnés par l'équipe ELC pour vous inspirer dans votre apprentissage de l'anglais.</p>
+      <p class="reveal en-text" style="display:none">Perseverance quotes and bilingual proverbs selected by the ELC team to inspire you in your English learning journey.</p>
+      <div class="breadcrumb">
+        <a href="index.html" class="fr-text">Accueil</a>
+        <a href="index.html" class="en-text" style="display:none">Home</a>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        <span class="fr-text">Expressions Courantes</span>
+        <span class="en-text" style="display:none">Common Expressions</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ INTRO ═══ -->
+  <section class="quotes-intro">
+    <div class="container">
+      <div class="intro-grid">
+        <div class="intro-img reveal">
+          <img src="assets/images/etudiant-livres.jpg" alt="Étudiant avec des livres"/>
+          <div class="intro-img-quote">
+            <p>"If you can't fly then run, if you can't run then walk, if you can't walk then crawl, but whatever you do you have to keep moving forward."</p>
+            <span>— Martin Luther King Jr.</span>
+          </div>
+        </div>
+
+        <div>
+          <span class="section-tag reveal fr-text">Citations de Persévérance</span>
+          <span class="section-tag reveal en-text" style="display:none">Perseverance Quotes</span>
+          <h2 class="reveal fr-text" style="margin-top:12px">Des Mots qui<br/>Inspirent & Motivent</h2>
+          <h2 class="reveal en-text" style="display:none;margin-top:12px">Words that<br/>Inspire & Motivate</h2>
+          <p class="reveal fr-text" style="margin-top:16px">L'apprentissage d'une langue est un voyage qui demande de la persévérance, de la régularité et de la détermination. Ces citations en anglais et leur traduction française vous rappellent pourquoi chaque effort en vaut la peine.</p>
+          <p class="reveal en-text" style="display:none;margin-top:16px">Learning a language is a journey that requires perseverance, consistency and determination. These quotes in English and their French translation remind you why every effort is worth it.</p>
+          <p class="reveal fr-text" style="margin-top:12px">Chez l'ELC, nous croyons que la motivation est le premier pas vers la maîtrise. Laissez ces mots vous guider sur votre chemin vers l'excellence linguistique.</p>
+          <p class="reveal en-text" style="display:none;margin-top:12px">At ELC, we believe motivation is the first step toward mastery. Let these words guide you on your path to linguistic excellence.</p>
+
+          <div style="display:flex;gap:24px;margin-top:32px;flex-wrap:wrap" class="reveal">
+            <div style="text-align:center;padding:20px 28px;background:var(--blue-light);border-radius:var(--radius-md);flex:1;min-width:120px">
+              <span style="display:block;font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:900;color:var(--blue);line-height:1">5</span>
+              <span style="font-size:0.78rem;color:var(--gray-600);font-weight:600" class="fr-text">Citations</span>
+              <span style="font-size:0.78rem;color:var(--gray-600);font-weight:600;display:none" class="en-text">Quotes</span>
+            </div>
+            <div style="text-align:center;padding:20px 28px;background:var(--gold-pale);border:1px solid var(--gold-border);border-radius:var(--radius-md);flex:1;min-width:120px">
+              <span style="display:block;font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:900;color:var(--gold);line-height:1">2</span>
+              <span style="font-size:0.78rem;color:var(--gray-600);font-weight:600" class="fr-text">Langues</span>
+              <span style="font-size:0.78rem;color:var(--gray-600);font-weight:600;display:none" class="en-text">Languages</span>
+            </div>
+            <div style="text-align:center;padding:20px 28px;background:var(--off-white);border:1px solid var(--gray-200);border-radius:var(--radius-md);flex:1;min-width:120px">
+              <span style="display:block;font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:900;color:var(--blue-dark);line-height:1">1</span>
+              <span style="font-size:0.78rem;color:var(--gray-600);font-weight:600" class="fr-text">Proverbe Hebdo</span>
+              <span style="font-size:0.78rem;color:var(--gray-600);font-weight:600;display:none" class="en-text">Weekly Proverb</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FEATURED QUOTE ═══ -->
+  <section class="featured-quote-sec">
+    <div class="container">
+      <div class="featured-q-inner">
+        <span class="big-quote-mark">"</span>
+        <p class="featured-q-text reveal">If you can't fly then run, if you can't run then walk, if you can't walk then crawl, but whatever you do you have to keep moving forward.</p>
+        <p class="featured-q-fr reveal">Si tu ne peux pas voler alors cours, si tu ne peux pas courir alors marche, si tu ne peux pas marcher alors rampe, mais quoi que tu fasses, continue d'aller de l'avant.</p>
+        <span class="featured-q-tag reveal fr-text">Citation à la Une · Persévérance</span>
+        <span class="featured-q-tag reveal en-text" style="display:none">Featured Quote · Perseverance</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ALL QUOTES ═══ -->
+  <section class="quotes-grid-sec">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-tag reveal fr-text">Toutes les Citations</span>
+        <span class="section-tag reveal en-text" style="display:none">All Quotes</span>
+        <h2 class="reveal" style="margin-top:12px">
+          <span class="fr-text">Citations sur la Persévérance</span>
+          <span class="en-text" style="display:none">Perseverance Quotes</span>
+        </h2>
+        <p class="reveal" style="max-width:500px;margin:14px auto 0">
+          <span class="fr-text">Chaque citation est présentée en anglais (pour pratiquer la lecture) et traduite en français.</span>
+          <span class="en-text" style="display:none">Each quote is presented in English (to practice reading) and translated into French.</span>
+        </p>
+      </div>
+
+      <div class="quotes-grid">
+        <!-- Quote 1 -->
+        <div class="quote-card reveal">
+          <span class="quote-num fr-text">Citation 01 · Persévérance</span>
+          <span class="quote-num en-text" style="display:none">Quote 01 · Perseverance</span>
+          <p class="quote-en">If you can't fly then run, if you can't run then walk, if you can't walk then crawl, but whatever you do you have to keep moving forward.</p>
+          <div class="quote-divider"><span class="fr-text">Traduction</span><span class="en-text" style="display:none">Translation</span></div>
+          <p class="quote-fr">Si tu ne peux pas voler alors cours, si tu ne peux pas courir alors marche, si tu ne peux pas marcher alors rampe, mais quoi que tu fasses, continue d'aller de l'avant.</p>
+        </div>
+
+        <!-- Quote 2 -->
+        <div class="quote-card reveal reveal-delay-1">
+          <span class="quote-num fr-text">Citation 02 · Victoire</span>
+          <span class="quote-num en-text" style="display:none">Quote 02 · Victory</span>
+          <p class="quote-en">A winner is just a loser who tried one more time.</p>
+          <div class="quote-divider"><span class="fr-text">Traduction</span><span class="en-text" style="display:none">Translation</span></div>
+          <p class="quote-fr">Un gagnant n'est qu'un perdant qui a essayé encore une fois.</p>
+        </div>
+
+        <!-- Quote 3 -->
+        <div class="quote-card reveal">
+          <span class="quote-num fr-text">Citation 03 · Constance</span>
+          <span class="quote-num en-text" style="display:none">Quote 03 · Consistency</span>
+          <p class="quote-en">I'm a slow walker, but I never walk back.</p>
+          <div class="quote-divider"><span class="fr-text">Traduction</span><span class="en-text" style="display:none">Translation</span></div>
+          <p class="quote-fr">Je marche lentement mais je ne marche jamais à reculons.</p>
+        </div>
+
+        <!-- Quote 4 -->
+        <div class="quote-card reveal reveal-delay-1">
+          <span class="quote-num fr-text">Citation 04 · Accomplissement</span>
+          <span class="quote-num en-text" style="display:none">Quote 04 · Achievement</span>
+          <p class="quote-en">Most of the important things in the world have been accomplished by people who kept on trying when there seemed to be no hope at all.</p>
+          <div class="quote-divider"><span class="fr-text">Traduction</span><span class="en-text" style="display:none">Translation</span></div>
+          <p class="quote-fr">La plupart des choses les plus importantes du monde ont été accomplies par des gens qui ont continué d'essayer quand il n'y avait plus d'espoir du tout.</p>
+        </div>
+
+        <!-- Quote 5 -->
+        <div class="quote-card reveal" style="grid-column: 1 / -1">
+          <span class="quote-num fr-text">Citation 05 · Résilience</span>
+          <span class="quote-num en-text" style="display:none">Quote 05 · Resilience</span>
+          <p class="quote-en" style="font-size:1.25rem">Our greatest glory is not in never failing, but in rising up every time we fail.</p>
+          <div class="quote-divider"><span class="fr-text">Traduction</span><span class="en-text" style="display:none">Translation</span></div>
+          <p class="quote-fr" style="font-size:0.98rem">Notre plus grande gloire n'est pas dans le fait de ne pas échouer mais dans le fait de nous relever chaque fois que nous échouons.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PROVERB OF THE WEEK ═══ -->
+  <section class="proverb-sec">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-tag reveal fr-text">Proverbe de la Semaine</span>
+        <span class="section-tag reveal en-text" style="display:none">Proverb of the Week</span>
+        <h2 class="reveal" style="margin-top:12px">
+          <span class="fr-text">Better Late Than Never</span>
+          <span class="en-text" style="display:none">Better Late Than Never</span>
+        </h2>
+        <p class="reveal" style="max-width:480px;margin:14px auto 0">
+          <span class="fr-text">Chaque semaine, l'ELC partage un proverbe en anglais et sa traduction pour enrichir votre vocabulaire.</span>
+          <span class="en-text" style="display:none">Every week, ELC shares a proverb in English and its translation to enrich your vocabulary.</span>
+        </p>
+      </div>
+
+      <div class="proverb-grid">
+        <div class="proverb-card en-card reveal">
+          <span class="proverb-deco">"</span>
+          <span class="proverb-lang-tag">English Proverb</span>
+          <p class="proverb-text">Better late than never.</p>
+          <p class="proverb-sub">This proverb encourages action even when delayed, reminding us that completing something late is still better than not doing it at all. A fundamental principle for any language learner.</p>
+        </div>
+        <div class="proverb-card fr-card reveal reveal-delay-1">
+          <span class="proverb-deco">"</span>
+          <span class="proverb-lang-tag">Traduction Française</span>
+          <p class="proverb-text">Mieux vaut tard que jamais.</p>
+          <p class="proverb-sub">Ce proverbe encourage à agir même en retard, nous rappelant qu'accomplir quelque chose tardivement vaut toujours mieux que ne pas le faire du tout. Un principe fondamental pour tout apprenant.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ LEARNING TIPS ═══ -->
+  <section class="tips-sec">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-tag reveal fr-text">Conseils d'Apprentissage</span>
+        <span class="section-tag reveal en-text" style="display:none">Learning Tips</span>
+        <h2 class="reveal" style="margin-top:12px">
+          <span class="fr-text">Pour Progresser Plus Vite</span>
+          <span class="en-text" style="display:none">To Progress Faster</span>
+        </h2>
+      </div>
+
+      <div class="tips-grid">
+        <div class="tip-card reveal">
+          <div class="tip-num">01</div>
+          <h4 class="fr-text">Pratiquez Chaque Jour</h4>
+          <h4 class="en-text" style="display:none">Practice Every Day</h4>
+          <p class="fr-text">15 à 30 minutes de pratique quotidienne valent mieux que de longues sessions irrégulières. La constance est la clé de la maîtrise linguistique.</p>
+          <p class="en-text" style="display:none">15 to 30 minutes of daily practice is better than long irregular sessions. Consistency is the key to language mastery.</p>
+        </div>
+        <div class="tip-card reveal reveal-delay-1">
+          <div class="tip-num">02</div>
+          <h4 class="fr-text">Écoutez l'Anglais Natif</h4>
+          <h4 class="en-text" style="display:none">Listen to Native English</h4>
+          <p class="fr-text">Films, podcasts, musique en anglais — exposez-vous à la langue authentique pour développer une oreille fine et un accent naturel.</p>
+          <p class="en-text" style="display:none">Films, podcasts, music in English — expose yourself to the authentic language to develop a fine ear and natural accent.</p>
+        </div>
+        <div class="tip-card reveal reveal-delay-2">
+          <div class="tip-num">03</div>
+          <h4 class="fr-text">N'Ayez Pas Peur de Parler</h4>
+          <h4 class="en-text" style="display:none">Don't Be Afraid to Speak</h4>
+          <p class="fr-text">L'erreur fait partie du processus. Parlez, faites des erreurs, corrigez-vous — c'est ainsi que s'acquiert la fluidité naturelle.</p>
+          <p class="en-text" style="display:none">Mistakes are part of the process. Speak, make mistakes, correct yourself — this is how natural fluency is acquired.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA ═══ -->
+  <section class="cta-sec section-pad">
+    <div class="container">
+      <div class="cta-inner">
+        <h2 class="reveal fr-text">Prêt à Passer à l'Action ?</h2>
+        <h2 class="reveal en-text" style="display:none">Ready to Take Action?</h2>
+        <p class="reveal fr-text">Les citations vous inspirent ? Passez à l'étape suivante et inscrivez-vous à l'ELC pour une formation structurée avec des experts.</p>
+        <p class="reveal en-text" style="display:none">Inspired by the quotes? Take the next step and register at ELC for structured training with experts.</p>
+        <div class="cta-btns reveal">
+          <a href="contact.html" class="btn btn-gold fr-text">S'inscrire à l'ELC</a>
+          <a href="contact.html" class="btn btn-gold en-text" style="display:none">Register at ELC</a>
+          <a href="nos-cours.html" class="btn btn-outline-white fr-text">Voir les Cours</a>
+          <a href="nos-cours.html" class="btn btn-outline-white en-text" style="display:none">Browse Courses</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="assets/images/logo.jpg" alt="ELC Logo"/>
+          <div class="footer-brand-name">English Language Center</div>
+          <div class="footer-brand-tag">Make the Good Grade</div>
+          <p class="fr-text">Le centre de référence pour l'apprentissage de l'anglais à Lomé, Togo.</p>
+          <p class="en-text" style="display:none">The reference center for English learning in Lomé, Togo.</p>
+        </div>
+        <div class="footer-col">
+          <h5 class="fr-text">Programmes</h5><h5 class="en-text" style="display:none">Programs</h5>
+          <ul>
+            <li><a href="nos-cours.html" class="fr-text">Nos Cours</a><a href="nos-cours.html" class="en-text" style="display:none">Our Courses</a></li>
+            <li><a href="ei3months.html">EI3MONTHS</a></li>
+            <li><a href="nos-cours.html">TOEFL iBT</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5 class="fr-text">Navigation</h5><h5 class="en-text" style="display:none">Navigation</h5>
+          <ul>
+            <li><a href="index.html" class="fr-text">Accueil</a><a href="index.html" class="en-text" style="display:none">Home</a></li>
+            <li><a href="qui-sommes-nous.html" class="fr-text">Qui Sommes-Nous</a><a href="qui-sommes-nous.html" class="en-text" style="display:none">About Us</a></li>
+            <li><a href="expressions.html" class="fr-text">Expressions</a><a href="expressions.html" class="en-text" style="display:none">Expressions</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 8a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3 0h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 7.91a16 16 0 0 0 6.29 6.29l1.28-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 14.92v2z"/></svg>
+            <span>+228 22 51 21 66</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>elctogo@gmail.com</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 English Language Center · Lomé, Togo</span>
+        <em>Nul n'enseigne l'anglais comme nous !</em>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
