@@ -24,9 +24,31 @@ function setLang(lang) {
 /* ── MOBILE MENU ──────────────────────────────────────────── */
 function toggleMenu() {
   const menu = document.getElementById('mobileMenu');
-  if (menu) menu.classList.toggle('open');
-  document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+  if (!menu) return;
+  const isOpen = menu.classList.toggle('open');
+  document.body.style.overflow = isOpen ? 'hidden' : '';
 }
+
+// Close menu when clicking outside
+document.addEventListener('click', function(e) {
+  const menu = document.getElementById('mobileMenu');
+  const hamburger = document.getElementById('hamburger');
+  if (!menu || !hamburger) return;
+  if (menu.classList.contains('open') &&
+      !menu.contains(e.target) &&
+      !hamburger.contains(e.target)) {
+    menu.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
+
+// Close menu on ESC key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    const menu = document.getElementById('mobileMenu');
+    if (menu) { menu.classList.remove('open'); document.body.style.overflow = ''; }
+  }
+});
 
 /* ── SCROLL REVEAL ────────────────────────────────────────── */
 const revealObserver = new IntersectionObserver((entries) => {
